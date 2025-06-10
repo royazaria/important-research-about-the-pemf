@@ -200,82 +200,81 @@
             box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
         }
 
-        /* Studies Grid */
-        .studies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+        /* Studies Table */
+        .studies-table {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
             margin-top: 50px;
         }
 
-        .study-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            border-left: 5px solid #667eea;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .study-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
+        .table-header {
             background: linear-gradient(45deg, #667eea, #764ba2);
-        }
-
-        .study-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .study-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .study-location {
-            font-weight: 600;
-            color: #667eea;
+            color: white;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            padding: 20px 30px;
+            font-weight: bold;
             font-size: 1.1rem;
         }
 
-        .study-rating {
+        .table-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            padding: 25px 30px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s;
+            align-items: center;
+        }
+
+        .table-row:hover {
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            transform: translateX(5px);
+        }
+
+        .table-row:last-child {
+            border-bottom: none;
+        }
+
+        .study-description-table {
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .study-location-table {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .study-rating-table {
             background: linear-gradient(45deg, #ff6b6b, #ee5a24);
             color: white;
             padding: 8px 15px;
             border-radius: 20px;
             font-weight: bold;
-            font-size: 1.1rem;
+            text-align: center;
+            width: fit-content;
+            justify-self: center;
         }
 
-        .study-description {
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 25px;
-            font-size: 1rem;
-        }
-
-        .study-link {
-            display: inline-block;
+        .study-link-table {
             background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
-            padding: 12px 25px;
+            padding: 10px 20px;
             text-decoration: none;
             border-radius: 25px;
             font-weight: 600;
             transition: all 0.3s;
+            text-align: center;
+            justify-self: center;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
-        .study-link:hover {
+        .study-link-table:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
         }
@@ -417,14 +416,14 @@
                 <button class="filter-btn" data-filter="other">International Studies</button>
             </div>
 
-            <div class="rating-filters">
-                <button class="rating-btn active" data-rating="all">All Ratings</button>
-                <button class="rating-btn" data-rating="10">Rating 10</button>
-                <button class="rating-btn" data-rating="9">Rating 9</button>
-                <button class="rating-btn" data-rating="8">Rating 8</button>
-            </div>
 
-            <div class="studies-grid" id="studiesGrid">
+
+            <div class="studies-table" id="studiesTable">
+                <div class="table-header">
+                    <div>Research Study Description</div>
+                    <div>Quality Rating</div>
+                    <div>View Study</div>
+                </div>
                 <!-- Studies will be populated by JavaScript -->
             </div>
         </div>
