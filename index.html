@@ -203,34 +203,73 @@
         /* Studies Table */
         .studies-table {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
             margin-top: 50px;
+            position: relative;
+        }
+
+        .studies-table::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .table-header {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             color: white;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            padding: 20px 30px;
+            grid-template-columns: 80px 2fr 120px;
+            padding: 25px 35px;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
         }
 
         .table-row {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            padding: 25px 30px;
+            grid-template-columns: 80px 2fr 120px;
+            padding: 30px 35px;
             border-bottom: 1px solid #f0f0f0;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .table-row::before {
+            content: '';
+            position: absolute;
+            left: -100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .table-row:hover::before {
+            left: 100%;
         }
 
         .table-row:hover {
-            background: linear-gradient(45deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
-            transform: translateX(5px);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
         }
 
         .table-row:last-child {
@@ -239,44 +278,131 @@
 
         .study-description-table {
             color: #333;
-            line-height: 1.5;
-            margin-bottom: 10px;
-            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            text-align: left;
         }
 
         .study-location-table {
             color: #667eea;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .study-rating-table {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24, #fd79a8);
             color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
+            padding: 12px 18px;
+            border-radius: 25px;
             font-weight: bold;
             text-align: center;
-            width: fit-content;
-            justify-self: center;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .study-rating-table::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .study-rating-table:hover::before {
+            left: 100%;
+        }
+
+        .study-rating-table:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.5);
         }
 
         .study-link-table {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #667eea, #764ba2, #4ecdc4);
             color: white;
-            padding: 10px 20px;
+            padding: 14px 25px;
             text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-align: center;
-            justify-self: center;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .study-link-table::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .study-link-table:hover::before {
+            left: 100%;
         }
 
         .study-link-table:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            transform: translateY(-4px) scale(1.08);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+            background: linear-gradient(135deg, #764ba2, #667eea, #4ecdc4);
+        }
+
+        /* Enhanced Filter Buttons */
+        .filter-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .filter-btn:hover::before,
+        .filter-btn.active::before {
+            left: 100%;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+            background: linear-gradient(135deg, #764ba2, #667eea, #f093fb);
         }
 
         /* Rating explanations */
@@ -792,19 +918,19 @@
 
             const tableRows = filteredStudies.map(study => `
                 <div class="table-row">
+                    <div class="study-rating-table">${study.rating}/10</div>
                     <div>
                         <div class="study-description-table">${study.description}</div>
                         <div class="study-location-table">${study.location}</div>
                     </div>
-                    <div class="study-rating-table">${study.rating}/10</div>
                     <a href="${study.link}" target="_blank" class="study-link-table">View Study</a>
                 </div>
             `).join('');
 
             studiesTable.innerHTML = `
                 <div class="table-header">
+                    <div>Rating</div>
                     <div>Research Study Description</div>
-                    <div>Quality Rating</div>
                     <div>View Study</div>
                 </div>
                 ${tableRows}
