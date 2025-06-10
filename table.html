@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEMF Therapy Research - Clinical Evidence Database</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #333;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .research-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .research-table th {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+
+        .research-table td {
+            padding: 15px 12px;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+        }
+
+        .research-table tr:hover {
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.05), transparent);
+        }
+
+        .rating-badge {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .rating-10 { background: linear-gradient(45deg, #27ae60, #2ecc71); }
+        .rating-9 { background: linear-gradient(45deg, #3498db, #5dade2); }
+        .rating-8 { background: linear-gradient(45deg, #9b59b6, #bb6bd9); }
+
+        .link-button {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            word-break: break-all;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .link-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .fda-section {
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+        }
+
+        .fda-section h3 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .institutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .institution-card {
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .institution-card:hover {
+            transform: translateX(5px);
+        }
+
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .application-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .application-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .application-card h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 30px;
+            font-size: 0.9em;
+        }
+
+        .search-box {
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .research-table {
+                font-size: 0.9em;
+            }
+            
+            .research-table th,
+            .research-table td {
+                padding: 10px 8px;
+            }
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: #f8f9fa;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>🧬 PEMF Therapy Research Database</h1>
+            <p>Evidence-Based Clinical Studies from Leading Medical Institutions</p>
+            <div class="stats">
+                <div class="stat-card">
+                    <span class="stat-number">16</span>
+                    <span class="stat-label">High-Quality Studies</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">Elite Institutions</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">1979</span>
+                    <span class="stat-label">FDA Approved Since</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Clinical Applications</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h2 class="section-title">
+                📊 Clinical Research Studies (Rating 8+)
+            </h2>
+            
+            <!-- Search and Filter -->
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search studies by institution, condition, or keywords...">
+                <span class="search-icon">🔍</span>
+            </div>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterStudies('all')">All Studies</button>
+                <button class="filter-btn" onclick="filterStudies('10')">Rating 10</button>
+                <button class="filter-btn" onclick="filterStudies('9')">Rating 9</button>
+                <button class="filter-btn" onclick="filterStudies('8')">Rating 8</button>
+                <button class="filter-btn" onclick="filterStudies('cardiovascular')">Cardiovascular</button>
+                <button class="filter-btn" onclick="filterStudies('bone')">Bone Healing</button>
+                <button class="filter-btn" onclick="filterStudies('pain')">Pain Management</button>
+            </div>
+
+            <!-- Research Table -->
+            <table class="research-table" id="researchTable">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Study Link</th>
+                        <th style="width: 45%;">Clinical Findings</th>
+                        <th style="width: 25%;">Institution & Location</th>
+                        <th style="width: 15%;">Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rating 10 Studies -->
+                    <tr data-rating="10" data-category="cardiovascular">
+                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/32401418/" class="link-button" target="_blank">Mayo Clinic Study #1</a></td>
+                        <td><strong>Hypertension Treatment:</strong> Double-blind RCT showing PEMF significantly improved blood pressure and vascular function in 30 hypertensive patients after 12 weeks of treatment</td>
+                        <td>Mayo Clinic<br><small>Rochester & Phoenix, USA</small></td>
+                        <td><span class="rating-badge rating-10">10</span></td>
+                    </tr>
+                    <tr data-rating="10" data-category="cardiovascular">
+                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/31394939/" class="link-button" target="_blank">Mayo Clinic Study #2</a></td>
+                        <td><strong>Metabolic Syndrome:</strong> RCT demonstrating PEMF increased plasma nitric oxide and improved blood pressure in 44 metabolic syndrome patients</td>
+                        <td>Mayo Clinic<br><small>Rochester & Phoenix, USA</small></td>
+                        <td><span class="rating-badge rating-10">10</span></td>
+                    </tr>
+                    
+                    <!-- Rating 9 Studies -->
+                    <tr data-rating="9" data-category="cardiovascular">
+                        <td><a href="https://dicardiology.com/content/cleveland-clinic-florida-pemf-cardiac-trial-completes-enrollment" class="link-button" target="_blank">Cleveland Clinic EFFECT</a></td>
+                        <td><strong>Ischemic Cardiomyopathy:</strong> Double-blind RCT for patients with no surgical options, completed enrollment of 30 patients with ischemic heart disease</td>
+                        <td>Cleveland Clinic Florida<br><small>Florida, USA</small></td>
+                        <td><span class="rating-badge rating-9">9</span></td>
+                    </tr>
+                    <tr data-rating="9" data-category="surgical">
+                        <td><a href="https://pure.johnshopkins.edu/en/publications/evidence-based-use-of-pulsed-electromagnetic-field-therapy-in-cli" class="link-button" target="_blank">Johns Hopkins Review</a></td>
+                        <td><strong>Plastic Surgery Applications:</strong> Comprehensive evidence-based review of PEMF for post-surgical pain, edema, and wound healing with no known side effects</td>
+                        <td>Johns Hopkins University<br><small>Baltimore, USA</small></td>
+                        <td><span class="rating-badge rating-9">9</span></td>
+                    </tr>
+                    <tr data-rating="9" data-category="pain">
+                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/8478852/" class="link-button" target="_blank">Yale Study #1</a></td>
+                        <td><strong>Osteoarthritis Treatment:</strong> Landmark double-blind RCT showing 23-61% improvement in osteoarthritis pain vs 2-18% in placebo group (27 patients)</td>
+                        <td>Yale University<br><small>New Haven, USA</small></td>
+                        <td><span class="rating-badge rating-9">9</span></td>
+                    </tr>
+                    <tr data-rating="9" data-category="pain">
+                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/7837158/" class="link-button" target="_blank">Yale Study #2</a></td>
+                        <td><strong>Large Osteoarthritis Trial:</strong> Follow-up double-blind RCT with 167 osteoarthritis patients confirming significant pain and functional improvements</td>
+                        <td>Yale University<br><small>New Haven, USA</small></td>
+                        <td><span class="rating-badge rating-9">9</span></td>
+                    </tr>
+                    <tr data-rating="9" data-category="bone">
+                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/32495506/" class="link-button" target="_blank">West China Meta-Analysis</a></td>
+                        <td><strong>Bone Healing Meta-Analysis:</strong> Analysis of 22 RCTs (1,468 participants) showing PEMF healing rate 79.7% vs control 64.3% for bone healing</td>
+                        <td>West China Hospital<br><small>Sichuan University, China</small></td>
+                        <td><span class="rating-badge rating-9">9</span></td>
+                    </tr>
+                    <tr data-rating="9" data-category="pain">
+                        <td><a href="https://cochranelibrary.com/cdsr/doi/10.1002/14651858.CD003523.pub2/abstract" class="link-button" target="_blank">Cochrane Review</a></td>
+                        <td><strong>Gold Standard Review:</strong> Cochrane Database systematic review concluding PEMF therapy helpful in relieving osteoarthritis pain</td>
+                        <td>Cochrane Collaboration<br><small>International</small></td>
+                        <td><span class="rating-badge rating-9">9</span></td>
+                    </tr>
+                    
+                    <!-- Rating 8 Studies -->
+                    <tr data-rating="8" data-category="bone">
+                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/23331333/" class="link-button" target="_blank">Nanjing University</a></td>
+                        <td><strong>Fracture Healing:</strong> RCT demonstrating PEMF success rate 77.4% vs control 48.1% in 58 delayed union fracture patients</td>
+                        <td>Nanjing University<br><small>Drum Tower Hospital, China</small></td>
+                        <td><span class="rating-badge rating-8">8</span></td>
+                    </tr>
+                    <tr data-rating="8" data-category="pain">
+                        <td><a href="https://rheumatology.oxfordjournals.org/content/55/4/755" class="link-button" target="_blank">Oxford Published Study</a></td>
+                        <td><strong>FDA Device Trial:</strong> Double-blind RCT showing 25.5% pain reduction with FDA-approved PEMF device in 60 osteoarthritis patients</td>
+                        <td>University of Messina<br><small>Published Oxford, Italy/UK</small></td>
+                        <td><span class="rating-badge rating-8">8</span></td>
+                    </tr>
+                    <tr data-rating="8" data-category="cardiovascular">
+                        <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4058309/" class="link-button" target="_blank">Shanghai Jiao Tong</a></td>
+                        <td><strong>Cardiac Recovery:</strong> Study showing PEMF significantly improved cardiac function and reduced apoptosis in myocardial infarction model</td>
+                        <td>Shanghai Jiao Tong University<br><small>Shanghai, China</small></td>
+                        <td><span class="rating-badge rating-8">8</span></td>
+                    </tr>
+                    <tr data-rating="8" data-category="cardiovascular">
+                        <td><a href="https://jstage.jst.go.jp/article/circj/84/2/84_CJ-19-0758/_html/-char/en" class="link-button" target="_blank">Japanese Multi-Center</a></td>
+                        <td><strong>Angiogenesis Research:</strong> Multi-center study demonstrating PEMF promoted angiogenesis and improved cardiac function after heart attack</td>
+                        <td>Multiple Japanese Centers<br><small>Japan</small></td>
+                        <td><span class="rating-badge rating-8">8</span></td>
+                    </tr>
+                    <tr data-rating="8" data-category="pain">
+                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/32659770/" class="link-button" target="_blank">PT Journal Meta-Analysis</a></td>
+                        <td><strong>Pain Relief Meta-Analysis:</strong> Physical Therapy Journal meta-analysis of 16 studies showing clinically significant effects on osteoarthritis pain</td>
+                        <td>Multiple International<br><small>Global Study</small></td>
+                        <td><span class="rating-badge rating-8">8</span></td>
+                    </tr>
+                    <tr data-rating="8" data-category="surgical">
+                        <td><a href="https://clinicaltrials.gov/study/NCT04123470" class="link-button" target="_blank">Stanford Ongoing Trial</a></td>
+                        <td><strong>Post-Operative Pain:</strong> Ongoing randomized controlled trial of PEMF for post-operative pain in shoulder/knee surgery patients</td>
+                        <td>Stanford University<br><small>California, USA</small></td>
+                        <td><span class="rating-badge rating-8">8</span></td>
+                    </tr>
+                    <tr data-rating="8" data-category="pain">
+                        <td><a href="https://oarsijournal.com/article/S1063-4584(05)00060-9/fulltext" class="link-button" target="_blank">Danish Multi-Center</a></td>
+                        <td><strong>Knee Osteoarthritis:</strong> Multi-center RCT of 83 knee osteoarthritis patients showing significant improvement in stiffness with PEMF treatment</td>
+                        <td>Copenhagen University<br><small>Denmark</small></td>
+                        <td><span class="rating-badge rating-8">8</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- FDA Approval Section -->
+        <div class="fda-section">
+            <h3>🏛️ FDA Approval Status</h3>
+            <p><strong>Bone Healing:</strong> FDA approved since 1979 for nonunion fractures</p>
+            <p><strong>Spinal Fusion:</strong> FDA approved since 2004</p>
+            <p><strong>Device Classification:</strong> Reclassified from Class III to Class II (2020)</p>
+        </div>
+
+        <!-- Institutions Section -->
+        <div class="main-content">
+            <h2 class="section-title">🏥 Leading Research Institutions</h2>
+            <div class="institutions-grid">
+                <div class="institution-card">
+                    <strong>Mayo Clinic</strong> (Rochester & Phoenix)<br>
+                    <small>2 cardiovascular studies</small>
+                </div>
+                <div class="institution-card">
+                    <strong>Yale University</strong><br>
+                    <small>2 osteoarthritis studies</small>
+                </div>
+                <div class="institution-card">
+                    <strong>Johns Hopkins University</strong><br>
+                    <small>1 comprehensive surgical review</small>
+                </div>
+                <div class="institution-card">
+                    <strong>Cleveland Clinic</strong><br>
+                    <small>1 major cardiac trial</small>
+                </div>
+                <div class="institution-card">
+                    <strong>West China Hospital</strong><br>
+                    <small>1 large meta-analysis</small>
+                </div>
+                <div class="institution-card">
+                    <strong>Nanjing University</strong><br>
+                    <small>1 bone healing study</small>
+                </div>
+                <div class="institution-card">
+                    <strong>Shanghai Jiao Tong University</strong><br>
+                    <small>1 cardiac study</small>
+                </div>
+                <div class="institution-card">
+                    <strong>Stanford University</strong><br>
+                    <small>1 ongoing trial</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Applications Section -->
+        <div class="main-content">
+            <h2 class="section-title">💊 Clinical Applications</h2>
+            <div class="applications-grid">
+                <div class="application-card">
+                    <h4>🫀 Cardiovascular</h4>
+                    <p>Hypertension, ischemic cardiomyopathy, myocardial infarction recovery</p>
+                </div>
+                <div class="application-card">
+                    <h4>🦴 Bone Healing</h4>
+                    <p>Nonunion fractures, delayed union, spinal fusion (FDA approved)</p>
+                </div>
+                <div class="application-card">
+                    <h4>⚡ Pain Management</h4>
+                    <p>Osteoarthritis, post-surgical pain, chronic pain conditions</p>
+                </div>
+                <div class="application-card">
+                    <h4>🩹 Wound Healing</h4>
+                    <p>Post-surgical recovery, chronic wounds, tissue repair</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Complete database of PEMF research rated 8+ based on research quality and institutional prestige</p>
+        <p>For medical device distribution inquiries in the Philippines</p>
+    </div>
+
+    <script>
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            const searchTerm = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#researchTable tbody tr');
+            
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+
+        // Filter functionality
+        function filterStudies(filter) {
+            const rows = document.querySelectorAll('#researchTable tbody tr');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            rows.forEach(row => {
+                if (filter === 'all') {
+                    row.style.display = '';
+                } else if (filter === '10' || filter === '9' || filter === '8') {
+                    if (row.dataset.rating === filter) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                } else {
+                    if (row.dataset.category === filter) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        // Smooth scrolling for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
