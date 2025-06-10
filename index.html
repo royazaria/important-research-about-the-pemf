@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PEMF Therapy Research - Clinical Evidence Database</title>
+    <title>PEMF Therapy - Evidence-Based Medical Research</title>
     <style>
         * {
             margin: 0;
@@ -12,1575 +12,822 @@
         }
 
         body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            color: #1a1a1a;
-            background: #0a0f1c;
-            min-height: 100vh;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
 
+        /* Header */
         .header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
-            border-radius: 24px;
-            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-item {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-item:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
             text-align: center;
-            margin-bottom: 40px;
-            box-shadow: 0 25px 50px rgba(59, 130, 246, 0.3);
+            color: white;
             position: relative;
             overflow: hidden;
         }
 
-        .header::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23667eea;stop-opacity:0.8"/><stop offset="100%" style="stop-color:%23764ba2;stop-opacity:0.8"/></linearGradient></defs><circle cx="200" cy="200" r="300" fill="url(%23grad)" opacity="0.3"/><circle cx="800" cy="400" r="200" fill="url(%23grad)" opacity="0.4"/><circle cx="500" cy="700" r="250" fill="url(%23grad)" opacity="0.3"/></svg>') no-repeat center center;
+            background-size: cover;
         }
 
-        .header-content {
+        .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
-        .header h1 {
-            font-size: 3.5em;
-            margin-bottom: 15px;
-            color: white;
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
             font-weight: 700;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .header p {
-            font-size: 1.4em;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            padding: 30px 20px;
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .stat-number {
-            font-size: 3em;
-            font-weight: 800;
-            color: white;
-            display: block;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .stat-label {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95em;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 500;
-        }
-
-        .main-content {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            border-radius: 24px;
-            padding: 50px 40px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+        .hero p {
+            font-size: 1.3rem;
             margin-bottom: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 60px 0;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
         }
 
         .section-title {
-            font-size: 2.2em;
-            margin-bottom: 30px;
-            color: #1e3a8a;
-            border-bottom: 4px solid #3b82f6;
-            padding-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
             font-weight: 700;
         }
 
-        .search-filter-section {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        .search-box {
-            margin-bottom: 25px;
-            position: relative;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 18px 60px 18px 25px;
-            border: 2px solid #e2e8f0;
-            border-radius: 50px;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-            background: #f8fafc;
-        }
-
-        .search-box input:focus {
-            outline: none;
-            border-color: #3b82f6;
-            background: white;
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
-        }
-
-        .search-icon {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #3b82f6;
-            font-size: 1.2em;
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .filter-buttons {
             display: flex;
-            gap: 12px;
             flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
         }
 
         .filter-btn {
-            padding: 12px 24px;
-            border: 2px solid #e2e8f0;
-            border-radius: 50px;
-            background: white;
-            color: #475569;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
             cursor: pointer;
-            transition: all 0.3s ease;
             font-weight: 600;
-            font-size: 0.95em;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
-        .filter-btn.active,
-        .filter-btn:hover {
-            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-            color: white;
-            border-color: #3b82f6;
+        .filter-btn:hover,
+        .filter-btn.active {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(45deg, #764ba2, #667eea);
         }
 
-        .research-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin: 30px 0;
+        .rating-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .rating-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .rating-btn:hover,
+        .rating-btn.active {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Studies Grid */
+        .studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .study-card {
             background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .research-table th {
-            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-            color: white;
-            padding: 20px 15px;
-            text-align: left;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.9em;
-            letter-spacing: 1px;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
-        .research-table td {
-            padding: 20px 15px;
-            border-bottom: 1px solid #f1f5f9;
-            vertical-align: top;
-            transition: background-color 0.3s ease;
-        }
-
-        .research-table tr:hover td {
-            background: linear-gradient(90deg, rgba(59, 130, 246, 0.05), transparent);
-        }
-
-        .research-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .link-button {
-            display: inline-block;
-            padding: 12px 20px;
-            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 0.9em;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-        }
-
-        .link-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
-            background: linear-gradient(135deg, #1e40af, #2563eb);
-        }
-
-        .rating-section {
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-            color: #1a1a1a;
+            border-radius: 15px;
             padding: 30px;
-            border-radius: 20px;
-            margin: 30px 0;
-            box-shadow: 0 15px 35px rgba(245, 158, 11, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border-left: 5px solid #667eea;
+            position: relative;
+            overflow: hidden;
         }
 
-        .rating-section h3 {
+        .study-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .study-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .study-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 20px;
-            font-size: 1.6em;
-            font-weight: 700;
-            color: #92400e;
+        }
+
+        .study-location {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+
+        .study-rating {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .study-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+
+        .study-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .study-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Rating explanations */
+        .rating-explanation {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 60px 0;
+            margin-top: 50px;
         }
 
         .rating-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-
-        .rating-item {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 15px;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
-
-        .fda-section {
-            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
-            color: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            margin: 30px 0;
-            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.3);
-        }
-
-        .fda-section h3 {
-            margin-bottom: 25px;
-            font-size: 1.8em;
-            font-weight: 700;
-        }
-
-        .fda-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .fda-item {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 20px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .institutions-section {
-            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
-            color: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            margin: 30px 0;
-            box-shadow: 0 15px 35px rgba(168, 85, 247, 0.3);
-        }
-
-        .institutions-grid {
-            display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 25px;
+            gap: 30px;
         }
 
-        .institution-card {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
+        .rating-card {
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-        }
-
-        .institution-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .applications-section {
-            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-            color: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            margin: 30px 0;
-            box-shadow: 0 15px 35px rgba(239, 68, 68, 0.3);
-        }
-
-        .applications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 25px;
-        }
-
-        .application-card {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 30px 25px;
             border-radius: 15px;
+            padding: 30px;
             text-align: center;
-            transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
         }
 
-        .application-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .application-card h4 {
-            font-size: 1.4em;
+        .rating-number {
+            font-size: 3rem;
+            font-weight: bold;
             margin-bottom: 15px;
-            font-weight: 700;
         }
 
+        .rating-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .rating-desc {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
         .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0 30px 0;
             text-align: center;
-            color: #94a3b8;
-            padding: 40px 20px;
-            font-size: 1em;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            border-radius: 20px;
-            margin-top: 40px;
         }
 
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 30px;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-            
-            .header {
-                padding: 40px 25px;
-            }
-            
-            .header h1 {
-                font-size: 2.5em;
-            }
-            
-            .main-content {
-                padding: 30px 25px;
-            }
-            
-            .research-table {
-                font-size: 0.9em;
-            }
-            
-            .research-table th,
-            .research-table td {
-                padding: 15px 10px;
+            .hero h1 {
+                font-size: 2.5rem;
             }
 
-            .section-title {
-                font-size: 1.8em;
+            .hero p {
+                font-size: 1.1rem;
             }
+
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .studies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+        }
+
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header Section -->
-        <div class="header">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
             <div class="header-content">
-                <h1>🧬 PEMF Therapy Research Database</h1>
-                <p>Evidence-Based Clinical Studies from Leading Medical Institutions Worldwide</p>
-                <div class="stats">
-                    <div class="stat-card">
-                        <span class="stat-number">62</span>
-                        <span class="stat-label">Research Studies</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">35+</span>
-                        <span class="stat-label">Elite Institutions</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">1979</span>
-                        <span class="stat-label">FDA Approved Since</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number">7</span>
-                        <span class="stat-label">Clinical Applications</span>
-                    </div>
-                </div>
+                <div class="logo">PEMF Research Hub</div>
+                <nav class="nav-menu">
+                    <a href="#home" class="nav-item">Home</a>
+                    <a href="#research" class="nav-item">Research</a>
+                    <a href="#ratings" class="nav-item">Ratings</a>
+                    <a href="#contact" class="nav-item">Contact</a>
+                </nav>
             </div>
         </div>
+    </header>
 
-        <!-- Rating System -->
-        <div class="rating-section">
-            <h3>📊 Research Quality Rating System</h3>
-            <div class="rating-grid">
-                <div class="rating-item">
-                    <strong>Rating 10:</strong> High-quality RCTs + Top-tier institutions (Mayo Clinic, Johns Hopkins, Yale)
-                </div>
-                <div class="rating-item">
-                    <strong>Rating 9:</strong> Excellent research from prestigious institutions OR systematic reviews
-                </div>
-                <div class="rating-item">
-                    <strong>Rating 8:</strong> Good research quality from reputable medical institutions
-                </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Evidence-Based PEMF Therapy</h1>
+                <p>Comprehensive database of high-quality medical research studies from leading institutions worldwide, supporting PEMF therapy implementation in modern healthcare.</p>
+                <a href="#research" class="cta-button">Explore Research Database</a>
             </div>
         </div>
+    </section>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <h2 class="section-title">
-                📊 Global Clinical Research Studies
-            </h2>
+    <!-- Filter Section -->
+    <section id="research" class="filter-section">
+        <div class="container">
+            <h2 class="section-title">Global Medical Research Database</h2>
+            <p class="section-subtitle">Browse through carefully curated studies from prestigious medical institutions worldwide, ranked by research excellence and clinical significance.</p>
             
-            <!-- Search and Filter -->
-            <div class="search-filter-section">
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Search studies by institution, condition, country, or keywords...">
-                    <span class="search-icon">🔍</span>
-                </div>
-                
-                <div class="filter-buttons">
-                    <button class="filter-btn active" onclick="filterStudies('all')">All Studies</button>
-                    <button class="filter-btn" onclick="filterStudies('usa')">USA</button>
-                    <button class="filter-btn" onclick="filterStudies('europe')">Europe</button>
-                    <button class="filter-btn" onclick="filterStudies('asia')">Asia</button>
-                    <button class="filter-btn" onclick="filterStudies('cardiovascular')">Cardiovascular</button>
-                    <button class="filter-btn" onclick="filterStudies('bone')">Bone Healing</button>
-                    <button class="filter-btn" onclick="filterStudies('pain')">Pain Management</button>
-                    <button class="filter-btn" onclick="filterStudies('rating-10')">Rating 10</button>
-                    <button class="filter-btn" onclick="filterStudies('rating-9')">Rating 9</button>
-                </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Studies</button>
+                <button class="filter-btn" data-filter="usa">USA Medical Centers</button>
+                <button class="filter-btn" data-filter="europe">European Institutions</button>
+                <button class="filter-btn" data-filter="canada-australia">Canada & Australia</button>
+                <button class="filter-btn" data-filter="asia">Asian Research</button>
+                <button class="filter-btn" data-filter="other">International Studies</button>
             </div>
 
-            <!-- Research Table -->
-            <table class="research-table" id="researchTable">
-                <thead>
-                    <tr>
-                        <th style="width: 15%;">Study Access</th>
-                        <th style="width: 50%;">Clinical Findings & Description</th>
-                        <th style="width: 20%;">Institution & Location</th>
-                        <th style="width: 15%;">Rating</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- USA Studies -->
-                    <tr data-region="usa" data-category="cardiovascular" data-rating="10">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/32401418/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Hypertension Treatment:</strong> Mayo Clinic double-blind RCT showing PEMF significantly improved blood pressure and vascular function in 30 hypertensive patients after 12 weeks</td>
-                        <td>Mayo Clinic<br><small>Rochester & Phoenix, USA</small></td>
-                        <td><strong>10</strong></td>
-                    </tr>
-                    <tr data-region="usa" data-category="cardiovascular" data-rating="10">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/31394939/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Metabolic Syndrome:</strong> Mayo Clinic RCT demonstrating PEMF increased plasma nitric oxide and improved blood pressure in 44 metabolic syndrome patients</td>
-                        <td>Mayo Clinic<br><small>Rochester & Phoenix, USA</small></td>
-                        <td><strong>10</strong></td>
-                    </tr>
-                    <tr data-region="usa" data-category="cardiovascular" data-rating="9">
-                        <td><a href="https://www.dicardiology.com/content/cleveland-clinic-florida-pemf-cardiac-trial-completes-enrollment" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Ischemic Cardiomyopathy:</strong> Cleveland Clinic EFFECT Study - double-blind RCT for patients with no surgical options showing significant reduction in angina and improved exercise tolerance</td>
-                        <td>Cleveland Clinic Florida<br><small>Florida, USA</small></td>
-                        <td><strong>9</strong></td>
-                    </tr>
-                    <tr data-region="usa" data-category="surgical" data-rating="9">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/19371845/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Plastic Surgery Applications:</strong> Johns Hopkins comprehensive evidence-based review of PEMF for post-surgical pain, edema, and wound healing with no known side effects</td>
-                        <td>Johns Hopkins University<br><small>Baltimore, USA</small></td>
-                        <td><strong>9</strong></td>
-                    </tr>
-                    <tr data-region="usa" data-category="pain" data-rating="9">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/8478852/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Osteoarthritis Treatment:</strong> Yale University landmark double-blind RCT showing 23-61% improvement in osteoarthritis pain vs 2-18% in placebo group</td>
-                        <td>Yale University<br><small>New Haven, USA</small></td>
-                        <td><strong>9</strong></td>
-                    </tr>
-                    <tr data-region="usa" data-category="pain" data-rating="9">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/7837158/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Large Osteoarthritis Trial:</strong> Yale University follow-up double-blind RCT with 167 osteoarthritis patients confirming significant pain and functional improvements</td>
-                        <td>Yale University<br><small>New Haven, USA</small></td>
-                        <td><strong>9</strong></td>
-                    </tr>
-                    <tr data-region="usa" data-category="bone" data-rating="9">
-                        <td><a href="https://jamanetwork.com/journals/jama/article-abstract/389525" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Bone Healing Breakthrough:</strong> Columbia University JAMA landmark study demonstrating PEMF efficacy for bone healing in ununited fractures, leading to FDA approval</td>
-                        <td>Columbia University<br><small>New York, USA</small></td>
-                        <td><strong>9</strong></td>
-                    </tr>
-                    <tr data-region="usa" data-category="regenerative" data-rating="8">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/25264884/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Stem Cell Research:</strong> Wake Forest Institute revolutionary findings on PEMF effects on human bone marrow stem cell differentiation with implications for regenerative medicine</td>
-                        <td>Wake Forest Institute<br><small>North Carolina, USA</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="usa" data-category="neurological" data-rating="8">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/12882481/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Diabetic Neuropathy:</strong> New York Medical College randomized, double-blind, placebo-controlled trial for symptomatic diabetic neuropathy treatment</td>
-                        <td>New York Medical College<br><small>New York, USA</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="usa" data-category="spinal" data-rating="8">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/29616749/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Spinal Disc Research:</strong> Hospital for Special Surgery breakthrough findings showing PEMF reduces expression of genes associated with disc degeneration</td>
-                        <td>Hospital for Special Surgery<br><small>New York, USA</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="usa" data-category="research" data-rating="8">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/17886012/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>PEMF Mechanisms:</strong> Eastern Virginia Medical School comprehensive review establishing theoretical framework for modern PEMF research</td>
-                        <td>Eastern Virginia Medical School<br><small>Virginia, USA</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="usa" data-category="pain" data-rating="8">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/17961910/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Chronic Pain Management:</strong> University of Manitoba randomized, double-blind, placebo-controlled trial using low-frequency magnetic field for musculoskeletal chronic pain</td>
-                        <td>University of Manitoba<br><small>Canada</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
+            <div class="rating-filters">
+                <button class="rating-btn active" data-rating="all">All Ratings</button>
+                <button class="rating-btn" data-rating="10">Rating 10</button>
+                <button class="rating-btn" data-rating="9">Rating 9</button>
+                <button class="rating-btn" data-rating="8">Rating 8</button>
+            </div>
 
-                    <!-- Europe Studies -->
-                    <tr data-region="europe" data-category="systematic" data-rating="9">
-                        <td><a href="https://cochranelibrary.com/cdsr/doi/10.1002/14651858.CD003523.pub2/abstract" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Gold Standard Review:</strong> Cochrane Database systematic review concluding PEMF therapy helpful in relieving osteoarthritis pain (highest evidence quality)</td>
-                        <td>Cochrane Collaboration<br><small>International</small></td>
-                        <td><strong>9</strong></td>
-                    </tr>
-                    <tr data-region="europe" data-category="pain" data-rating="8">
-                        <td><a href="https://link.springer.com/article/10.1007/s10354-023-01025-5" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Low Back Pain & Disc Herniation:</strong> Austrian medical journal study on PEMF therapy effectiveness for low back pain and disc herniation treatment</td>
-                        <td>Medical University<br><small>Austria</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="europe" data-category="psychiatric" data-rating="8">
-                        <td><a href="https://www.cambridge.org/core/journals/european-psychiatry/article/transcranial-pulsed-electromagnetic-fields-for-treatmentresistant-depression" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Treatment-Resistant Depression:</strong> European Psychiatry journal study on transcranial PEMF for treatment-resistant depression showing promising results</td>
-                        <td>Multiple European Medical Centers<br><small>Europe</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="europe" data-category="pain" data-rating="8">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/25882659/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Myalgia Research:</strong> German University Medical Center study on PEMF effects on pain and ASC expression in NGF induced myalgia model</td>
-                        <td>University Medical Center<br><small>Germany</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="europe" data-category="pain" data-rating="8">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/29799771/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Nordic Knee Study:</strong> University of Eastern Finland effects of PEMF therapy on symptoms associated with knee osteoarthritis in randomized controlled trial</td>
-                        <td>University of Eastern Finland<br><small>Finland</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="europe" data-category="pain" data-rating="8">
-                        <td><a href="https://academic.oup.com/rheumatology/article/55/4/755/1833454" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Joint Arthroses Study:</strong> Oxford Rheumatology journal study on PEMF therapy for joint arthroses and osteoarthritis treatment protocols</td>
-                        <td>University of Messina<br><small>Italy</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="europe" data-category="inflammation" data-rating="8">
-                        <td><a href="https://link.springer.com/article/10.1007/s00296-023-05435-1" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Chronic Pain Relief:</strong> Rheumatology International study showing positive effect of pulse electromagnetic field therapy on pain and disability in chronic low back pain</td>
-                        <td>Various European Medical Centers<br><small>Europe</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-
-                    <!-- Asia Studies -->
-                    <tr data-region="asia" data-category="bone" data-rating="9">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/32495506/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Bone Healing Meta-Analysis:</strong> West China Hospital meta-analysis of 22 RCTs (1,468 participants) showing PEMF healing rate 79.7% vs control 64.3%</td>
-                        <td>West China Hospital, Sichuan University<br><small>China</small></td>
-                        <td><strong>9</strong></td>
-                    </tr>
-                    <tr data-region="asia" data-category="bone" data-rating="8">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/23331333/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Delayed Union Fractures:</strong> Nanjing University RCT demonstrating PEMF success rate 77.4% vs control 48.1% in 58 delayed union fracture patients</td>
-                        <td>Drum Tower Hospital, Nanjing University<br><small>China</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="asia" data-category="cardiovascular" data-rating="8">
-                        <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4058309/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Cardiac Recovery:</strong> Shanghai Jiao Tong University study showing PEMF significantly improved cardiac function and reduced apoptosis in myocardial infarction model</td>
-                        <td>Shanghai Jiao Tong University<br><small>China</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="asia" data-category="cardiovascular" data-rating="8">
-                        <td><a href="https://jstage.jst.go.jp/article/circj/84/2/84_CJ-19-0758/_html/-char/en" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Angiogenesis Research:</strong> Japanese multi-center study demonstrating PEMF promoted angiogenesis and improved cardiac function in myocardial infarction mice</td>
-                        <td>Multiple Japanese Medical Centers<br><small>Japan</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="asia" data-category="pain" data-rating="8">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/19920724/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Fibromyalgia Treatment:</strong> Turkish randomized, double-blind, sham-controlled study demonstrating PEMF efficacy in fibromyalgia patients with significant pain reduction</td>
-                        <td>Ankara Physical Medicine & Rehabilitation Hospital<br><small>Turkey</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="asia" data-category="pain" data-rating="8">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/27726003/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Cervical Osteoarthritis:</strong> Turkish study on PEMF treatment of cervical osteoarthritis - randomized, double-blind, sham-controlled trial showing significant improvements</td>
-                        <td>Ankara Physical Medicine & Rehabilitation Hospital<br><small>Turkey</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="asia" data-category="pain" data-rating="8">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/32251502/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Neuropathic Pain:</strong> Chinese multi-center study on anti-inflammatory mechanisms of PEMF therapy in patients with chronic neuropathic pain - randomized controlled trial</td>
-                        <td>Multiple Medical Centers<br><small>China</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="asia" data-category="pain" data-rating="8">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/31385489/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Fibromyalgia Comprehensive Study:</strong> Turkish study on PEMF efficiency for pain, disability, anxiety, depression, and quality of life in fibromyalgia syndrome patients</td>
-                        <td>Atatürk University<br><small>Turkey</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="asia" data-category="pain" data-rating="8">
-                        <td><a href="https://www.msjonline.org/index.php/ijrms/article/view/12708" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Non-Specific Low Back Pain:</strong> Turkish study on effect of PEMF on pain, functionality and quality of life in chronic non-specific low back pain - randomized controlled trial</td>
-                        <td>Medical Sciences Research Institute<br><small>Turkey</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="asia" data-category="musculoskeletal" data-rating="8">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/24742119/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Musculoskeletal Mechanisms:</strong> Iranian detailed analysis of PEMF mechanisms in musculoskeletal disorders with standardized treatment parameters across conditions</td>
-                        <td>Ahvaz Jundishapur University of Medical Sciences<br><small>Iran</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="asia" data-category="cervical" data-rating="8">
-                        <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7401674/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Cervical Spine Treatment:</strong> Asian multi-center research on PEMF therapy effectiveness for cervical spine pain and neck pain conditions</td>
-                        <td>Multiple Asian Medical Research Centers<br><small>Asia</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="asia" data-category="clinical" data-rating="8">
-                        <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7018371/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Cervical Spine Disorders:</strong> International clinical trials and research on PEMF therapy for cervical spine disorders with Asian medical center participation</td>
-                        <td>International Medical Research Centers<br><small>Asia Pacific</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-
-                    <!-- Africa Studies -->
-                    <tr data-region="africa" data-category="rheumatoid" data-rating="8">
-                        <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10018856/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Rheumatoid Arthritis:</strong> Cairo University study on effects of electromagnetic field versus low-level laser therapy on bone mineral density and biochemical markers in rheumatoid arthritis</td>
-                        <td>Cairo University<br><small>Egypt</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="africa" data-category="orthopedic" data-rating="8">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/32251502/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Orthopedic Pain Conditions:</strong> University of Ibadan frequency-dependent effects of PEMF therapy on orthopedic pain conditions - comprehensive clinical evaluation</td>
-                        <td>University of Ibadan<br><small>Nigeria</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="africa" data-category="wound" data-rating="8">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/25882659/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Diabetic Foot Ulcers:</strong> African medical institutions research on PEMF therapy effectiveness for diabetic foot ulcers and wound healing applications</td>
-                        <td>Medical Research Institutions<br><small>Africa</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="africa" data-category="inflammatory" data-rating="8">
-                        <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9862561/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Rheumatic Diseases:</strong> African medical centers research on PEMF therapy for rheumatism, progressive polyarthritis, and rheumatoid arthritis treatment</td>
-                        <td>Multiple Medical Research Centers<br><small>Africa</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="africa" data-category="fibromyalgia" data-rating="8">
-                        <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9524818/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Fibromyalgia Management:</strong> African medical institutions comprehensive PEMF therapy research for fibromyalgia management and treatment protocols</td>
-                        <td>Medical Research Institutions<br><small>Africa</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="africa" data-category="neurological" data-rating="8">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/11279973/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Migraine Treatment:</strong> African medical centers research participation in non-invasive neuromodulation using PEMF for treatment of migraine headaches</td>
-                        <td>Various Medical Centers<br><small>Africa</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-
-                    <!-- Australia & Oceania Studies -->
-                    <tr data-region="australia" data-category="meta-analysis" data-rating="8">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/32659770/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Osteoarthritis Meta-Analysis:</strong> Physical Therapy Journal meta-analysis of 16 studies showing clinically significant effects of PEMF on osteoarthritis pain relief with Australian contributors</td>
-                        <td>Multiple International Institutions<br><small>Australia</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="australia" data-category="rehabilitation" data-rating="8">
-                        <td><a href="https://journals.sagepub.com/doi/10.1177/02692155221074052" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Clinical Rehabilitation:</strong> Australian medical centers participation in Clinical Rehabilitation journal study on PEMF therapy effectiveness</td>
-                        <td>Multiple Medical Centers<br><small>Australia</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="australia" data-category="post-surgical" data-rating="8">
-                        <td><a href="https://www.tandfonline.com/doi/full/10.2147/JPR.S164303" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Post-Operative Pain:</strong> Australian research centers study on post-operative pain management using PEMF therapy - clinical studies and protocols</td>
-                        <td>Multiple Medical Institutions<br><small>Australia</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="australia" data-category="inflammation" data-rating="8">
-                        <td><a href="https://www.tandfonline.com/doi/full/10.2147/JIR.S78631" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Anti-Inflammatory Research:</strong> Australian research centers participation in Journal of Inflammation Research study on PEMF anti-inflammatory mechanisms</td>
-                        <td>Multiple Research Centers<br><small>Australia</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="australia" data-category="cartilage" data-rating="8">
-                        <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5905856/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Cartilage Repair:</strong> Australian medical research centers study on PEMF therapy for cartilage repair and damaged meniscus healing applications</td>
-                        <td>Medical Research Centers<br><small>Australia</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="australia" data-category="bone" data-rating="8">
-                        <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7434032/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Bone Fracture Healing:</strong> Australian medical institutions research on PEMF therapy effectiveness in bone fracture healing and recovery processes</td>
-                        <td>Multiple Medical Institutions<br><small>Australia</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-
-                    <!-- Americas (excluding USA) Studies -->
-                    <tr data-region="americas" data-category="specialized" data-rating="8">
-                        <td><a href="https://www.sciencedirect.com/science/article/pii/S1413355522000570" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Multiple Sclerosis & Sports:</strong> Brazilian medical research centers study on PEMF therapy applications in multiple sclerosis and high-level sports medicine</td>
-                        <td>Brazilian Medical Research Centers<br><small>Brazil</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="americas" data-category="neurological" data-rating="8">
-                        <td><a href="https://www.mdpi.com/2077-0383/11/13/3739" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Cerebral Palsy & Spasticity:</strong> Americas medical research institutions collaborative study on PEMF therapy research for cerebral palsy and spasticity conditions</td>
-                        <td>Medical Research Institutions<br><small>Americas</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="americas" data-category="specialized" data-rating="8">
-                        <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6483424/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Meniere's Syndrome:</strong> Americas medical research centers study on PEMF therapy research for Meniere's syndrome and disease treatment applications</td>
-                        <td>Medical Research Centers<br><small>Americas</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="americas" data-category="phantom" data-rating="8">
-                        <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9394547/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Phantom Pain:</strong> Americas medical centers collaborative research on PEMF therapy for phantom pain reduction research studies and treatment protocols</td>
-                        <td>Multiple Medical Centers<br><small>Americas</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="americas" data-category="phantom" data-rating="8">
-                        <td><a href="https://pubmed.ncbi.nlm.nih.gov/35976802/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Phantom Limb Pain:</strong> Americas medical research institutions recent research on PEMF therapy for phantom limb pain management and treatment approaches</td>
-                        <td>Medical Research Institutions<br><small>Americas</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="americas" data-category="anti-inflammatory" data-rating="8">
-                        <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8370292/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Anti-Inflammatory Effects:</strong> Americas medical research institutions study on anti-inflammatory effects of PEMF therapy in various medical conditions</td>
-                        <td>Medical Research Institutions<br><small>Americas</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-
-                    <!-- International & Multi-Regional Studies -->
-                    <tr data-region="international" data-category="pain" data-rating="8">
-                        <td><a href="https://www.tandfonline.com/doi/full/10.2147/JPR.S231778" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Comprehensive Pain Research:</strong> International Journal of Pain Research comprehensive study on PEMF therapy applications across multiple medical centers globally</td>
-                        <td>Multiple Medical Centers<br><small>International</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="international" data-category="mental-health" data-rating="8">
-                        <td><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/bem.20703" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Mental Health Applications:</strong> International medical research institutions study on PEMF therapy for mental health conditions including anxiety, depression, and PTSD</td>
-                        <td>Medical Research Institutions<br><small>International</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                    <tr data-region="international" data-category="fibromyalgia" data-rating="8">
-                        <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8370292/" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>Fibromyalgia Pilot Study:</strong> International medical research centers low-energy PEMF therapy reduces pain in fibromyalgia - randomized single-blind controlled pilot study</td>
-                        <td>Medical Research Centers<br><small>International</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="studies-grid" id="studiesGrid">
+                <!-- Studies will be populated by JavaScript -->
+            </div>
         </div>
+    </section>
 
-        <!-- FDA Approval Section -->
-        <div class="fda-section">
-            <h3>🏛️ FDA Approval Status</h3>
-            <div class="fda-grid">
-                <div class="fda-item">
-                    <strong>Bone Healing:</strong> FDA approved since 1979 for nonunion fractures
+    <!-- Rating Explanation -->
+    <section id="ratings" class="rating-explanation">
+        <div class="container">
+            <h2 class="section-title">Research Quality Ratings</h2>
+            <div class="rating-grid">
+                <div class="rating-card">
+                    <div class="rating-number">10</div>
+                    <div class="rating-title">Gold Standard</div>
+                    <div class="rating-desc">Mayo Clinic, Johns Hopkins - FDA approved studies with highest medical credibility and rigorous double-blind RCT methodology.</div>
                 </div>
-                <div class="fda-item">
-                    <strong>Spinal Fusion:</strong> FDA approved since 2004 for spinal fusion procedures
+                <div class="rating-card">
+                    <div class="rating-number">9</div>
+                    <div class="rating-title">Exceptional Excellence</div>
+                    <div class="rating-desc">Yale, Cleveland Clinic, Cochrane Reviews - Landmark studies with significant clinical impact and international recognition.</div>
                 </div>
-                <div class="fda-item">
-                    <strong>Device Classification:</strong> Reclassified from Class III to Class II (2020)
+                <div class="rating-card">
+                    <div class="rating-number">8</div>
+                    <div class="rating-title">High Quality</div>
+                    <div class="rating-desc">Leading universities and medical centers with robust research protocols, peer-reviewed publications, and clinical significance.</div>
                 </div>
             </div>
         </div>
-
-        <!-- Institutions Section -->
-        <div class="institutions-section">
-            <h3>🏥 Leading Research Institutions Worldwide</h3>
-            <div class="institutions-grid">
-                <div class="institution-card">
-                    <strong>Mayo Clinic</strong> (Rochester & Phoenix)<br>
-                    <small>2 cardiovascular studies - Rating 10</small>
-                </div>
-                <div class="institution-card">
-                    <strong>Yale University School of Medicine</strong><br>
-                    <small>2 osteoarthritis landmark studies - Rating 9</small>
-                </div>
-                <div class="institution-card">
-                    <strong>Johns Hopkins University</strong><br>
-                    <small>1 comprehensive surgical review - Rating 9</small>
-                </div>
-                <div class="institution-card">
-                    <strong>Cleveland Clinic Florida</strong><br>
-                    <small>1 major cardiac trial - Rating 9</small>
-                </div>
-                <div class="institution-card">
-                    <strong>Columbia University</strong><br>
-                    <small>1 landmark bone healing study - Rating 9</small>
-                </div>
-                <div class="institution-card">
-                    <strong>West China Hospital, Sichuan University</strong><br>
-                    <small>1 large meta-analysis - Rating 9</small>
-                </div>
-                <div class="institution-card">
-                    <strong>Cochrane Collaboration</strong><br>
-                    <small>1 systematic review - Rating 9</small>
-                </div>
-                <div class="institution-card">
-                    <strong>Oxford University</strong><br>
-                    <small>2 rheumatology studies - Rating 8</small>
-                </div>
-                <div class="institution-card">
-                    <strong>Wake Forest Institute</strong><br>
-                    <small>1 regenerative medicine study - Rating 8</small>
-                </div>
-                <div class="institution-card">
-                    <strong>Nanjing University</strong><br>
-                    <small>1 bone healing study - Rating 8</small>
-                </div>
-                <div class="institution-card">
-                    <strong>Shanghai Jiao Tong University</strong><br>
-                    <small>1 cardiac study - Rating 8</small>
-                </div>
-                <div class="institution-card">
-                    <strong>Multiple Japanese Medical Centers</strong><br>
-                    <small>1 cardiovascular study - Rating 8</small>
-                </div>
-            </div>
-        </div>
-
-        <!-- Applications Section -->
-        <div class="applications-section">
-            <h3>💊 Clinical Applications by Specialty</h3>
-            <div class="applications-grid">
-                <div class="application-card">
-                    <h4>🫀 Cardiovascular Health</h4>
-                    <p>Hypertension, ischemic cardiomyopathy, myocardial infarction recovery, metabolic syndrome</p>
-                </div>
-                <div class="application-card">
-                    <h4>🦴 Bone Healing & Orthopedics</h4>
-                    <p>Nonunion fractures, delayed union, spinal fusion (FDA approved), cartilage repair</p>
-                </div>
-                <div class="application-card">
-                    <h4>⚡ Pain Management</h4>
-                    <p>Osteoarthritis, fibromyalgia, chronic low back pain, neuropathic pain, cervical spine pain</p>
-                </div>
-                <div class="application-card">
-                    <h4>🩹 Post-Surgical Recovery</h4>
-                    <p>Post-surgical pain, edema reduction, wound healing, tissue repair</p>
-                </div>
-                <div class="application-card">
-                    <h4>🧠 Neurological Applications</h4>
-                    <p>Phantom pain, migraine, depression, anxiety, PTSD, cerebral palsy</p>
-                </div>
-                <div class="application-card">
-                    <h4>🦠 Inflammatory Conditions</h4>
-                    <p>Rheumatoid arthritis, general anti-inflammatory effects, chronic inflammation</p>
-                </div>
-                <div class="application-card">
-                    <h4>🔬 Specialized Applications</h4>
-                    <p>Diabetic foot ulcers, Meniere's disease, multiple sclerosis, regenerative medicine</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
 
     <!-- Footer -->
-    <div class="footer">
-        <p><strong>Complete Global Database of PEMF Research</strong></p>
-        <p>62 studies rated 8-10 based on research quality and institutional prestige from leading medical institutions worldwide</p>
-        <p><em>For medical device distribution inquiries in the Philippines and Asia Pacific region</em></p>
-    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About PEMF Research</h3>
+                    <p>Comprehensive evidence-based database supporting the implementation of PEMF therapy in modern medical practice.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Research Focus</h3>
+                    <p>Pain Management • Bone Healing • Cardiovascular Health • Neurological Applications • Post-Surgical Recovery</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>For hospital partnerships and PEMF implementation inquiries, please reach out to discuss evidence-based integration strategies.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PEMF Research Hub. Evidence-based medicine for progressive healthcare institutions.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Search functionality
-        document.getElementById('searchInput').addEventListener('keyup', function() {
-            const searchTerm = this.value.toLowerCase();
-            const rows = document.querySelectorAll('#researchTable tbody tr');
-            
-            rows.forEach(row => {
-                const text = row.textContent.toLowerCase();
-                if (text.includes(searchTerm)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
+        // Research data - ALL STUDIES FROM THE DATABASE
+        const studies = [
+            // USA Studies (TIER 1)
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/32401418/",
+                description: "Mayo Clinic double-blind RCT showing PEMF significantly improved blood pressure and vascular function in 30 hypertensive patients after 12 weeks.",
+                location: "Mayo Clinic, Rochester & Phoenix, USA",
+                rating: 10,
+                category: "usa"
+            },
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/31394939/",
+                description: "Mayo Clinic RCT demonstrating PEMF increased plasma nitric oxide and improved blood pressure in 44 metabolic syndrome patients.",
+                location: "Mayo Clinic, Rochester & Phoenix, USA",
+                rating: 10,
+                category: "usa"
+            },
+            {
+                link: "https://www.dicardiology.com/content/cleveland-clinic-florida-pemf-cardiac-trial-completes-enrollment",
+                description: "Cleveland Clinic EFFECT Study - double-blind RCT of PEMF for ischemic cardiomyopathy patients with no surgical options, showing significant reduction in angina and improved exercise tolerance.",
+                location: "Cleveland Clinic Florida, USA",
+                rating: 9,
+                category: "usa"
+            },
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/19371845/",
+                description: "Johns Hopkins comprehensive evidence-based review of PEMF in plastic surgery, demonstrating efficacy for post-surgical pain, edema, and wound healing.",
+                location: "Johns Hopkins University, Baltimore, USA",
+                rating: 9,
+                category: "usa"
+            },
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/8478852/",
+                description: "Yale University landmark double-blind RCT showing 23-61% improvement in osteoarthritis pain vs 2-18% in placebo (27 patients).",
+                location: "Yale University School of Medicine, New Haven, USA",
+                rating: 9,
+                category: "usa"
+            },
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/7837158/",
+                description: "Yale University follow-up double-blind RCT with 167 osteoarthritis patients confirming significant pain and functional improvements.",
+                location: "Yale University School of Medicine, New Haven, USA",
+                rating: 9,
+                category: "usa"
+            },
+            {
+                link: "https://jamanetwork.com/journals/jama/article-abstract/389525",
+                description: "JAMA landmark study by Bassett et al. demonstrating PEMF efficacy for bone healing in ununited fractures, leading to FDA approval.",
+                location: "Columbia University, New York, USA",
+                rating: 9,
+                category: "usa"
+            },
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/25264884/",
+                description: "Ross et al. revolutionary findings on PEMF effects on human bone marrow stem cell differentiation with implications for regenerative medicine.",
+                location: "Wake Forest Institute for Regenerative Medicine, USA",
+                rating: 8,
+                category: "usa"
+            },
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/12882481/",
+                description: "Weintraub et al. static magnetic field therapy for symptomatic diabetic neuropathy in randomized, double-blind, placebo-controlled trial.",
+                location: "New York Medical College, USA",
+                rating: 8,
+                category: "usa"
+            },
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/29616749/",
+                description: "Huegel et al. breakthrough findings showing PEMF reduces expression of genes associated with disc degeneration in human intervertebral disc cells.",
+                location: "Hospital for Special Surgery, New York, USA",
+                rating: 8,
+                category: "usa"
+            },
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/17886012/",
+                description: "Comprehensive review by MS Markov establishing theoretical framework for modern PEMF research and expanding use of electromagnetic field therapies.",
+                location: "Eastern Virginia Medical School, USA",
+                rating: 8,
+                category: "usa"
+            },
+
+            // European Studies (TIER 1)
+            {
+                link: "https://cochranelibrary.com/cdsr/doi/10.1002/14651858.CD003523.pub2/abstract",
+                description: "Cochrane Database systematic review concluding PEMF therapy helpful in relieving osteoarthritis pain (gold standard methodology).",
+                location: "Cochrane Collaboration, International",
+                rating: 9,
+                category: "europe"
+            },
+            {
+                link: "https://rheumatology.oxfordjournals.org/content/55/4/755",
+                description: "Oxford University published double-blind RCT showing 25.5% pain reduction with FDA-approved PEMF device in 60 osteoarthritis patients.",
+                location: "Oxford University, UK",
+                rating: 9,
+                category: "europe"
+            },
+            {
+                link: "https://academic.oup.com/rheumatology/article/52/5/815/1815326",
+                description: "Oxford Rheumatology systematic review of PEMF effects on knee osteoarthritis.",
+                location: "Oxford University, UK",
+                rating: 8,
+                category: "europe"
+            },
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/25882659/",
+                description: "Wuschech et al. effects of PEMF on pain and ASC expression in NGF induced myalgia model.",
+                location: "University Medical Center, Germany",
+                rating: 8,
+                category: "europe"
+            },
+            {
+                link: "https://link.springer.com/article/10.1007/s00508-022-02020-x",
+                description: "Austrian study on PEMF therapy effects in osteoarthritis patients.",
+                location: "Medical University of Vienna, Austria",
+                rating: 8,
+                category: "europe"
+            },
+            {
+                link: "https://link.springer.com/article/10.1007/s10354-023-01025-5",
+                description: "Austrian medical journal study on PEMF therapy for low back pain and disc herniation.",
+                location: "Medical University, Austria",
+                rating: 8,
+                category: "europe"
+            },
+            {
+                link: "https://www.cambridge.org/core/journals/european-psychiatry/article/transcranial-pulsed-electromagnetic-fields-for-treatmentresistant-depression",
+                description: "European Psychiatry journal study on transcranial PEMF for treatment-resistant depression.",
+                location: "Multiple European medical centers",
+                rating: 8,
+                category: "europe"
+            },
+
+            // Canada & Australia (TIER 2)
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/17961910/",
+                description: "Thomas et al. randomized, double-blind, placebo-controlled trial using low-frequency magnetic field for musculoskeletal chronic pain.",
+                location: "University of Manitoba, Canada",
+                rating: 8,
+                category: "canada-australia"
+            },
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/32659770/",
+                description: "Physical Therapy Journal meta-analysis of 16 studies showing clinically significant effects of PEMF on osteoarthritis pain relief.",
+                location: "Multiple international institutions (Australian contributors)",
+                rating: 8,
+                category: "canada-australia"
+            },
+            {
+                link: "https://journals.sagepub.com/doi/10.1177/02692155221074052",
+                description: "Clinical Rehabilitation journal study on PEMF therapy effectiveness.",
+                location: "Multiple medical centers (Australian research participation)",
+                rating: 8,
+                category: "canada-australia"
+            },
+            {
+                link: "https://www.tandfonline.com/doi/full/10.2147/JPR.S164303",
+                description: "Post-operative pain management using PEMF therapy - clinical studies.",
+                location: "Multiple medical institutions (Australian research centers)",
+                rating: 8,
+                category: "canada-australia"
+            },
+
+            // Asia (TIER 2 & 3)
+            {
+                link: "https://jstage.jst.go.jp/article/circj/84/2/84_CJ-19-0758/_html/-char/en",
+                description: "Japanese multi-center study demonstrating PEMF promoted angiogenesis and improved cardiac function in myocardial infarction mice.",
+                location: "Multiple Japanese medical centers",
+                rating: 8,
+                category: "asia"
+            },
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/32495506/",
+                description: "West China Hospital meta-analysis of 22 RCTs (1,468 participants) showing PEMF healing rate 79.7% vs control 64.3% for bone healing.",
+                location: "West China Hospital, Sichuan University, China",
+                rating: 9,
+                category: "asia"
+            },
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/23331333/",
+                description: "Nanjing University RCT demonstrating PEMF success rate 77.4% vs control 48.1% in 58 delayed union fracture patients.",
+                location: "Drum Tower Hospital, Nanjing University, China",
+                rating: 8,
+                category: "asia"
+            },
+            {
+                link: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4058309/",
+                description: "Shanghai Jiao Tong University study showing PEMF significantly improved cardiac function and reduced apoptosis in myocardial infarction rat model.",
+                location: "Shanghai Jiao Tong University, China",
+                rating: 8,
+                category: "asia"
+            },
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/32251502/",
+                description: "Pan et al. anti-inflammatory mechanisms of PEMF therapy in patients with chronic neuropathic pain - randomized controlled trial.",
+                location: "Multiple medical centers, China",
+                rating: 8,
+                category: "asia"
+            },
+
+            // Italy (TIER 3)
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/26705327/",
+                description: "University of Messina double-blind, placebo-controlled RCT showing significant improvement in knee osteoarthritis patients with PEMF therapy over 30 days.",
+                location: "University of Messina, Italy",
+                rating: 8,
+                category: "europe"
+            },
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/30900425/",
+                description: "Paolucci et al. effects of PEMF therapy on pain, disability, and psychological comorbidity in chronic low back pain patients - randomized double-blind study.",
+                location: "Fondazione Policlinico Universitario A. Gemelli IRCCS, Italy",
+                rating: 8,
+                category: "europe"
+            },
+            {
+                link: "https://academic.oup.com/rheumatology/article/55/4/755/1833454",
+                description: "Oxford Rheumatology journal study on PEMF therapy for joint arthroses and osteoarthritis.",
+                location: "University of Messina, Italy",
+                rating: 8,
+                category: "europe"
+            },
+
+            // Nordic Countries (TIER 4)
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/29799771/",
+                description: "Multanen et al. effects of PEMF therapy on symptoms associated with knee osteoarthritis in randomized controlled trial.",
+                location: "University of Eastern Finland",
+                rating: 8,
+                category: "other"
+            },
+
+            // Turkey (TIER 4)
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/19920724/",
+                description: "Turkish randomized, double-blind, sham-controlled study demonstrating PEMF efficacy in fibromyalgia patients with significant pain reduction.",
+                location: "Ankara Physical Medicine & Rehabilitation Hospital, Turkey",
+                rating: 8,
+                category: "other"
+            },
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/27726003/",
+                description: "Sutbeyaz et al. effect of PEMF in treatment of cervical osteoarthritis - randomized, double-blind, sham-controlled trial.",
+                location: "Ankara Physical Medicine & Rehabilitation Hospital, Turkey",
+                rating: 8,
+                category: "other"
+            },
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/31385489/",
+                description: "Hattapoğlu et al. efficiency of PEMF therapy on pain, disability, anxiety, depression, and quality of life in fibromyalgia syndrome patients.",
+                location: "Atatürk University, Turkey",
+                rating: 8,
+                category: "other"
+            },
+            {
+                link: "https://www.msjonline.org/index.php/ijrms/article/view/12708",
+                description: "Yavaş study on effect of PEMF on pain, functionality and quality of life in chronic non-specific low back pain - randomized controlled trial.",
+                location: "Medical Sciences Research Institute, Turkey",
+                rating: 8,
+                category: "other"
+            },
+
+            // Other Developing Countries (TIER 5)
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/24742119/",
+                description: "Yadollahpour et al. detailed analysis of PEMF mechanisms in musculoskeletal disorders with standardized treatment parameters.",
+                location: "Ahvaz Jundishapur University of Medical Sciences, Iran",
+                rating: 8,
+                category: "other"
+            },
+            {
+                link: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10018856/",
+                description: "Elsisi et al. effects of electromagnetic field versus low-level laser therapy on bone mineral density and biochemical markers in rheumatoid arthritis.",
+                location: "Cairo University, Egypt",
+                rating: 8,
+                category: "other"
+            },
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/32251502/",
+                description: "Oke & Tracey frequency-dependent effects of PEMF therapy on orthopedic pain conditions - comprehensive clinical evaluation.",
+                location: "University of Ibadan, Nigeria",
+                rating: 8,
+                category: "other"
+            }
+        ];
+
+        // DOM elements
+        const studiesGrid = document.getElementById('studiesGrid');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const ratingButtons = document.querySelectorAll('.rating-btn');
+
+        // Current filters
+        let currentCategory = 'all';
+        let currentRating = 'all';
+
+        // Render studies
+        function renderStudies() {
+            const filteredStudies = studies.filter(study => {
+                const categoryMatch = currentCategory === 'all' || study.category === currentCategory;
+                const ratingMatch = currentRating === 'all' || study.rating.toString() === currentRating;
+                return categoryMatch && ratingMatch;
+            });
+
+            studiesGrid.innerHTML = filteredStudies.map(study => `
+                <div class="study-card">
+                    <div class="study-header">
+                        <div class="study-location">${study.location}</div>
+                        <div class="study-rating">${study.rating}/10</div>
+                    </div>
+                    <div class="study-description">${study.description}</div>
+                    <a href="${study.link}" target="_blank" class="study-link">View Research Study</a>
+                </div>
+            `).join('');
+        }
+
+        // Filter by category
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                currentCategory = button.dataset.filter;
+                renderStudies();
             });
         });
 
-        // Filter functionality
-        function filterStudies(filter) {
-            const rows = document.querySelectorAll('#researchTable tbody tr');
-            const buttons = document.querySelectorAll('.filter-btn');
-            
-            // Update active button
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            rows.forEach(row => {
-                if (filter === 'all') {
-                    row.style.display = '';
-                } else if (filter.startsWith('rating-')) {
-                    const rating = filter.split('-')[1];
-                    if (row.dataset.rating === rating) {
-                        row.style.display = '';
-                    } else {
-                        row.style.display = 'none';
-                    }
-                } else if (filter === 'usa' || filter === 'europe' || filter === 'asia' || filter === 'africa' || filter === 'australia' || filter === 'americas' || filter === 'international') {
-                    if (row.dataset.region === filter) {
-                        row.style.display = '';
-                    } else {
-                        row.style.display = 'none';
-                    }
-                } else {
-                    if (row.dataset.category === filter) {
-                        row.style.display = '';
-                    } else {
-                        row.style.display = 'none';
-                    }
-                }
+        // Filter by rating
+        ratingButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                ratingButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                currentRating = button.dataset.rating;
+                renderStudies();
             });
-        }
+        });
 
-        // Smooth scrolling for better UX
+        // Smooth scrolling for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({
-                        behavior: 'smooth'
+                        behavior: 'smooth',
+                        block: 'start'
                     });
                 }
             });
         });
 
-        // Add hover effects to table rows
-        document.querySelectorAll('#researchTable tbody tr').forEach(row => {
-            row.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.01)';
-                this.style.transition = 'transform 0.2s ease';
-            });
-            
-            row.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1)';
-            });
-        });
-
-        // Add loading animation for external links
-        document.querySelectorAll('.link-button').forEach(button => {
-            button.addEventListener('click', function() {
-                this.style.opacity = '0.7';
-                this.innerHTML = 'Loading...';
-                setTimeout(() => {
-                    this.style.opacity = '1';
-                    this.innerHTML = 'View Study';
-                }, 1000);
-            });
-        });
-
-        // Add scroll-to-top functionality
-        window.addEventListener('scroll', function() {
-            const scrollButton = document.getElementById('scrollToTop');
-            if (window.pageYOffset > 300) {
-                if (scrollButton) {
-                    scrollButton.style.display = 'block';
-                }
-            } else {
-                if (scrollButton) {
-                    scrollButton.style.display = 'none';
-                }
-            }
-        });
-
-        // Create scroll to top button
-        const scrollToTopButton = document.createElement('button');
-        scrollToTopButton.id = 'scrollToTop';
-        scrollToTopButton.innerHTML = '↑';
-        scrollToTopButton.style.cssText = `
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            display: none;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-            transition: all 0.3s ease;
-        `;
-
-        scrollToTopButton.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        scrollToTopButton.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.1)';
-            this.style.boxShadow = '0 6px 20px rgba(59, 130, 246, 0.4)';
-        });
-
-        scrollToTopButton.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1)';
-            this.style.boxShadow = '0 4px 15px rgba(59, 130, 246, 0.3)';
-        });
-
-        document.body.appendChild(scrollToTopButton);
-
-        // Add progressive loading for better performance
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '50px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all table rows for animation
-        document.querySelectorAll('#researchTable tbody tr').forEach(row => {
-            row.style.opacity = '0';
-            row.style.transform = 'translateY(20px)';
-            row.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(row);
-        });
-
-        // Add real-time statistics updates
-        function updateStats() {
-            const totalRows = document.querySelectorAll('#researchTable tbody tr').length;
-            const visibleRows = document.querySelectorAll('#researchTable tbody tr[style=""]').length || totalRows;
-            
-            // Update the stats in header if needed
-            document.querySelector('.stat-number').textContent = visibleRows || totalRows;
-        }
-
-        // Call updateStats after filtering
-        const originalFilterStudies = filterStudies;
-        window.filterStudies = function(filter) {
-            originalFilterStudies(filter);
-            setTimeout(updateStats, 100);
-        };
-
-        // Initialize stats
-        updateStats();
+        // Initial render
+        renderStudies();
     </script>
-</body>
-</html>://rheumatology.oxfordjournals.org/content/55/4/755" class="link-button" target="_blank">View Study</a></td>
-                        <td><strong>FDA Device Trial:</strong> Oxford University published double-blind RCT showing 25.5% pain reduction with FDA-approved PEMF device in 60 osteoarthritis patients</td>
-                        <td>Oxford University<br><small>United Kingdom</small></td>
-                        <td><strong>8</strong></td>
-                    </tr>
-                   <tr data-region="europe" data-category="pain" data-rating="8">
-                       <td><a href="https://academic.oup.com/rheumatology/article/52/5/815/1815326" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Oxford Systematic Review:</strong> Oxford University comprehensive systematic review of PEMF effects on knee osteoarthritis treatment outcomes</td>
-                       <td>Oxford University<br><small>United Kingdom</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="europe" data-category="pain" data-rating="8">
-                       <td><a href="https://pubmed.ncbi.nlm.nih.gov/25882659/" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Myalgia Research:</strong> German University Medical Center study on PEMF effects on pain and ASC expression in NGF induced myalgia model</td>
-                       <td>University Medical Center<br><small>Germany</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="europe" data-category="pain" data-rating="8">
-                       <td><a href="https://link.springer.com/article/10.1007/s00508-022-02020-x" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Austrian Osteoarthritis Study:</strong> Medical University of Vienna research on PEMF therapy effects in osteoarthritis patients</td>
-                       <td>Medical University of Vienna<br><small>Austria</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="europe" data-category="pain" data-rating="8">
-                       <td><a href="https://link.springer.com/article/10.1007/s10354-023-01025-5" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Low Back Pain & Disc Herniation:</strong> Austrian medical journal study on PEMF therapy for low back pain and disc herniation</td>
-                       <td>Medical University<br><small>Austria</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="europe" data-category="psychiatric" data-rating="8">
-                       <td><a href="https://www.cambridge.org/core/journals/european-psychiatry/article/transcranial-pulsed-electromagnetic-fields-for-treatmentresistant-depression" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Treatment-Resistant Depression:</strong> European Psychiatry journal study on transcranial PEMF for treatment-resistant depression</td>
-                       <td>Multiple European Medical Centers<br><small>Europe</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="usa" data-category="pain" data-rating="8">
-                       <td><a href="https://pubmed.ncbi.nlm.nih.gov/17961910/" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Chronic Pain Management:</strong> University of Manitoba randomized, double-blind, placebo-controlled trial using low-frequency magnetic field for musculoskeletal chronic pain</td>
-                       <td>University of Manitoba<br><small>Canada</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="australia" data-category="meta-analysis" data-rating="8">
-                       <td><a href="https://pubmed.ncbi.nlm.nih.gov/32659770/" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Osteoarthritis Meta-Analysis:</strong> Physical Therapy Journal meta-analysis of 16 studies showing clinically significant effects of PEMF on osteoarthritis pain relief</td>
-                       <td>Multiple International Institutions<br><small>Australia</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="australia" data-category="rehabilitation" data-rating="8">
-                       <td><a href="https://journals.sagepub.com/doi/10.1177/02692155221074052" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Clinical Rehabilitation:</strong> Australian medical centers participation in Clinical Rehabilitation journal study on PEMF therapy effectiveness</td>
-                       <td>Multiple Medical Centers<br><small>Australia</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="australia" data-category="post-surgical" data-rating="8">
-                       <td><a href="https://www.tandfonline.com/doi/full/10.2147/JPR.S164303" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Post-Operative Pain:</strong> Australian research centers study on post-operative pain management using PEMF therapy</td>
-                       <td>Multiple Medical Institutions<br><small>Australia</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="asia" data-category="bone" data-rating="9">
-                       <td><a href="https://pubmed.ncbi.nlm.nih.gov/32495506/" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Bone Healing Meta-Analysis:</strong> West China Hospital meta-analysis of 22 RCTs (1,468 participants) showing PEMF healing rate 79.7% vs control 64.3%</td>
-                       <td>West China Hospital, Sichuan University<br><small>China</small></td>
-                       <td><strong>9</strong></td>
-                   </tr>
-                   <tr data-region="asia" data-category="bone" data-rating="8">
-                       <td><a href="https://pubmed.ncbi.nlm.nih.gov/23331333/" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Delayed Union Fractures:</strong> Nanjing University RCT demonstrating PEMF success rate 77.4% vs control 48.1% in 58 delayed union fracture patients</td>
-                       <td>Drum Tower Hospital, Nanjing University<br><small>China</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="asia" data-category="cardiovascular" data-rating="8">
-                       <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4058309/" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Cardiac Recovery:</strong> Shanghai Jiao Tong University study showing PEMF significantly improved cardiac function and reduced apoptosis in myocardial infarction model</td>
-                       <td>Shanghai Jiao Tong University<br><small>China</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="asia" data-category="cardiovascular" data-rating="8">
-                       <td><a href="https://jstage.jst.go.jp/article/circj/84/2/84_CJ-19-0758/_html/-char/en" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Angiogenesis Research:</strong> Japanese multi-center study demonstrating PEMF promoted angiogenesis and improved cardiac function in myocardial infarction mice</td>
-                       <td>Multiple Japanese Medical Centers<br><small>Japan</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="asia" data-category="pain" data-rating="8">
-                       <td><a href="https://pubmed.ncbi.nlm.nih.gov/19920724/" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Fibromyalgia Treatment:</strong> Turkish randomized, double-blind, sham-controlled study demonstrating PEMF efficacy in fibromyalgia patients with significant pain reduction</td>
-                       <td>Ankara Physical Medicine & Rehabilitation Hospital<br><small>Turkey</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="asia" data-category="pain" data-rating="8">
-                       <td><a href="https://pubmed.ncbi.nlm.nih.gov/27726003/" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Cervical Osteoarthritis:</strong> Turkish study on PEMF treatment of cervical osteoarthritis - randomized, double-blind, sham-controlled trial</td>
-                       <td>Ankara Physical Medicine & Rehabilitation Hospital<br><small>Turkey</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="asia" data-category="pain" data-rating="8">
-                       <td><a href="https://pubmed.ncbi.nlm.nih.gov/32251502/" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Neuropathic Pain:</strong> Chinese multi-center study on anti-inflammatory mechanisms of PEMF therapy in patients with chronic neuropathic pain</td>
-                       <td>Multiple Medical Centers<br><small>China</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="asia" data-category="pain" data-rating="8">
-                       <td><a href="https://pubmed.ncbi.nlm.nih.gov/31385489/" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Fibromyalgia Comprehensive Study:</strong> Turkish study on PEMF efficiency for pain, disability, anxiety, depression, and quality of life in fibromyalgia syndrome patients</td>
-                       <td>Atatürk University<br><small>Turkey</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="asia" data-category="pain" data-rating="8">
-                       <td><a href="https://www.msjonline.org/index.php/ijrms/article/view/12708" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Non-Specific Low Back Pain:</strong> Turkish study on effect of PEMF on pain, functionality and quality of life in chronic non-specific low back pain</td>
-                       <td>Medical Sciences Research Institute<br><small>Turkey</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="asia" data-category="musculoskeletal" data-rating="8">
-                       <td><a href="https://pubmed.ncbi.nlm.nih.gov/24742119/" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Musculoskeletal Mechanisms:</strong> Iranian detailed analysis of PEMF mechanisms in musculoskeletal disorders with standardized treatment parameters</td>
-                       <td>Ahvaz Jundishapur University of Medical Sciences<br><small>Iran</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="europe" data-category="pain" data-rating="8">
-                       <td><a href="https://pubmed.ncbi.nlm.nih.gov/29799771/" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Nordic Knee Study:</strong> University of Eastern Finland effects of PEMF therapy on symptoms associated with knee osteoarthritis</td>
-                       <td>University of Eastern Finland<br><small>Finland</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="europe" data-category="pain" data-rating="8">
-                       <td><a href="https://pubmed.ncbi.nlm.nih.gov/26705327/" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Knee Osteoarthritis:</strong> University of Messina double-blind, placebo-controlled RCT showing significant improvement in knee osteoarthritis patients with PEMF therapy</td>
-                       <td>University of Messina<br><small>Italy</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="europe" data-category="pain" data-rating="8">
-                       <td><a href="https://pubmed.ncbi.nlm.nih.gov/30900425/" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Comprehensive Pain Study:</strong> Italian study on PEMF therapy effects on pain, disability, and psychological comorbidity in chronic low back pain patients</td>
-                       <td>Fondazione Policlinico Universitario<br><small>Italy</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="africa" data-category="rheumatoid" data-rating="8">
-                       <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10018856/" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Rheumatoid Arthritis:</strong> Cairo University study on effects of electromagnetic field versus low-level laser therapy on bone mineral density and biochemical markers</td>
-                       <td>Cairo University<br><small>Egypt</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-                   <tr data-region="africa" data-category="orthopedic" data-rating="8">
-                       <td><a href="https://pubmed.ncbi.nlm.nih.gov/32251502/" class="link-button" target="_blank">View Study</a></td>
-                       <td><strong>Orthopedic Pain Conditions:</strong> University of Ibadan frequency-dependent effects of PEMF therapy on orthopedic pain conditions</td>
-                       <td>University of Ibadan<br><small>Nigeria</small></td>
-                       <td><strong>8</strong></td>
-                   </tr>
-               </tbody>
-           </table>
-       </div>
-
-       <!-- FDA Approval Section -->
-       <div class="fda-section">
-           <h3>🏛️ FDA Approval Status</h3>
-           <div class="fda-grid">
-               <div class="fda-item">
-                   <strong>Bone Healing:</strong> FDA approved since 1979 for nonunion fractures
-               </div>
-               <div class="fda-item">
-                   <strong>Spinal Fusion:</strong> FDA approved since 2004 for spinal fusion procedures
-               </div>
-               <div class="fda-item">
-                   <strong>Device Classification:</strong> Reclassified from Class III to Class II (2020)
-               </div>
-           </div>
-       </div>
-
-       <!-- Institutions Section -->
-       <div class="institutions-section">
-           <h3>🏥 Leading Research Institutions Worldwide</h3>
-           <div class="institutions-grid">
-               <div class="institution-card">
-                   <strong>Mayo Clinic</strong> (Rochester & Phoenix)<br>
-                   <small>2 cardiovascular studies - Rating 10</small>
-               </div>
-               <div class="institution-card">
-                   <strong>Yale University School of Medicine</strong><br>
-                   <small>2 osteoarthritis landmark studies - Rating 9</small>
-               </div>
-               <div class="institution-card">
-                   <strong>Johns Hopkins University</strong><br>
-                   <small>1 comprehensive surgical review - Rating 9</small>
-               </div>
-               <div class="institution-card">
-                   <strong>Cleveland Clinic Florida</strong><br>
-                   <small>1 major cardiac trial - Rating 9</small>
-               </div>
-               <div class="institution-card">
-                   <strong>Columbia University</strong><br>
-                   <small>1 landmark bone healing study - Rating 9</small>
-               </div>
-               <div class="institution-card">
-                   <strong>West China Hospital, Sichuan University</strong><br>
-                   <small>1 large meta-analysis - Rating 9</small>
-               </div>
-               <div class="institution-card">
-                   <strong>Cochrane Collaboration</strong><br>
-                   <small>1 systematic review - Rating 9</small>
-               </div>
-               <div class="institution-card">
-                   <strong>Oxford University</strong><br>
-                   <small>3 rheumatology studies - Rating 8-9</small>
-               </div>
-               <div class="institution-card">
-                   <strong>Wake Forest Institute</strong><br>
-                   <small>1 regenerative medicine study - Rating 8</small>
-               </div>
-               <div class="institution-card">
-                   <strong>Nanjing University</strong><br>
-                   <small>1 bone healing study - Rating 8</small>
-               </div>
-               <div class="institution-card">
-                   <strong>Shanghai Jiao Tong University</strong><br>
-                   <small>1 cardiac study - Rating 8</small>
-               </div>
-               <div class="institution-card">
-                   <strong>Multiple Japanese Medical Centers</strong><br>
-                   <small>1 cardiovascular study - Rating 8</small>
-               </div>
-           </div>
-       </div>
-
-       <!-- Applications Section -->
-       <div class="applications-section">
-           <h3>💊 Clinical Applications by Specialty</h3>
-           <div class="applications-grid">
-               <div class="application-card">
-                   <h4>🫀 Cardiovascular Health</h4>
-                   <p>Hypertension, ischemic cardiomyopathy, myocardial infarction recovery, metabolic syndrome</p>
-               </div>
-               <div class="application-card">
-                   <h4>🦴 Bone Healing & Orthopedics</h4>
-                   <p>Nonunion fractures, delayed union, spinal fusion (FDA approved), cartilage repair</p>
-               </div>
-               <div class="application-card">
-                   <h4>⚡ Pain Management</h4>
-                   <p>Osteoarthritis, fibromyalgia, chronic low back pain, neuropathic pain, cervical spine pain</p>
-               </div>
-               <div class="application-card">
-                   <h4>🩹 Post-Surgical Recovery</h4>
-                   <p>Post-surgical pain, edema reduction, wound healing, tissue repair</p>
-               </div>
-               <div class="application-card">
-                   <h4>🧠 Neurological Applications</h4>
-                   <p>Phantom pain, migraine, depression, anxiety, PTSD, cerebral palsy</p>
-               </div>
-               <div class="application-card">
-                   <h4>🦠 Inflammatory Conditions</h4>
-                   <p>Rheumatoid arthritis, general anti-inflammatory effects, chronic inflammation</p>
-               </div>
-               <div class="application-card">
-                   <h4>🔬 Specialized Applications</h4>
-                   <p>Diabetic foot ulcers, Meniere's disease, multiple sclerosis, regenerative medicine</p>
-               </div>
-           </div>
-       </div>
-   </div>
-
-   <!-- Footer -->
-   <div class="footer">
-       <p><strong>Complete Global Database of PEMF Research</strong></p>
-       <p>42+ studies rated 8-10 based on research quality and institutional prestige from leading medical institutions worldwide</p>
-       <p><em>For medical device distribution inquiries in the Philippines and Asia Pacific region</em></p>
-   </div>
-
-   <script>
-       // Search functionality
-       document.getElementById('searchInput').addEventListener('keyup', function() {
-           const searchTerm = this.value.toLowerCase();
-           const rows = document.querySelectorAll('#researchTable tbody tr');
-           
-           rows.forEach(row => {
-               const text = row.textContent.toLowerCase();
-               if (text.includes(searchTerm)) {
-                   row.style.display = '';
-               } else {
-                   row.style.display = 'none';
-               }
-           });
-       });
-
-       // Filter functionality
-       function filterStudies(filter) {
-           const rows = document.querySelectorAll('#researchTable tbody tr');
-           const buttons = document.querySelectorAll('.filter-btn');
-           
-           // Update active button
-           buttons.forEach(btn => btn.classList.remove('active'));
-           event.target.classList.add('active');
-           
-           rows.forEach(row => {
-               if (filter === 'all') {
-                   row.style.display = '';
-               } else if (filter.startsWith('rating-')) {
-                   const rating = filter.split('-')[1];
-                   if (row.dataset.rating === rating) {
-                       row.style.display = '';
-                   } else {
-                       row.style.display = 'none';
-                   }
-               } else if (filter === 'usa' || filter === 'europe' || filter === 'asia' || filter === 'africa' || filter === 'australia' || filter === 'americas' || filter === 'international') {
-                   if (row.dataset.region === filter) {
-                       row.style.display = '';
-                   } else {
-                       row.style.display = 'none';
-                   }
-               } else {
-                   if (row.dataset.category === filter) {
-                       row.style.display = '';
-                   } else {
-                       row.style.display = 'none';
-                   }
-               }
-           });
-       }
-
-       // Smooth scrolling for better UX
-       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-           anchor.addEventListener('click', function (e) {
-               e.preventDefault();
-               const target = document.querySelector(this.getAttribute('href'));
-               if (target) {
-                   target.scrollIntoView({
-                       behavior: 'smooth'
-                   });
-               }
-           });
-       });
-
-       // Add hover effects to table rows
-       document.querySelectorAll('#researchTable tbody tr').forEach(row => {
-           row.addEventListener('mouseenter', function() {
-               this.style.transform = 'scale(1.01)';
-               this.style.transition = 'transform 0.2s ease';
-           });
-           
-           row.addEventListener('mouseleave', function() {
-               this.style.transform = 'scale(1)';
-           });
-       });
-
-       // Add loading animation for external links
-       document.querySelectorAll('.link-button').forEach(button => {
-           button.addEventListener('click', function() {
-               this.style.opacity = '0.7';
-               this.innerHTML = 'Loading...';
-               setTimeout(() => {
-                   this.style.opacity = '1';
-                   this.innerHTML = 'View Study';
-               }, 1000);
-           });
-       });
-
-       // Add scroll-to-top functionality
-       window.addEventListener('scroll', function() {
-           const scrollButton = document.getElementById('scrollToTop');
-           if (window.pageYOffset > 300) {
-               if (scrollButton) {
-                   scrollButton.style.display = 'block';
-               }
-           } else {
-               if (scrollButton) {
-                   scrollButton.style.display = 'none';
-               }
-           }
-       });
-
-       // Create scroll to top button
-       const scrollToTopButton = document.createElement('button');
-       scrollToTopButton.id = 'scrollToTop';
-       scrollToTopButton.innerHTML = '↑';
-       scrollToTopButton.style.cssText = `
-           position: fixed;
-           bottom: 30px;
-           right: 30px;
-           width: 50px;
-           height: 50px;
-           background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-           color: white;
-           border: none;
-           border-radius: 50%;
-           font-size: 20px;
-           font-weight: bold;
-           cursor: pointer;
-           display: none;
-           z-index: 1000;
-           box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-           transition: all 0.3s ease;
-       `;
-
-       scrollToTopButton.addEventListener('click', function() {
-           window.scrollTo({
-               top: 0,
-               behavior: 'smooth'
-           });
-       });
-
-       scrollToTopButton.addEventListener('mouseenter', function() {
-           this.style.transform = 'scale(1.1)';
-           this.style.boxShadow = '0 6px 20px rgba(59, 130, 246, 0.4)';
-       });
-
-       scrollToTopButton.addEventListener('mouseleave', function() {
-           this.style.transform = 'scale(1)';
-           this.style.boxShadow = '0 4px 15px rgba(59, 130, 246, 0.3)';
-       });
-
-       document.body.appendChild(scrollToTopButton);
-
-       // Add progressive loading for better performance
-       const observerOptions = {
-           threshold: 0.1,
-           rootMargin: '50px'
-       };
-
-       const observer = new IntersectionObserver((entries) => {
-           entries.forEach(entry => {
-               if (entry.isIntersecting) {
-                   entry.target.style.opacity = '1';
-                   entry.target.style.transform = 'translateY(0)';
-               }
-           });
-       }, observerOptions);
-
-       // Observe all table rows for animation
-       document.querySelectorAll('#researchTable tbody tr').forEach(row => {
-           row.style.opacity = '0';
-           row.style.transform = 'translateY(20px)';
-           row.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-           observer.observe(row);
-       });
-
-       // Add real-time statistics updates
-       function updateStats() {
-           const totalRows = document.querySelectorAll('#researchTable tbody tr').length;
-           const visibleRows = document.querySelectorAll('#researchTable tbody tr[style=""]').length || totalRows;
-           
-           // Update the stats in header if needed
-           document.querySelector('.stat-number').textContent = visibleRows || totalRows;
-       }
-
-       // Call updateStats after filtering
-       const originalFilterStudies = filterStudies;
-       window.filterStudies = function(filter) {
-           originalFilterStudies(filter);
-           setTimeout(updateStats, 100);
-       };
-
-       // Initialize stats
-       updateStats();
-   </script>
 </body>
 </html>
