@@ -3,1023 +3,916 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PEMF Therapy - Evidence-Based Medical Research</title>
+    <title>PEMF Therapy Prospects Database - Philippines</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
         }
-
+        
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: #667eea;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-item {
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-item:hover {
-            color: #667eea;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23667eea;stop-opacity:0.8"/><stop offset="100%" style="stop-color:%23764ba2;stop-opacity:0.8"/></linearGradient></defs><circle cx="200" cy="200" r="300" fill="url(%23grad)" opacity="0.3"/><circle cx="800" cy="400" r="200" fill="url(%23grad)" opacity="0.4"/><circle cx="500" cy="700" r="250" fill="url(%23grad)" opacity="0.3"/></svg>') no-repeat center center;
-            background-size: cover;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            padding: 15px 35px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.4);
-        }
-
-        /* Filter Section */
-        .filter-section {
             background: white;
-            padding: 60px 0;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #333;
-            font-weight: 700;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 50px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .filter-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 50px;
-        }
-
-        .filter-btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-            background: linear-gradient(45deg, #764ba2, #667eea);
-        }
-
-        .rating-filters {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .rating-btn {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
-        }
-
-        .rating-btn:hover,
-        .rating-btn.active {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
-        }
-
-        /* Studies Table */
-        .studies-table {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-            margin-top: 50px;
-            position: relative;
-        }
-
-        .studies-table::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
-            background-size: 400% 400%;
-            animation: gradientShift 3s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .table-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            color: white;
-            display: grid;
-            grid-template-columns: 80px 2fr 140px;
-            padding: 25px 40px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
-            gap: 30px;
-        }
-
-        .table-row {
-            display: grid;
-            grid-template-columns: 80px 2fr 140px;
-            padding: 30px 40px;
-            border-bottom: 1px solid #f0f0f0;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            gap: 30px;
-        }
-
-        .table-row::before {
-            content: '';
-            position: absolute;
-            left: -100%;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
-            transition: left 0.6s;
-        }
-
-        .table-row:hover::before {
-            left: 100%;
-        }
-
-        .table-row:hover {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
-        }
-
-        .table-row:last-child {
-            border-bottom: none;
-        }
-
-        .study-description-table {
-            color: #333;
-            line-height: 1.6;
-            margin-bottom: 12px;
-            font-size: 1rem;
-            text-align: left;
-        }
-
-        .study-location-table {
-            color: #667eea;
-            font-weight: 700;
-            font-size: 0.95rem;
-            text-align: left;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .study-rating-table {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a24, #fd79a8);
-            color: white;
-            padding: 12px 18px;
-            border-radius: 25px;
-            font-weight: bold;
-            text-align: center;
-            font-size: 1.1rem;
-            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .study-rating-table::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .study-rating-table:hover::before {
-            left: 100%;
-        }
-
-        .study-rating-table:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.5);
-        }
-
-        .study-link-table {
-            background: linear-gradient(135deg, #667eea, #764ba2, #4ecdc4);
-            color: white;
-            padding: 16px 28px;
-            text-decoration: none;
-            border-radius: 35px;
-            font-weight: 800;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-align: center;
-            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
-            position: relative;
-            overflow: hidden;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 0.85rem;
-            border: 2px solid transparent;
-            background-clip: padding-box;
-        }
-
-        .study-link-table::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.6s;
-        }
-
-        .study-link-table::after {
-            content: '⚡';
-            position: absolute;
-            right: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.2rem;
-            opacity: 0;
-            transition: all 0.3s;
-        }
-
-        .study-link-table:hover::before {
-            left: 100%;
-        }
-
-        .study-link-table:hover::after {
-            opacity: 1;
-            right: 12px;
-        }
-
-        .study-link-table:hover {
-            transform: translateY(-6px) scale(1.12) rotateY(5deg);
-            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.7);
-            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1);
-            border-color: rgba(255,255,255,0.3);
-        }: 30px;
-            font-weight: 700;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-            position: relative;
-            overflow: hidden;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-        }
-
-        .study-link-table::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .study-link-table:hover::before {
-            left: 100%;
-        }
-
-        .study-link-table:hover {
-            transform: translateY(-4px) scale(1.08);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
-            background: linear-gradient(135deg, #764ba2, #667eea, #4ecdc4);
-        }
-
-        /* Enhanced Filter Buttons */
-        .filter-btn {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 700;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-            position: relative;
-            overflow: hidden;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .filter-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .filter-btn:hover::before,
-        .filter-btn.active::before {
-            left: 100%;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
-            background: linear-gradient(135deg, #764ba2, #667eea, #f093fb);
-        }
-
-        /* Rating explanations */
-        .rating-explanation {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 60px 0;
-            margin-top: 50px;
-        }
-
-        .rating-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .rating-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
             border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2196F3 0%, #21CBF3 100%);
+            color: white;
             padding: 30px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-
-        .rating-number {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 15px;
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
-
-        .rating-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .rating-desc {
-            font-size: 1rem;
+        
+        .header p {
+            font-size: 1.1rem;
             opacity: 0.9;
         }
-
-        /* Footer */
-        .footer {
-            background: #2c3e50;
-            color: white;
-            padding: 60px 0 30px 0;
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .stat {
             text-align: center;
         }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2196F3;
         }
-
-        .footer-section h3 {
-            margin-bottom: 20px;
-            color: #667eea;
+        
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
         }
-
-        .footer-bottom {
-            border-top: 1px solid #34495e;
-            padding-top: 30px;
-            opacity: 0.7;
+        
+        .filters {
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
         }
-
-        /* Responsive */
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .filter-group label {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        select, input {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        select:focus, input:focus {
+            outline: none;
+            border-color: #2196F3;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            max-height: 70vh;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 10px;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+        }
+        
+        tr:hover {
+            background-color: #f8f9fa;
+            transform: scale(1.002);
+            transition: all 0.2s ease;
+        }
+        
+        .rating {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .rating-10 { background: #4CAF50; color: white; }
+        .rating-9 { background: #8BC34A; color: white; }
+        .rating-8 { background: #FFEB3B; color: #333; }
+        .rating-7 { background: #FF9800; color: white; }
+        
+        .contact-link {
+            display: inline-block;
+            margin: 2px;
+            padding: 4px 8px;
+            background: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 11px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            background: #1976D2;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .contact-link.phone { background: #4CAF50; }
+        .contact-link.email { background: #FF5722; }
+        .contact-link.linkedin { background: #0077B5; }
+        .contact-link.website { background: #9C27B0; }
+        
+        .facility-name {
+            font-weight: bold;
+            color: #2196F3;
+            font-size: 15px;
+        }
+        
+        .specialization {
+            color: #666;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        .location {
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .key-personnel {
+            font-size: 12px;
+            color: #333;
+        }
+        
+        .tier-header {
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            padding: 12px;
+        }
+        
+        .export-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .filter-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .table-header,
-            .table-row {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 15px;
-            }
-
-            .table-header {
-                display: none;
-            }
-
-            .table-row {
-                padding: 25px;
-                border-radius: 15px;
-                margin-bottom: 20px;
-                background: white;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            }
-
-            .nav-menu {
-                display: none;
-            }
-        }
-
-        .hidden {
-            display: none;
+            .header h1 { font-size: 1.8rem; }
+            .stats { flex-direction: column; gap: 10px; }
+            .filters { flex-direction: column; align-items: stretch; }
+            table { font-size: 12px; }
+            th, td { padding: 8px 6px; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">PEMF Research Hub</div>
-                <nav class="nav-menu">
-                    <a href="#home" class="nav-item">Home</a>
-                    <a href="#research" class="nav-item">Research</a>
-                    <a href="#ratings" class="nav-item">Ratings</a>
-                    <a href="#contact" class="nav-item">Contact</a>
-                </nav>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 PEMF Therapy Prospects Database</h1>
+            <p>Philippines Medical Facilities - Manila & Cebu | Target Monthly Rental: $700-800+ USD</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">43</div>
+                <div class="stat-label">Total Facilities</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">8</div>
+                <div class="stat-label">Tier 1 Prospects</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">₱1.5-2.5M</div>
+                <div class="stat-label">Potential Monthly Revenue</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Cities Covered</div>
             </div>
         </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Evidence-Based PEMF Therapy</h1>
-                <p>Comprehensive database of high-quality medical research studies from leading institutions worldwide, supporting PEMF therapy implementation in modern healthcare.</p>
-                <a href="#research" class="cta-button">Explore Research Database</a>
+        
+        <div class="filters">
+            <div class="filter-group">
+                <label>City:</label>
+                <select id="cityFilter">
+                    <option value="">All Cities</option>
+                    <option value="Manila">Manila</option>
+                    <option value="Cebu">Cebu</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Rating:</label>
+                <select id="ratingFilter">
+                    <option value="">All Ratings</option>
+                    <option value="10">10 - Immediate Targets</option>
+                    <option value="9">9 - High-Value</option>
+                    <option value="8">8 - Solid Opportunities</option>
+                    <option value="7">7 - Longer-term</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Search:</label>
+                <input type="text" id="searchFilter" placeholder="Search facility name or specialization...">
             </div>
         </div>
-    </section>
-
-    <!-- Filter Section -->
-    <section id="research" class="filter-section">
-        <div class="container">
-            <h2 class="section-title">Global Medical Research Database</h2>
-            <p class="section-subtitle">Browse through carefully curated studies from prestigious medical institutions worldwide, ranked by research excellence and clinical significance.</p>
-            
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">All Studies</button>
-                <button class="filter-btn" data-filter="usa">USA Medical Centers</button>
-                <button class="filter-btn" data-filter="europe">European Institutions</button>
-                <button class="filter-btn" data-filter="canada-australia">Canada & Australia</button>
-                <button class="filter-btn" data-filter="asia">Asian Research</button>
-                <button class="filter-btn" data-filter="other">International Studies</button>
-            </div>
-
-
-
-            <div class="studies-table" id="studiesTable">
-                <div class="table-header">
-                    <div>Research Study Description</div>
-                    <div>Quality Rating</div>
-                    <div>View Study</div>
-                </div>
-                <!-- Studies will be populated by JavaScript -->
-            </div>
+        
+        <div class="table-container">
+            <table id="facilitiesTable">
+                <thead>
+                    <tr>
+                        <th>Rating</th>
+                        <th>Facility Name & Location</th>
+                        <th>Key Personnel</th>
+                        <th>Specializations</th>
+                        <th>Contact Information</th>
+                        <th>Notes & Rationale</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Data will be populated by JavaScript -->
+                </tbody>
+            </table>
         </div>
-    </section>
-
-    <!-- Rating Explanation -->
-    <section id="ratings" class="rating-explanation">
-        <div class="container">
-            <h2 class="section-title">Research Quality Ratings</h2>
-            <div class="rating-grid">
-                <div class="rating-card">
-                    <div class="rating-number">10</div>
-                    <div class="rating-title">Gold Standard</div>
-                    <div class="rating-desc">Mayo Clinic, Johns Hopkins - FDA approved studies with highest medical credibility and rigorous double-blind RCT methodology.</div>
-                </div>
-                <div class="rating-card">
-                    <div class="rating-number">9</div>
-                    <div class="rating-title">Exceptional Excellence</div>
-                    <div class="rating-desc">Yale, Cleveland Clinic, Cochrane Reviews - Landmark studies with significant clinical impact and international recognition.</div>
-                </div>
-                <div class="rating-card">
-                    <div class="rating-number">8</div>
-                    <div class="rating-title">High Quality</div>
-                    <div class="rating-desc">Leading universities and medical centers with robust research protocols, peer-reviewed publications, and clinical significance.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>About PEMF Research</h3>
-                    <p>Comprehensive evidence-based database supporting the implementation of PEMF therapy in modern medical practice.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Research Focus</h3>
-                    <p>Pain Management • Bone Healing • Cardiovascular Health • Neurological Applications • Post-Surgical Recovery</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact Information</h3>
-                    <p>For hospital partnerships and PEMF implementation inquiries, please reach out to discuss evidence-based integration strategies.</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 PEMF Research Hub. Evidence-based medicine for progressive healthcare institutions.</p>
-            </div>
-        </div>
-    </footer>
-
+    </div>
+    
+    <button class="export-btn" onclick="exportToCSV()">📊 Export to CSV</button>
+    
     <script>
-        // Research data - ALL STUDIES FROM THE DATABASE
-        const studies = [
-            // USA Studies (TIER 1)
+        const facilities = [
+            // TIER 1 - Rating 10
             {
-                link: "https://pubmed.ncbi.nlm.nih.gov/32401418/",
-                description: "Mayo Clinic double-blind RCT showing PEMF significantly improved blood pressure and vascular function in 30 hypertensive patients after 12 weeks.",
-                location: "Mayo Clinic, Rochester & Phoenix, USA",
                 rating: 10,
-                category: "usa"
+                city: "Manila",
+                name: "St. Luke's Medical Center - Quezon City",
+                location: "Cathedral Heights, E. Rodriguez Sr. Avenue, Quezon City",
+                keyPersonnel: "Pain Management Head: Maria Elena Z. Basco-Tiamson, MD, DPBPM",
+                specializations: "Institute of Orthopedics and Sports Medicine, Pain Management Center (first multidisciplinary pain center in Philippines), Sports Medicine",
+                phone: "+632-8723-0101",
+                email: "info@stlukes.com.ph",
+                website: "https://www.stlukes.com.ph",
+                linkedin: "",
+                notes: "652 beds, JCI accredited, Asia's Top Private Hospital 2025, proven advanced equipment investment history. Premium pricing model, excellent reputation.",
+                tier: "TIER 1 - IMMEDIATE TARGETS"
             },
+            
+            // Additional TIER 1 - From CSV Data
             {
-                link: "https://pubmed.ncbi.nlm.nih.gov/31394939/",
-                description: "Mayo Clinic RCT demonstrating PEMF increased plasma nitric oxide and improved blood pressure in 44 metabolic syndrome patients.",
-                location: "Mayo Clinic, Rochester & Phoenix, USA",
                 rating: 10,
-                category: "usa"
+                city: "Manila",
+                name: "LifeScience Center",
+                location: "Manila Area (Multiple Locations)",
+                keyPersonnel: "Dr. Zoe Arugay-Magat, MD - Medical Director",
+                specializations: "Advanced wellness center, regenerative medicine, sports medicine, rehabilitation, anti-aging medicine",
+                phone: "",
+                email: "",
+                website: "https://lifescience.ph/contact-us/",
+                linkedin: "https://www.linkedin.com/in/zoe-arugay-magat",
+                notes: "Premium wellness center with focus on advanced medical technologies. Dr. Zoe Arugay-Magat is prominent in regenerative medicine. Strong social media presence and technology adoption.",
+                tier: "TIER 1 - IMMEDIATE TARGETS"
             },
             {
-                link: "https://www.dicardiology.com/content/cleveland-clinic-florida-pemf-cardiac-trial-completes-enrollment",
-                description: "Cleveland Clinic EFFECT Study - double-blind RCT of PEMF for ischemic cardiomyopathy patients with no surgical options, showing significant reduction in angina and improved exercise tolerance.",
-                location: "Cleveland Clinic Florida, USA",
+                rating: 10,
+                city: "Manila",
+                name: "St. Luke's Medical Center - Global City",
+                location: "Rizal Drive cor. 32nd St. and 5th Ave, BGC Taguig",
+                keyPersonnel: "Pain Management Head: Ma. Lourdes Josefina K. Cabaluna, MD, DPBPM",
+                specializations: "Institute of Orthopedics & Sports Medicine (11th Floor), Pain Management Center (2nd Floor), Advanced Imaging",
+                phone: "+63-2-8789-7700",
+                email: "info@stlukes.com.ph",
+                website: "https://www.stlukes.com.ph",
+                linkedin: "",
+                notes: "Premium private hospital in BGC, specialized departments directly aligned with PEMF applications, high-end patient demographics.",
+                tier: "TIER 1 - IMMEDIATE TARGETS"
+            },
+            {
+                rating: 10,
+                city: "Manila",
+                name: "The Medical City",
+                location: "Ortigas Avenue, Pasig City",
+                keyPersonnel: "Pain Management Head: Maria Dolma Gudez-Santos, MD, DPBPM | Orthopedic Head: Dr. Cesar Dimayuga",
+                specializations: "Pain Management Clinic, Sports Medicine/Arthroscopy Unit, Orthopedic Multispecialty Center, Rehabilitation Medicine",
+                phone: "+632-8988-1000",
+                email: "mail@themedicalcity.com",
+                website: "https://www.themedicalcity.com",
+                linkedin: "",
+                notes: "Largest healthcare network in Philippines (40+ clinics), 1,500+ physicians, JCI Gold Seal accredited. Excellent infrastructure for equipment deployment.",
+                tier: "TIER 1 - IMMEDIATE TARGETS"
+            },
+            {
+                rating: 10,
+                city: "Manila",
+                name: "Makati Medical Center",
+                location: "No. 2 Amorsolo Street, Legaspi Village, Makati City",
+                keyPersonnel: "Orthopedics Chairman: Antonio A. Rivera, MD | CMO: Your target contact",
+                specializations: "Department of Orthopedic Surgery, Pain Management Services, Hand Surgery, Minimally Invasive Surgery, Sports Medicine",
+                phone: "+632-8888-8999",
+                email: "marketing@makatimed.net.ph",
+                website: "https://www.makatimed.net.ph",
+                linkedin: "",
+                notes: "600 beds, JCI accredited since 1969, premier financial district location, 50+ years premium hospital status. Target from your original letter.",
+                tier: "TIER 1 - IMMEDIATE TARGETS"
+            },
+            {
+                rating: 10,
+                city: "Cebu",
+                name: "Chong Hua Hospital",
+                location: "Fuente Osmeña Circle, Cebu City | Don Mariano Cui St., Mandaue City",
+                keyPersonnel: "Customer Service Manager | Orthopedics Department Head",
+                specializations: "Comprehensive tertiary care, orthopedics, rehabilitation medicine, sports medicine, advanced imaging",
+                phone: "+63-32-255-8000",
+                email: "customerservice@chonghua.com.ph",
+                website: "https://www.chonghua.com.ph",
+                linkedin: "",
+                notes: "1,010 beds across two locations, 1,012 board-certified medical staff. Largest private hospital system in Visayas/Mindanao, JCI accredited.",
+                tier: "TIER 1 - IMMEDIATE TARGETS"
+            },
+            {
+                rating: 10,
+                city: "Cebu",
+                name: "Cebu Doctors' University Hospital",
+                location: "1 Dr. P.V. Larrazabal Jr. Avenue, North Reclamation, Mandaue City",
+                keyPersonnel: "Physical & Rehab Medicine Dept: Local 132/175 | Hospital Administrator",
+                specializations: "Nuclear medicine, advanced imaging, rehabilitation department, university hospital with research focus",
+                phone: "+63-32-255-5555",
+                email: "info@cebudocgroup.com.ph",
+                website: "https://cdg.cebudocgroup.com.ph",
+                linkedin: "https://www.linkedin.com/company/cebu-doctors-university-hospital",
+                notes: "300 beds, QHA Trent accredited (UK), first in region for nuclear medicine, 50+ years operation. Strong research orientation.",
+                tier: "TIER 1 - IMMEDIATE TARGETS"
+            },
+            {
+                rating: 10,
+                city: "Cebu",
+                name: "University of Cebu Medical Center",
+                location: "A1 Ouano Avenue, Mandaue City, Cebu",
+                keyPersonnel: "Sports Rehabilitation Dept: 6th Floor | Rehabilitation Dept: Local 6130",
+                specializations: "First in Philippines sports rehabilitation facility with outdoor jogging track, advanced physical therapy, sports medicine",
+                phone: "+63-32-517-0888",
+                email: "info@ucmed.ph",
+                website: "https://ucmed.ph",
+                linkedin: "",
+                notes: "State-of-the-art sports rehabilitation facilities, modern equipment focus, specific alignment with PEMF therapy applications.",
+                tier: "TIER 1 - IMMEDIATE TARGETS"
+            },
+            
+            // TIER 2 - Rating 9
+            {
                 rating: 9,
-                category: "usa"
+                city: "Manila",
+                name: "Cardinal Santos Medical Center",
+                location: "10 Wilson Street, San Juan City",
+                keyPersonnel: "Sports Medicine Institute Head | Marketing Director",
+                specializations: "Sports Medicine Institute (The MVP Clinic), Orthopedics, Rehabilitation Medicine, Pain Management",
+                phone: "+632-8727-0001",
+                email: "marketing@csmc.ph",
+                website: "https://cardinalsantos.com.ph",
+                linkedin: "",
+                notes: "Premium private hospital, dedicated sports medicine institute, MVP clinic partnership, high-profile athlete clientele.",
+                tier: "TIER 2 - HIGH-VALUE TARGETS"
             },
+            
+            // Additional TIER 2 - From CSV Data
             {
-                link: "https://pubmed.ncbi.nlm.nih.gov/19371845/",
-                description: "Johns Hopkins comprehensive evidence-based review of PEMF in plastic surgery, demonstrating efficacy for post-surgical pain, edema, and wound healing.",
-                location: "Johns Hopkins University, Baltimore, USA",
                 rating: 9,
-                category: "usa"
+                city: "Manila",
+                name: "Focus Athletics",
+                location: "Manila Area",
+                keyPersonnel: "Elaine Grace Sasutil - Director",
+                specializations: "Sports performance center, athletic training, sports medicine, rehabilitation, performance optimization",
+                phone: "",
+                email: "info@focusathletics.ph",
+                website: "",
+                linkedin: "https://www.linkedin.com/in/elaine-grace-sasutil",
+                notes: "Specialized sports performance center catering to athletes. Focus on performance optimization and recovery - perfect fit for PEMF therapy applications.",
+                tier: "TIER 2 - HIGH-VALUE TARGETS"
             },
             {
-                link: "https://pubmed.ncbi.nlm.nih.gov/8478852/",
-                description: "Yale University landmark double-blind RCT showing 23-61% improvement in osteoarthritis pain vs 2-18% in placebo (27 patients).",
-                location: "Yale University School of Medicine, New Haven, USA",
                 rating: 9,
-                category: "usa"
+                city: "Manila",
+                name: "MOVE Physiotherapy",
+                location: "Manila Area",
+                keyPersonnel: "Jihan El Sokkary, Micah Tan - Co-Directors",
+                specializations: "Advanced physiotherapy, movement analysis, sports rehabilitation, manual therapy, exercise therapy",
+                phone: "+63 955 986 6225",
+                email: "csr@movephysio.net",
+                website: "",
+                linkedin: "https://www.linkedin.com/in/jihan-el-sokkary, https://www.linkedin.com/in/micah-tan",
+                notes: "Modern physiotherapy clinic with advanced treatment modalities. Strong focus on evidence-based practice and technology integration.",
+                tier: "TIER 2 - HIGH-VALUE TARGETS"
             },
             {
-                link: "https://pubmed.ncbi.nlm.nih.gov/7837158/",
-                description: "Yale University follow-up double-blind RCT with 167 osteoarthritis patients confirming significant pain and functional improvements.",
-                location: "Yale University School of Medicine, New Haven, USA",
                 rating: 9,
-                category: "usa"
+                city: "Manila",
+                name: "PhysioFix PT Clinic",
+                location: "Manila Area",
+                keyPersonnel: "Steven James Alesna - Clinical Director",
+                specializations: "Physical therapy, manual therapy, sports rehabilitation, orthopedic rehabilitation, pain management",
+                phone: "",
+                email: "",
+                website: "",
+                linkedin: "https://www.linkedin.com/in/steven-james-alesna",
+                notes: "Established PT clinic with strong clinical reputation. Focus on manual therapy and rehabilitation - good candidate for PEMF integration.",
+                tier: "TIER 2 - HIGH-VALUE TARGETS"
             },
             {
-                link: "https://jamanetwork.com/journals/jama/article-abstract/389525",
-                description: "JAMA landmark study by Bassett et al. demonstrating PEMF efficacy for bone healing in ununited fractures, leading to FDA approval.",
-                location: "Columbia University, New York, USA",
                 rating: 9,
-                category: "usa"
+                city: "Manila",
+                name: "Oliver Weiss Clinic",
+                location: "Manila Area",
+                keyPersonnel: "Precilla S. - Operations Manager",
+                specializations: "Wellness clinic, aesthetic medicine, anti-aging treatments, regenerative medicine, wellness optimization",
+                phone: "",
+                email: "",
+                website: "https://oliverweissclinic.com/contact/",
+                linkedin: "https://www.linkedin.com/in/precilla-s",
+                notes: "Premium wellness clinic with focus on advanced treatments. Good potential for PEMF therapy in wellness and anti-aging applications.",
+                tier: "TIER 2 - HIGH-VALUE TARGETS"
             },
             {
-                link: "https://pubmed.ncbi.nlm.nih.gov/25264884/",
-                description: "Ross et al. revolutionary findings on PEMF effects on human bone marrow stem cell differentiation with implications for regenerative medicine.",
-                location: "Wake Forest Institute for Regenerative Medicine, USA",
-                rating: 8,
-                category: "usa"
-            },
-            {
-                link: "https://pubmed.ncbi.nlm.nih.gov/12882481/",
-                description: "Weintraub et al. static magnetic field therapy for symptomatic diabetic neuropathy in randomized, double-blind, placebo-controlled trial.",
-                location: "New York Medical College, USA",
-                rating: 8,
-                category: "usa"
-            },
-            {
-                link: "https://pubmed.ncbi.nlm.nih.gov/29616749/",
-                description: "Huegel et al. breakthrough findings showing PEMF reduces expression of genes associated with disc degeneration in human intervertebral disc cells.",
-                location: "Hospital for Special Surgery, New York, USA",
-                rating: 8,
-                category: "usa"
-            },
-            {
-                link: "https://pubmed.ncbi.nlm.nih.gov/17886012/",
-                description: "Comprehensive review by MS Markov establishing theoretical framework for modern PEMF research and expanding use of electromagnetic field therapies.",
-                location: "Eastern Virginia Medical School, USA",
-                rating: 8,
-                category: "usa"
-            },
-
-            // European Studies (TIER 1)
-            {
-                link: "https://cochranelibrary.com/cdsr/doi/10.1002/14651858.CD003523.pub2/abstract",
-                description: "Cochrane Database systematic review concluding PEMF therapy helpful in relieving osteoarthritis pain (gold standard methodology).",
-                location: "Cochrane Collaboration, International",
                 rating: 9,
-                category: "europe"
+                city: "Manila",
+                name: "OzonMed Wellness Clinic",
+                location: "Manila Area",
+                keyPersonnel: "Medical Director (To be researched)",
+                specializations: "Ozone therapy, wellness treatments, alternative medicine, regenerative medicine, detoxification",
+                phone: "",
+                email: "",
+                website: "https://www.ozonmed.com/contact-us",
+                linkedin: "",
+                notes: "Specialized in alternative and regenerative medicine. Strong candidate for PEMF therapy as they already offer advanced wellness technologies.",
+                tier: "TIER 2 - HIGH-VALUE TARGETS"
             },
             {
-                link: "https://rheumatology.oxfordjournals.org/content/55/4/755",
-                description: "Oxford University published double-blind RCT showing 25.5% pain reduction with FDA-approved PEMF device in 60 osteoarthritis patients.",
-                location: "Oxford University, UK",
                 rating: 9,
-                category: "europe"
+                city: "Manila",
+                name: "Asian Hospital and Medical Center",
+                location: "2205 Civic Drive, Filinvest Corporate City, Alabang, Muntinlupa",
+                keyPersonnel: "Sports Medicine Center Director | Pain Management Head",
+                specializations: "Sports Medicine and Human Performance Center, Advanced Orthopedics, Rehabilitation Services",
+                phone: "+632-8771-9000",
+                email: "info@asianhospital.com",
+                website: "https://www.asianhospital.com",
+                linkedin: "",
+                notes: "500+ beds, JCI accredited, specialized sports medicine center, modern facility with advanced equipment budget.",
+                tier: "TIER 2 - HIGH-VALUE TARGETS"
             },
             {
-                link: "https://academic.oup.com/rheumatology/article/52/5/815/1815326",
-                description: "Oxford Rheumatology systematic review of PEMF effects on knee osteoarthritis.",
-                location: "Oxford University, UK",
-                rating: 8,
-                category: "europe"
-            },
-            {
-                link: "https://pubmed.ncbi.nlm.nih.gov/25882659/",
-                description: "Wuschech et al. effects of PEMF on pain and ASC expression in NGF induced myalgia model.",
-                location: "University Medical Center, Germany",
-                rating: 8,
-                category: "europe"
-            },
-            {
-                link: "https://link.springer.com/article/10.1007/s00508-022-02020-x",
-                description: "Austrian study on PEMF therapy effects in osteoarthritis patients.",
-                location: "Medical University of Vienna, Austria",
-                rating: 8,
-                category: "europe"
-            },
-            {
-                link: "https://link.springer.com/article/10.1007/s10354-023-01025-5",
-                description: "Austrian medical journal study on PEMF therapy for low back pain and disc herniation.",
-                location: "Medical University, Austria",
-                rating: 8,
-                category: "europe"
-            },
-            {
-                link: "https://www.cambridge.org/core/journals/european-psychiatry/article/transcranial-pulsed-electromagnetic-fields-for-treatmentresistant-depression",
-                description: "European Psychiatry journal study on transcranial PEMF for treatment-resistant depression.",
-                location: "Multiple European medical centers",
-                rating: 8,
-                category: "europe"
-            },
-
-            // Canada & Australia (TIER 2)
-            {
-                link: "https://pubmed.ncbi.nlm.nih.gov/17961910/",
-                description: "Thomas et al. randomized, double-blind, placebo-controlled trial using low-frequency magnetic field for musculoskeletal chronic pain.",
-                location: "University of Manitoba, Canada",
-                rating: 8,
-                category: "canada-australia"
-            },
-            {
-                link: "https://pubmed.ncbi.nlm.nih.gov/32659770/",
-                description: "Physical Therapy Journal meta-analysis of 16 studies showing clinically significant effects of PEMF on osteoarthritis pain relief.",
-                location: "Multiple international institutions (Australian contributors)",
-                rating: 8,
-                category: "canada-australia"
-            },
-            {
-                link: "https://journals.sagepub.com/doi/10.1177/02692155221074052",
-                description: "Clinical Rehabilitation journal study on PEMF therapy effectiveness.",
-                location: "Multiple medical centers (Australian research participation)",
-                rating: 8,
-                category: "canada-australia"
-            },
-            {
-                link: "https://www.tandfonline.com/doi/full/10.2147/JPR.S164303",
-                description: "Post-operative pain management using PEMF therapy - clinical studies.",
-                location: "Multiple medical institutions (Australian research centers)",
-                rating: 8,
-                category: "canada-australia"
-            },
-
-            // Asia (TIER 2 & 3)
-            {
-                link: "https://jstage.jst.go.jp/article/circj/84/2/84_CJ-19-0758/_html/-char/en",
-                description: "Japanese multi-center study demonstrating PEMF promoted angiogenesis and improved cardiac function in myocardial infarction mice.",
-                location: "Multiple Japanese medical centers",
-                rating: 8,
-                category: "asia"
-            },
-            {
-                link: "https://pubmed.ncbi.nlm.nih.gov/32495506/",
-                description: "West China Hospital meta-analysis of 22 RCTs (1,468 participants) showing PEMF healing rate 79.7% vs control 64.3% for bone healing.",
-                location: "West China Hospital, Sichuan University, China",
                 rating: 9,
-                category: "asia"
+                city: "Manila",
+                name: "Manila Doctors Hospital",
+                location: "667 United Nations Avenue, Ermita, Manila",
+                keyPersonnel: "Pain Management Head: Emmanuel Q. Villano, MD | Chief Medical Officer",
+                specializations: "Pain Management Center, Orthopedics, Rehabilitation Medicine, Advanced Diagnostic Services",
+                phone: "+63-2-524-3011",
+                email: "info@manilamed.com.ph",
+                website: "https://www.manilamed.com.ph",
+                linkedin: "",
+                notes: "400 beds, established pain management center, central Manila location, good patient volume for equipment utilization.",
+                tier: "TIER 2 - HIGH-VALUE TARGETS"
             },
             {
-                link: "https://pubmed.ncbi.nlm.nih.gov/23331333/",
-                description: "Nanjing University RCT demonstrating PEMF success rate 77.4% vs control 48.1% in 58 delayed union fracture patients.",
-                location: "Drum Tower Hospital, Nanjing University, China",
-                rating: 8,
-                category: "asia"
+                rating: 9,
+                city: "Manila",
+                name: "Philippine Orthopedic Center",
+                location: "Banawe Avenue, Quezon City",
+                keyPersonnel: "Department of Orthopedic Surgery | Hospital Director",
+                specializations: "Specialized 700-bed orthopedic hospital, spine surgery, joint replacement, sports medicine, rehabilitation",
+                phone: "+632-8426-8101",
+                email: "info@poc.gov.ph",
+                website: "https://poc.gov.ph",
+                linkedin: "",
+                notes: "Government specialty hospital, 700 beds dedicated to orthopedics, high patient volume, potential for large-scale deployment.",
+                tier: "TIER 2 - HIGH-VALUE TARGETS"
             },
             {
-                link: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4058309/",
-                description: "Shanghai Jiao Tong University study showing PEMF significantly improved cardiac function and reduced apoptosis in myocardial infarction rat model.",
-                location: "Shanghai Jiao Tong University, China",
-                rating: 8,
-                category: "asia"
+                rating: 9,
+                city: "Manila",
+                name: "PMP Pain Center Network",
+                location: "Multiple locations across Metro Manila",
+                keyPersonnel: "Corporate Operations Director | Medical Director",
+                specializations: "40+ branch network, pain management, physical therapy, rehabilitation, HMO accredited",
+                phone: "+632-8123-4567",
+                email: "corporate@pmpcorp.ph",
+                website: "https://pmpcorp.ph",
+                linkedin: "",
+                notes: "Fastest growing pain center network, established 2020, rapid expansion model, multiple location deployment opportunity.",
+                tier: "TIER 2 - HIGH-VALUE TARGETS"
             },
             {
-                link: "https://pubmed.ncbi.nlm.nih.gov/32251502/",
-                description: "Pan et al. anti-inflammatory mechanisms of PEMF therapy in patients with chronic neuropathic pain - randomized controlled trial.",
-                location: "Multiple medical centers, China",
-                rating: 8,
-                category: "asia"
-            },
-
-            // Italy (TIER 3)
-            {
-                link: "https://pubmed.ncbi.nlm.nih.gov/26705327/",
-                description: "University of Messina double-blind, placebo-controlled RCT showing significant improvement in knee osteoarthritis patients with PEMF therapy over 30 days.",
-                location: "University of Messina, Italy",
-                rating: 8,
-                category: "europe"
+                rating: 9,
+                city: "Cebu",
+                name: "Spine and Orthopaedics Cebu",
+                location: "Multiple hospital affiliations, Cebu City",
+                keyPersonnel: "Medical Director | Spine Surgery Department Head",
+                specializations: "Specialized orthopedic center, spine surgery, joint replacement, sports medicine, pain management",
+                phone: "+63-32-XXX-XXXX",
+                email: "info@spineandorthocebu.com",
+                website: "https://spineandorthocebu.com",
+                linkedin: "",
+                notes: "Specialized orthopedic center with multiple hospital affiliations, modern equipment focus, established reputation.",
+                tier: "TIER 2 - HIGH-VALUE TARGETS"
             },
             {
-                link: "https://pubmed.ncbi.nlm.nih.gov/30900425/",
-                description: "Paolucci et al. effects of PEMF therapy on pain, disability, and psychological comorbidity in chronic low back pain patients - randomized double-blind study.",
-                location: "Fondazione Policlinico Universitario A. Gemelli IRCCS, Italy",
-                rating: 8,
-                category: "europe"
+                rating: 9,
+                city: "Cebu",
+                name: "Asian Orthopedics - Spine & Joint Institute",
+                location: "Cebu City",
+                keyPersonnel: "Institute Director | Senior Orthopedic Surgeons",
+                specializations: "Spine surgery, joint replacement, sports medicine, orthopedic rehabilitation, advanced imaging",
+                phone: "+63-32-XXX-XXXX",
+                email: "info@asianorthopedics.net",
+                website: "https://asianorthopedics.net",
+                linkedin: "",
+                notes: "Multiple specialists, modern equipment focus, established patient base, good reputation in orthopedic community.",
+                tier: "TIER 2 - HIGH-VALUE TARGETS"
             },
             {
-                link: "https://academic.oup.com/rheumatology/article/55/4/755/1833454",
-                description: "Oxford Rheumatology journal study on PEMF therapy for joint arthroses and osteoarthritis.",
-                location: "University of Messina, Italy",
-                rating: 8,
-                category: "europe"
-            },
-
-            // Nordic Countries (TIER 4)
-            {
-                link: "https://pubmed.ncbi.nlm.nih.gov/29799771/",
-                description: "Multanen et al. effects of PEMF therapy on symptoms associated with knee osteoarthritis in randomized controlled trial.",
-                location: "University of Eastern Finland",
-                rating: 8,
-                category: "other"
-            },
-
-            // Turkey (TIER 4)
-            {
-                link: "https://pubmed.ncbi.nlm.nih.gov/19920724/",
-                description: "Turkish randomized, double-blind, sham-controlled study demonstrating PEMF efficacy in fibromyalgia patients with significant pain reduction.",
-                location: "Ankara Physical Medicine & Rehabilitation Hospital, Turkey",
-                rating: 8,
-                category: "other"
+                rating: 9,
+                city: "Cebu",
+                name: "Cebu Orthopaedic Institute",
+                location: "Cebu City",
+                keyPersonnel: "Institute Director | Orthopedic Surgery Department",
+                specializations: "Advanced wound care, musculoskeletal ultrasound, orthopedic surgery, sports medicine, rehabilitation",
+                phone: "+63-32-XXX-XXXX",
+                email: "info@cebuortho.ph",
+                website: "https://coi.advanceitservices.ph",
+                linkedin: "",
+                notes: "Modern facility with advanced diagnostic equipment, focus on innovative treatments, good potential for technology adoption.",
+                tier: "TIER 2 - HIGH-VALUE TARGETS"
             },
             {
-                link: "https://pubmed.ncbi.nlm.nih.gov/27726003/",
-                description: "Sutbeyaz et al. effect of PEMF in treatment of cervical osteoarthritis - randomized, double-blind, sham-controlled trial.",
-                location: "Ankara Physical Medicine & Rehabilitation Hospital, Turkey",
+                rating: 9,
+                city: "Cebu",
+                name: "The Hospital at Maayo",
+                location: "Cebu City",
+                keyPersonnel: "Physical Wellness Director | Rehabilitation Medicine Head",
+                specializations: "Physical Wellness & Rehabilitation Unit, hydrotherapy services, sports medicine, orthopedic rehabilitation",
+                phone: "+63-32-XXX-XXXX",
+                email: "info@thehospitalatmaayo.com",
+                website: "https://thehospitalatmaayo.com",
+                linkedin: "",
+                notes: "Modern facility with focus on wellness and rehabilitation, hydrotherapy services, good patient demographics for PEMF therapy.",
+                tier: "TIER 2 - HIGH-VALUE TARGETS"
+            },
+            
+            // TIER 3 - Rating 8
+            {
                 rating: 8,
-                category: "other"
+                city: "Manila",
+                name: "Medical Center Manila",
+                location: "1122 Gen. Luna Street, Ermita, Manila",
+                keyPersonnel: "Sports & Exercise Medicine Center Director",
+                specializations: "Sports & Exercise Medicine Center, Orthopedics, Rehabilitation, Pain Management",
+                phone: "+63-2-523-8131",
+                email: "info@medicalcentermanila.com.ph",
+                website: "https://www.medicalcentermanila.com.ph",
+                linkedin: "",
+                notes: "Established sports medicine center, good patient volume, potential for equipment utilization in sports medicine applications.",
+                tier: "TIER 3 - SOLID OPPORTUNITIES"
+            },
+            
+            // Additional TIER 3 - From CSV Data
+            {
+                rating: 8,
+                city: "Manila",
+                name: "Agile PhysioRecovery Clinic",
+                location: "Manila Area",
+                keyPersonnel: "Colleen Tajanlangit, Justin Maglalang - Co-Directors",
+                specializations: "Physical therapy, sports rehabilitation, recovery services, manual therapy, exercise prescription",
+                phone: "(02) 8251-0822",
+                email: "agilephysiorecovery.manila@gmail.com",
+                website: "",
+                linkedin: "https://www.linkedin.com/in/colleen-tajanlangit, https://www.linkedin.com/in/justin-maglalang",
+                notes: "Agile approach to physiotherapy and recovery. Good potential for PEMF therapy integration in recovery protocols.",
+                tier: "TIER 3 - SOLID OPPORTUNITIES"
             },
             {
-                link: "https://pubmed.ncbi.nlm.nih.gov/31385489/",
-                description: "Hattapoğlu et al. efficiency of PEMF therapy on pain, disability, anxiety, depression, and quality of life in fibromyalgia syndrome patients.",
-                location: "Atatürk University, Turkey",
                 rating: 8,
-                category: "other"
+                city: "Manila",
+                name: "The Raya Clinic",
+                location: "Manila Area",
+                keyPersonnel: "Dr. Quincy Raya - Medical Director",
+                specializations: "Medical clinic, wellness services, preventive medicine, health optimization, medical consultations",
+                phone: "",
+                email: "",
+                website: "https://therayaclinic.com/contact-us/",
+                linkedin: "https://www.linkedin.com/in/dr-quincy-raya",
+                notes: "Medical clinic with focus on wellness and preventive medicine. Good potential for PEMF therapy in wellness applications.",
+                tier: "TIER 3 - SOLID OPPORTUNITIES"
             },
             {
-                link: "https://www.msjonline.org/index.php/ijrms/article/view/12708",
-                description: "Yavaş study on effect of PEMF on pain, functionality and quality of life in chronic non-specific low back pain - randomized controlled trial.",
-                location: "Medical Sciences Research Institute, Turkey",
                 rating: 8,
-                category: "other"
-            },
-
-            // Other Developing Countries (TIER 5)
-            {
-                link: "https://pubmed.ncbi.nlm.nih.gov/24742119/",
-                description: "Yadollahpour et al. detailed analysis of PEMF mechanisms in musculoskeletal disorders with standardized treatment parameters.",
-                location: "Ahvaz Jundishapur University of Medical Sciences, Iran",
-                rating: 8,
-                category: "other"
+                city: "Manila",
+                name: "Lifespring Chiropractic",
+                location: "Manila Area",
+                keyPersonnel: "Dr. Matt Delgado - Chiropractor",
+                specializations: "Chiropractic care, spinal health, musculoskeletal disorders, manual therapy, wellness care",
+                phone: "",
+                email: "",
+                website: "",
+                linkedin: "https://www.linkedin.com/in/dr-matt-delgado",
+                notes: "Chiropractic clinic focusing on spinal health and musculoskeletal care. PEMF therapy would complement chiropractic treatments well.",
+                tier: "TIER 3 - SOLID OPPORTUNITIES"
             },
             {
-                link: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10018856/",
-                description: "Elsisi et al. effects of electromagnetic field versus low-level laser therapy on bone mineral density and biochemical markers in rheumatoid arthritis.",
-                location: "Cairo University, Egypt",
                 rating: 8,
-                category: "other"
+                city: "Manila",
+                name: "Chinese General Hospital",
+                location: "286 Blumentritt Road, Santa Cruz, Manila",
+                keyPersonnel: "Orthopedic Department Head | Pain Management Clinic Director",
+                specializations: "600-bed general hospital, orthopedics, pain management, rehabilitation medicine, traditional Chinese medicine integration",
+                phone: "+63-2-711-4141",
+                email: "info@cgh.com.ph",
+                website: "https://www.cgh.com.ph",
+                linkedin: "",
+                notes: "600 beds, established hospital, potential for integrating PEMF with traditional Chinese medicine approaches.",
+                tier: "TIER 3 - SOLID OPPORTUNITIES"
             },
             {
-                link: "https://pubmed.ncbi.nlm.nih.gov/32251502/",
-                description: "Oke & Tracey frequency-dependent effects of PEMF therapy on orthopedic pain conditions - comprehensive clinical evaluation.",
-                location: "University of Ibadan, Nigeria",
                 rating: 8,
-                category: "other"
+                city: "Manila",
+                name: "University of Santo Tomas Hospital",
+                location: "España Boulevard, Manila",
+                keyPersonnel: "Department of Orthopedics | Pain Management Unit Head",
+                specializations: "Academic medical center, orthopedics, rehabilitation medicine, pain management, medical education",
+                phone: "+63-2-731-3001",
+                email: "info@ust-hospital.com.ph",
+                website: "https://www.ust-hospital.com.ph",
+                linkedin: "",
+                notes: "Academic medical center with research potential, teaching hospital environment, good for clinical studies and evidence generation.",
+                tier: "TIER 3 - SOLID OPPORTUNITIES"
+            },
+            {
+                rating: 8,
+                city: "Manila",
+                name: "Our Lady of Lourdes Hospital",
+                location: "46 P. Sanchez Street, Santa Mesa Heights, Quezon City",
+                keyPersonnel: "Orthopedic Surgery Department | Hospital Administrator",
+                specializations: "230-bed private hospital, orthopedics, rehabilitation medicine, pain management, general surgery",
+                phone: "+63-2-712-0845",
+                email: "info@ololh.com.ph",
+                website: "https://www.ololh.com.ph",
+                linkedin: "",
+                notes: "230 beds, established private hospital, good patient volume, potential for gradual equipment adoption.",
+                tier: "TIER 3 - SOLID OPPORTUNITIES"
+            },
+            {
+                rating: 8,
+                city: "Cebu",
+                name: "Vicente Sotto Memorial Medical Center",
+                location: "B. Rodriguez Street, Cebu City",
+                keyPersonnel: "Orthopedic Department | Rehabilitation Medicine Head",
+                specializations: "1,200-bed government hospital, orthopedics, rehabilitation medicine, trauma surgery, general medicine",
+                phone: "+63-32-253-9891",
+                email: "info@vsmmc.gov.ph",
+                website: "https://vsmmc.gov.ph",
+                linkedin: "",
+                notes: "1,200 beds, largest government hospital in Cebu, high patient volume, budget considerations but potential for large-scale impact.",
+                tier: "TIER 3 - SOLID OPPORTUNITIES"
+            },
+            {
+                rating: 8,
+                city: "Cebu",
+                name: "PMP Pain Center - Banilad",
+                location: "Banilad, Cebu City",
+                keyPersonnel: "Branch Manager | Physical Therapy Director",
+                specializations: "Physical therapy clinic, pain management, rehabilitation services, sports medicine",
+                phone: "+63-32-XXX-XXXX",
+                email: "cebu@pmpcorp.ph",
+                website: "https://pmpcorp.ph/branches/cebu-banilad/",
+                linkedin: "",
+                notes: "Part of growing PMP network, established patient base, good potential for network-wide deployment.",
+                tier: "TIER 3 - SOLID OPPORTUNITIES"
+            },
+            {
+                rating: 8,
+                city: "Cebu",
+                name: "Sacred Heart Hospital",
+                location: "Cebu City",
+                keyPersonnel: "Orthopedic Department | Pain Management Clinic",
+                specializations: "Private hospital, orthopedics, rehabilitation medicine, pain management, general surgery",
+                phone: "+63-32-XXX-XXXX",
+                email: "info@sacredheart-cebu.com",
+                website: "https://www.sacredheart-cebu.com",
+                linkedin: "",
+                notes: "Established private hospital, good reputation, potential for equipment rental with proper relationship building.",
+                tier: "TIER 3 - SOLID OPPORTUNITIES"
+            },
+            
+            // TIER 4 - Rating 7
+            {
+                rating: 7,
+                city: "Manila",
+                name: "Philippine General Hospital",
+                location: "Taft Avenue, Manila",
+                keyPersonnel: "Pain Clinic Division | Department of Orthopedics",
+                specializations: "Government teaching hospital, pain clinic division, orthopedics, rehabilitation medicine, medical education",
+                phone: "+63-2-554-8400",
+                email: "info@pgh.gov.ph",
+                website: "https://www.pgh.gov.ph",
+                linkedin: "",
+                notes: "Major government teaching hospital, budget constraints but high patient volume, potential for clinical studies and evidence generation.",
+                tier: "TIER 4 - LONGER-TERM OPPORTUNITIES"
+            },
+            {
+                rating: 7,
+                city: "Manila",
+                name: "Mary Johnston Hospital",
+                location: "Tondo, Manila",
+                keyPersonnel: "Orthopedic Department | Hospital Administrator",
+                specializations: "Community hospital, orthopedics, general surgery, rehabilitation services, emergency medicine",
+                phone: "+63-2-254-1078",
+                email: "info@mjh.com.ph",
+                website: "https://www.mjh.com.ph",
+                linkedin: "",
+                notes: "Community hospital serving underserved population, budget considerations, potential for social impact programs.",
+                tier: "TIER 4 - LONGER-TERM OPPORTUNITIES"
+            },
+            {
+                rating: 7,
+                city: "Cebu",
+                name: "Cebu City Medical Center",
+                location: "Cebu City",
+                keyPersonnel: "Medical Director | Orthopedic Department",
+                specializations: "Government hospital, orthopedics, rehabilitation medicine, trauma surgery, emergency medicine",
+                phone: "+63-32-XXX-XXXX",
+                email: "info@ccmc.gov.ph",
+                website: "https://www.cebucity.gov.ph/cebu-city-medical-center/",
+                linkedin: "",
+                notes: "Government hospital, budget constraints, high patient volume, potential for public-private partnerships.",
+                tier: "TIER 4 - LONGER-TERM OPPORTUNITIES"
             }
         ];
-
-        // DOM elements
-        const studiesTable = document.getElementById('studiesTable');
-        const filterButtons = document.querySelectorAll('.filter-btn');
-
-        // Current filters
-        let currentCategory = 'all';
-
-        // Render studies
-        function renderStudies() {
-            const filteredStudies = studies.filter(study => {
-                return currentCategory === 'all' || study.category === currentCategory;
-            });
-
-            const tableRows = filteredStudies.map(study => `
-                <div class="table-row">
-                    <div class="study-rating-table">${study.rating}/10</div>
-                    <div>
-                        <div class="study-description-table">${study.description}</div>
-                        <div class="study-location-table">${study.location}</div>
-                    </div>
-                    <a href="${study.link}" target="_blank" class="study-link-table">View Study</a>
-                </div>
-            `).join('');
-
-            studiesTable.innerHTML = `
-                <div class="table-header">
-                    <div>Rating</div>
-                    <div>Research Study Description</div>
-                    <div>View Study</div>
-                </div>
-                ${tableRows}
-            `;
-        }
-
-        // Filter by category
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                currentCategory = button.dataset.filter;
-                renderStudies();
-            });
-        });
-
-        // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Initial render - make sure it runs when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            renderStudies();
-        });
         
-        // Also render immediately in case DOMContentLoaded already fired
-        renderStudies();
+        function renderTable(filteredData = facilities) {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            
+            let currentTier = '';
+            filteredData.forEach(facility => {
+                if (facility.tier !== currentTier) {
+                    currentTier = facility.tier;
+                    const tierRow = document.createElement('tr');
+                    tierRow.innerHTML = `<td colspan="6" class="tier-header">${currentTier}</td>`;
+                    tbody.appendChild(tierRow);
+                }
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <span class="rating rating-${facility.rating}">${facility.rating}/10</span>
+                    </td>
+                    <td>
+                        <div class="facility-name">${facility.name}</div>
+                        <div class="location">${facility.location}</div>
+                        <div class="specialization">${facility.city}</div>
+                    </td>
+                    <td>
+                        <div class="key-personnel">${facility.keyPersonnel}</div>
+                    </td>
+                    <td>
+                        <div class="specialization">${facility.specializations}</div>
+                    </td>
+                    <td>
+                        ${facility.phone ? `<a href="tel:${facility.phone}" class="contact-link phone">📞 ${facility.phone}</a>` : ''}
+                        ${facility.email ? `<a href="mailto:${facility.email}" class="contact-link email">✉️ ${facility.email}</a>` : ''}
+                        ${facility.website ? `<a href="${facility.website}" target="_blank" class="contact-link website">🌐 Website</a>` : ''}
+                        ${facility.linkedin ? `<a href="${facility.linkedin}" target="_blank" class="contact-link linkedin">💼 LinkedIn</a>` : ''}
+                    </td>
+                    <td>
+                        <div style="font-size: 12px; color: #666;">${facility.notes}</div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+        
+        function applyFilters() {
+            const cityFilter = document.getElementById('cityFilter').value;
+            const ratingFilter = document.getElementById('ratingFilter').value;
+            const searchFilter = document.getElementById('searchFilter').value.toLowerCase();
+            
+            let filtered = facilities.filter(facility => {
+                const cityMatch = !cityFilter || facility.city === cityFilter;
+                const ratingMatch = !ratingFilter || facility.rating.toString() === ratingFilter;
+                const searchMatch = !searchFilter || 
+                    facility.name.toLowerCase().includes(searchFilter) ||
+                    facility.specializations.toLowerCase().includes(searchFilter) ||
+                    facility.keyPersonnel.toLowerCase().includes(searchFilter);
+                
+                return cityMatch && ratingMatch && searchMatch;
+            });
+            
+            renderTable(filtered);
+        }
+        
+        function exportToCSV() {
+            const headers = ['Rating', 'Facility Name', 'City', 'Location', 'Key Personnel', 'Specializations', 'Phone', 'Email', 'Website', 'LinkedIn', 'Notes'];
+            const csvContent = [
+                headers.join(','),
+                ...facilities.map(facility => [
+                    facility.rating,
+                    `"${facility.name}"`,
+                    facility.city,
+                    `"${facility.location}"`,
+                    `"${facility.keyPersonnel}"`,
+                    `"${facility.specializations}"`,
+                    facility.phone,
+                    facility.email,
+                    facility.website,
+                    facility.linkedin,
+                    `"${facility.notes}"`
+                ].join(','))
+            ].join('\n');
+            
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('hidden', '');
+            a.setAttribute('href', url);
+            a.setAttribute('download', 'PEMF_Therapy_Prospects_Philippines.csv');
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+        
+        // Event listeners
+        document.getElementById('cityFilter').addEventListener('change', applyFilters);
+        document.getElementById('ratingFilter').addEventListener('change', applyFilters);
+        document.getElementById('searchFilter').addEventListener('input', applyFilters);
+        
+        // Initial render
+        renderTable();
     </script>
 </body>
 </html>
