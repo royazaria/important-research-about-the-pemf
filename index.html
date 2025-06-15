@@ -1032,6 +1032,159 @@
                 category: "other"
             }
         ];
+
+        // DOM elements
+        const studiesTable = document.getElementById('studiesTable');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        // Current filters
+        let currentCategory = 'all';
+
+        // Render studies
+        function renderStudies() {
+            const filteredStudies = studies.filter(study => {
+                return currentCategory === 'all' || study.category === currentCategory;
+            });
+
+            const tableRows = filteredStudies.map(study => `
+                <div class="table-row">
+                    <div class="study-rating-table">${study.rating}/10</div>
+                    <div>
+                        <div class="study-description-table">${study.description}</div>
+                        <div class="study-location-table">${study.location}</div>
+                    </div>
+                    <a href="${study.link}" target="_blank" class="study-link-table">View Study</a>
+                </div>
+            `).join('');
+
+            studiesTable.innerHTML = `
+                <div class="table-header">
+                    <div>Rating</div>
+                    <div>Research Study Description</div>
+                    <div>View Study</div>
+                </div>
+                ${tableRows}
+            `;
+        }
+
+        // Filter by category
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Only apply active class to filter buttons, not export buttons
+                if (button.dataset.filter) {
+                    filterButtons.forEach(btn => {
+                        if (btn.dataset.filter) {
+                            btn.classList.remove('active');
+                        }
+                    });
+                    button.classList.add('active');
+                    currentCategory = button.dataset.filter;
+                    renderStudies();
+                }
+            });
+        });
+
+        // Export functions
+        function exportToCSV() {
+            const headers = ['Rating', 'Description', 'Location', 'Category', 'Link'];
+            const csvContent = [
+                headers.join(','),
+                ...studies.map(study => [
+                    study.rating,
+                    `"${study.description.replace(/"/g, '""')}"`,
+                    `"${study.location.replace(/"/g, '""')}"`,
+                    study.category,
+                    study.link
+                ].join(','))
+            ].join('\n');
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'PEMF_Research_Database.csv');
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function exportToDOC() {
+            let docContent = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <meta charset="utf-8">
+                    <title>PEMF Research Database</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; margin: 40px; }
+                        h1 { color: #667eea; text-align: center; margin-bottom: 30px; }
+                        .study { margin-bottom: 25px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+                        .rating { font-weight: bold; color: #ff6b6b; font-size: 18px; }
+                        .location { color: #667eea; font-weight: bold; margin: 10px 0; }
+                        .description { line-height: 1.6; margin: 10px 0; }
+                        .link { color: #007bff; text-decoration: none; }
+                        .category { background: #f8f9fa; padding: 5px 10px; border-radius: 15px; font-size: 12px; color: #666; }
+                    </style>
+                </head>
+                <body>
+                    <h1>PEMF Therapy - Evidence-Based Medical Research Database</h1>
+                    <p><strong>Total Studies:</strong> ${studies.length}</p>
+                    <p><strong>Generated:</strong> ${new Date().toLocaleDateString()}</p>
+                    <hr>
+            `;
+
+            studies.forEach((study, index) => {
+                docContent += `
+                    <div class="study">
+                        <div class="rating">Rating: ${study.rating}/10</div>
+                        <div class="location">${study.location}</div>
+                        <div class="description">${study.description}</div>
+                        <div class="category">Category: ${study.category}</div>
+                        <div><a href="${study.link}" class="link">View Study: ${study.link}</a></div>
+                    </div>
+                `;
+            });
+
+            docContent += `
+                </body>
+                </html>
+            `;
+
+            const blob = new Blob([docContent], { type: 'application/msword' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'PEMF_Research_Database.doc');
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initial render and event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            renderStudies();
+            document.getElementById('exportCSV').addEventListener('click', exportToCSV);
+            document.getElementById('exportDOC').addEventListener('click', exportToDOC);
+        });
+        
+        // Also render immediately in case DOMContentLoaded already fired
+        renderStudies();
             {
                 link: "https://journals.sagepub.com/doi/10.1177/02692155221074052",
                 description: "Clinical Rehabilitation journal study on PEMF therapy effectiveness.",
