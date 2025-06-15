@@ -175,6 +175,23 @@
             background: linear-gradient(45deg, #764ba2, #667eea);
         }
 
+        .export-buttons {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .export-buttons .filter-btn {
+            margin: 0 10px;
+        }
+
+        #exportCSV {
+            background: linear-gradient(45deg, #28a745, #20c997) !important;
+        }
+
+        #exportDOC {
+            background: linear-gradient(45deg, #007bff, #6f42c1) !important;
+        }
+
         .rating-filters {
             display: flex;
             justify-content: center;
@@ -384,77 +401,6 @@
             box-shadow: 0 20px 50px rgba(102, 126, 234, 0.7);
             background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1);
             border-color: rgba(255,255,255,0.3);
-        }: 30px;
-            font-weight: 700;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-            position: relative;
-            overflow: hidden;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-        }
-
-        .study-link-table::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .study-link-table:hover::before {
-            left: 100%;
-        }
-
-        .study-link-table:hover {
-            transform: translateY(-4px) scale(1.08);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
-            background: linear-gradient(135deg, #764ba2, #667eea, #4ecdc4);
-        }
-
-        /* Enhanced Filter Buttons */
-        .filter-btn {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 700;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-            position: relative;
-            overflow: hidden;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .filter-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .filter-btn:hover::before,
-        .filter-btn.active::before {
-            left: 100%;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
-            background: linear-gradient(135deg, #764ba2, #667eea, #f093fb);
         }
 
         /* Rating explanations */
@@ -609,7 +555,14 @@
                 <button class="filter-btn" data-filter="other">International Studies</button>
             </div>
 
-
+            <div class="export-buttons">
+                <button id="exportCSV" class="filter-btn">
+                    📊 Export to CSV
+                </button>
+                <button id="exportDOC" class="filter-btn">
+                    📄 Export to DOC
+                </button>
+            </div>
 
             <div class="studies-table" id="studiesTable">
                 <div class="table-header">
@@ -801,6 +754,27 @@
                 rating: 8,
                 category: "europe"
             },
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/26705327/",
+                description: "University of Messina double-blind, placebo-controlled RCT showing significant improvement in knee osteoarthritis patients with PEMF therapy over 30 days.",
+                location: "University of Messina, Italy",
+                rating: 8,
+                category: "europe"
+            },
+            {
+                link: "https://pubmed.ncbi.nlm.nih.gov/30900425/",
+                description: "Paolucci et al. effects of PEMF therapy on pain, disability, and psychological comorbidity in chronic low back pain patients - randomized double-blind study.",
+                location: "Fondazione Policlinico Universitario A. Gemelli IRCCS, Italy",
+                rating: 8,
+                category: "europe"
+            },
+            {
+                link: "https://academic.oup.com/rheumatology/article/55/4/755/1833454",
+                description: "Oxford Rheumatology journal study on PEMF therapy for joint arthroses and osteoarthritis.",
+                location: "University of Messina, Italy",
+                rating: 8,
+                category: "europe"
+            },
 
             // Canada & Australia (TIER 2)
             {
@@ -867,29 +841,6 @@
                 location: "Multiple medical centers, China",
                 rating: 8,
                 category: "asia"
-            },
-
-            // Italy (TIER 3)
-            {
-                link: "https://pubmed.ncbi.nlm.nih.gov/26705327/",
-                description: "University of Messina double-blind, placebo-controlled RCT showing significant improvement in knee osteoarthritis patients with PEMF therapy over 30 days.",
-                location: "University of Messina, Italy",
-                rating: 8,
-                category: "europe"
-            },
-            {
-                link: "https://pubmed.ncbi.nlm.nih.gov/30900425/",
-                description: "Paolucci et al. effects of PEMF therapy on pain, disability, and psychological comorbidity in chronic low back pain patients - randomized double-blind study.",
-                location: "Fondazione Policlinico Universitario A. Gemelli IRCCS, Italy",
-                rating: 8,
-                category: "europe"
-            },
-            {
-                link: "https://academic.oup.com/rheumatology/article/55/4/755/1833454",
-                description: "Oxford Rheumatology journal study on PEMF therapy for joint arthroses and osteoarthritis.",
-                location: "University of Messina, Italy",
-                rating: 8,
-                category: "europe"
             },
 
             // Nordic Countries (TIER 4)
@@ -992,12 +943,97 @@
         // Filter by category
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                currentCategory = button.dataset.filter;
-                renderStudies();
+                // Only apply active class to filter buttons, not export buttons
+                if (button.dataset.filter) {
+                    filterButtons.forEach(btn => {
+                        if (btn.dataset.filter) {
+                            btn.classList.remove('active');
+                        }
+                    });
+                    button.classList.add('active');
+                    currentCategory = button.dataset.filter;
+                    renderStudies();
+                }
             });
         });
+
+        // Export functions
+        function exportToCSV() {
+            const headers = ['Rating', 'Description', 'Location', 'Category', 'Link'];
+            const csvContent = [
+                headers.join(','),
+                ...studies.map(study => [
+                    study.rating,
+                    `"${study.description.replace(/"/g, '""')}"`,
+                    `"${study.location.replace(/"/g, '""')}"`,
+                    study.category,
+                    study.link
+                ].join(','))
+            ].join('\n');
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'PEMF_Research_Database.csv');
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function exportToDOC() {
+            let docContent = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <meta charset="utf-8">
+                    <title>PEMF Research Database</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; margin: 40px; }
+                        h1 { color: #667eea; text-align: center; margin-bottom: 30px; }
+                        .study { margin-bottom: 25px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+                        .rating { font-weight: bold; color: #ff6b6b; font-size: 18px; }
+                        .location { color: #667eea; font-weight: bold; margin: 10px 0; }
+                        .description { line-height: 1.6; margin: 10px 0; }
+                        .link { color: #007bff; text-decoration: none; }
+                        .category { background: #f8f9fa; padding: 5px 10px; border-radius: 15px; font-size: 12px; color: #666; }
+                    </style>
+                </head>
+                <body>
+                    <h1>PEMF Therapy - Evidence-Based Medical Research Database</h1>
+                    <p><strong>Total Studies:</strong> ${studies.length}</p>
+                    <p><strong>Generated:</strong> ${new Date().toLocaleDateString()}</p>
+                    <hr>
+            `;
+
+            studies.forEach((study, index) => {
+                docContent += `
+                    <div class="study">
+                        <div class="rating">Rating: ${study.rating}/10</div>
+                        <div class="location">${study.location}</div>
+                        <div class="description">${study.description}</div>
+                        <div class="category">Category: ${study.category}</div>
+                        <div><a href="${study.link}" class="link">View Study: ${study.link}</a></div>
+                    </div>
+                `;
+            });
+
+            docContent += `
+                </body>
+                </html>
+            `;
+
+            const blob = new Blob([docContent], { type: 'application/msword' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'PEMF_Research_Database.doc');
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
 
         // Smooth scrolling for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1013,9 +1049,11 @@
             });
         });
 
-        // Initial render - make sure it runs when page loads
+        // Initial render and event listeners
         document.addEventListener('DOMContentLoaded', function() {
             renderStudies();
+            document.getElementById('exportCSV').addEventListener('click', exportToCSV);
+            document.getElementById('exportDOC').addEventListener('click', exportToDOC);
         });
         
         // Also render immediately in case DOMContentLoaded already fired
