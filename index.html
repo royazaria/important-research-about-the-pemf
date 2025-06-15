@@ -41,6 +41,24 @@
             align-items: center;
         }
 
+        .mobile-contact {
+            display: none;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            transition: all 0.3s;
+        }
+
+        .mobile-contact:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
         .logo {
             font-size: 28px;
             font-weight: bold;
@@ -464,6 +482,10 @@
                 display: none;
             }
 
+            .mobile-contact {
+                display: block !important;
+            }
+
             .container {
                 padding: 0 15px;
             }
@@ -553,6 +575,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">PEMF Research Hub</div>
+                <a href="mailto:jackaa22@gmail.com" class="mobile-contact" onclick="window.location.href='mailto:jackaa22@gmail.com'">📧 Contact</a>
                 <nav class="nav-menu">
                     <a href="#home" class="nav-item">Home</a>
                     <a href="#research" class="nav-item">Research</a>
