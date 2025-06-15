@@ -463,6 +463,84 @@
             .nav-menu {
                 display: none;
             }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+
+            .export-buttons .filter-btn {
+                margin: 5px;
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+
+            .rating-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .filter-btn {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+
+            .table-row {
+                padding: 15px;
+                gap: 10px;
+            }
+
+            .study-description-table {
+                font-size: 0.9rem;
+            }
+
+            .study-location-table {
+                font-size: 0.8rem;
+            }
+
+            .study-rating-table {
+                padding: 8px 12px;
+                font-size: 1rem;
+            }
+
+            .study-link-table {
+                padding: 10px 15px;
+                font-size: 0.7rem;
+            }
         }
 
         .hidden {
@@ -479,7 +557,7 @@
                     <a href="#home" class="nav-item">Home</a>
                     <a href="#research" class="nav-item">Research</a>
                     <a href="#ratings" class="nav-item">Ratings</a>
-                    <a href="mailto:jackaa22@gmail.com" class="nav-item">Contact</a>
+                    <a href="mailto:jackaa22@gmail.com" class="nav-item" onclick="window.location.href='mailto:jackaa22@gmail.com'">Contact</a>
                 </nav>
             </div>
         </div>
@@ -559,7 +637,8 @@
                 </div>
                 <div class="footer-section">
                     <h3>Contact Information</h3>
-                    <p>For hospital partnerships and PEMF implementation inquiries, please reach out to discuss evidence-based integration strategies.</p>
+                    <p>For hospital partnerships and PEMF implementation inquiries:</p>
+                    <p><a href="mailto:jackaa22@gmail.com" style="color: #667eea; text-decoration: none; font-weight: bold;">📧 jackaa22@gmail.com</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
