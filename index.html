@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PEMF Therapy - Evidence-Based Medical Research</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <meta property="og:title" content="PEMF Therapy - Evidence-Based Medical Research">
+    <meta property="og:description" content="Comprehensive database of high-quality medical research from Mayo Clinic, Johns Hopkins, and leading institutions worldwide.">
+    <meta property="og:image" content="https://royazaria.github.io/important-research-about-the-pemf/og-image.jpg">
+    <meta property="og:url" content="https://royazaria.github.io/important-research-about-the-pemf/">
     <style>
         * {
             margin: 0;
@@ -58,11 +64,14 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
         }
-
         .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: #667eea;
+            height: 50px;
+            width: auto;
+        }
+        
+        .logo img {
+            height: 100%;
+            width: auto;
         }
 
         .nav-menu {
@@ -564,7 +573,56 @@
                 font-size: 0.7rem;
             }
         }
+.sticky-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 10px 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
+.sticky-footer img {
+    height: 60px;
+    border-radius: 5px;
+}
+
+.sticky-footer-text {
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    flex: 1;
+    padding: 0 15px;
+}
+
+.sticky-footer-text span {
+    color: #4ecdc4;
+    font-weight: bold;
+}
+
+body {
+    padding-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+    .sticky-footer {
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px 15px;
+    }
+    
+    .sticky-footer img {
+        height: 45px;
+    }
+    
+    body {
+        padding-bottom: 120px;
+    }
+}
         .hidden {
             display: none;
         }
@@ -574,7 +632,7 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">PEMF Research Hub</div>
+                <div class="logo"><img src="logo.jpg" alt="PainFree PEMF Technology"></div>
                 <a href="mailto:jackaa22@gmail.com" class="mobile-contact" onclick="window.location.href='mailto:jackaa22@gmail.com'">📧 Contact</a>
                 <nav class="nav-menu">
                     <a href="#home" class="nav-item">Home</a>
@@ -669,6 +727,11 @@
             </div>
         </div>
     </footer>
+    <div class="sticky-footer">
+    <img src="patient-bed.JPG" alt="PEMF Treatment">
+    <div class="sticky-footer-text"><span>See PEMF in Action</span> — Non-invasive • FDA-Approved • Clinically Proven</div>
+    <a href="mailto:jackaa22@gmail.com" class="cta-button" style="padding: 10px 20px; font-size: 0.9rem;">Contact Us</a>
+</div>
 
     <script>
         const studies = [
