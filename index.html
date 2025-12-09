@@ -94,7 +94,7 @@
             height: 100vh;
             display: flex;
             align-items: center;
-            text-align: center;
+            text-align: left;
             color: white;
             position: relative;
             overflow: hidden;
@@ -103,8 +103,36 @@
         .hero-content {
             position: relative;
             z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 50px;
         }
 
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-image {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-image {
+                max-width: 350px;
+                margin-top: 30px;
+            }
+        
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
@@ -647,9 +675,14 @@ body {
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
+                <div class="hero-text">
                 <h1>Evidence-Based PEMF Therapy</h1>
                 <p>Comprehensive database of high-quality medical research studies from leading institutions worldwide, supporting PEMF therapy implementation in modern healthcare.</p>
                 <a href="#research" class="cta-button">Explore Research Database</a>
+                </div>
+                <div class="hero-image">
+                    <img src="patient-bed.JPG" alt="PEMF Treatment System - Professional Clinical Equipment">
+                </div>
             </div>
         </div>
     </section>
