@@ -40,6 +40,28 @@ window.STUDIES = [
   "headline": "2025 trial: pain down 36% vs 10% with standard care"
  },
  {
+  "link": "https://pubmed.ncbi.nlm.nih.gov/41047356/",
+  "design": "Meta-analysis",
+  "year": "2025",
+  "n": 1986,
+  "description": "Meta-analysis of 32 randomized trials (1,986 men with erectile dysfunction): micro-energy treatments, including electromagnetic fields, improved erectile function at 1, 3, 6 and 12 months; twice-weekly sessions beat once-weekly.",
+  "location": "Tongji Hospital, Huazhong University of Science and Technology, Wuhan, China",
+  "category": "asia",
+  "journal": "World J Mens Health",
+  "author": "Li H"
+ },
+ {
+  "link": "https://pubmed.ncbi.nlm.nih.gov/40401438/",
+  "design": "Meta-analysis",
+  "year": "2025",
+  "n": null,
+  "description": "Systematic review of 24 randomized trials (14 pooled): extracorporeal magnetic stimulation significantly improved urinary incontinence symptoms and quality of life versus control.",
+  "location": "Tianyou Hospital, Wuhan University of Science and Technology, Wuhan, China",
+  "category": "asia",
+  "journal": "Neurourol Urodyn",
+  "author": "Yang Z"
+ },
+ {
   "link": "https://pubmed.ncbi.nlm.nih.gov/40388433/",
   "design": "Meta-analysis",
   "year": 2025,
