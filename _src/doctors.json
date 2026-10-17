@@ -1,0 +1,97 @@
+{
+  "home_quote": {
+    "text": "There is no doubt that PEMF technology has a place in rehabilitative treatment for populations suffering from pain and functional impairment in one of the medical conditions mentioned in this review.",
+    "name": "Prof. Gabi Zeilig, MD",
+    "title": "Director (retired), Department of Neurological Rehabilitation, Sheba Medical Center, Tel HaShomer"
+  },
+  "people": [
+    {
+      "name": "Prof. Gabi Zeilig, MD",
+      "initials": "GZ",
+      "title": "Director (retired), Department of Neurological Rehabilitation, Sheba Medical Center, Tel HaShomer",
+      "summary": "Reviews four decades of published PEMF research and concludes that it has a place in rehabilitation for people with pain and functional impairment.",
+      "file": "zeilig.html",
+      "link_text": "Read the review",
+      "source_md": "medical-review-treatment-pemf-professor-zeilig.en.md",
+      "source_url": "https://painfree.org.il/medical-review-treatment-pemf-professor-zeilig/",
+      "headline": "A medical review of PEMF therapy",
+      "doc_type": "Medical review",
+      "sources": [
+        [
+          "Sheba Medical Center",
+          "https://www.shebaonline.org/doctors/gabriel-zeilig/"
+        ],
+        [
+          "ResearchGate",
+          "https://www.researchgate.net/profile/Gabriel-Zeilig"
+        ]
+      ]
+    },
+    {
+      "name": "Prof. Itamar Grotto",
+      "initials": "IG",
+      "photo": "grotto.jpg",
+      "title": "Former Associate Director General of the Israel Ministry of Health and former Head of Public Health Services",
+      "summary": "Reviews the mechanism, the clinical indications and the safety profile of PEMF, and recommends integrating it in health institutions, starting with a pilot.",
+      "file": "grotto.html",
+      "link_text": "Read the opinion",
+      "source_md": "grotto-pemf-regulatory-opinion.en.md",
+      "source_url": "https://painfree.org.il/grotto-pemf-regulatory-opinion/",
+      "headline": "Integrating PEMF technology in health institutions",
+      "doc_type": "Regulatory and medical opinion",
+      "sources": [
+        [
+          "Wikipedia (Hebrew)",
+          "https://he.wikipedia.org/wiki/%D7%90%D7%99%D7%AA%D7%9E%D7%A8_%D7%92%D7%A8%D7%95%D7%98%D7%95"
+        ],
+        [
+          "LinkedIn",
+          "https://www.linkedin.com/in/itamar-grotto/"
+        ]
+      ]
+    },
+    {
+      "name": "Dr. Michael Savion",
+      "initials": "MS",
+      "title": "Senior urologist",
+      "summary": "Describes his clinical experience combining electromagnetic pulses with shockwave treatment for erectile function.",
+      "file": "savion.html",
+      "link_text": "Read his remarks",
+      "source_md": "pemf-shockwave-erectile-function-combination-evidence.en.md",
+      "source_url": "https://painfree.org.il/pemf-shockwave-erectile-function-combination-evidence/",
+      "headline": "Combining shockwave with PEMF: a urologist's experience",
+      "doc_type": "Clinical testimony"
+    },
+    {
+      "name": "Dr. Alexander Ginzburg",
+      "initials": "AG",
+      "title": "Senior geriatrician, former chief geriatrician of the Mishan network",
+      "summary": "Describes his clinical experience with electromagnetic pulse treatment at PainFree in older adults.",
+      "file": "ginzburg.html",
+      "link_text": "Read his remarks",
+      "source_md": "pemf-geriatric-patient-mobility-function-protocol.en.md",
+      "source_url": "https://painfree.org.il/pemf-geriatric-patient-mobility-function-protocol/",
+      "headline": "PEMF in older age: a geriatrician's experience",
+      "doc_type": "Clinical testimony"
+    },
+    {
+      "name": "Dr. Moasi",
+      "initials": "M",
+      "title": "Senior pain physician, Sheba Medical Center and the Clalit pain clinic, Hadera–Karkur area",
+      "summary": "Has integrated PainFree's pulsed electromagnetic field technology in his clinic for more than five years."
+    },
+    {
+      "name": "Uria Moran",
+      "initials": "UM",
+      "title": "Physiotherapist, Lt. Col. (res.), former Head of the IDF Physiotherapy Corps",
+      "summary": "Leads the professional training of PainFree's therapists: how to use the pulses to break the pain cycle so the patient can get back to exercising and moving.",
+      "sources": [
+        [
+          "Profile video",
+          "https://youtube.com/shorts/EanbJo8ggpE?feature=share"
+        ]
+      ]
+    }
+  ],
+  "pages": []
+}

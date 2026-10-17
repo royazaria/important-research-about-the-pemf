@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PEMF research database — published studies, checked and linked | PainFree</title>
+<meta name="description" content="Published PEMF studies on pain, osteoarthritis, back pain, fractures, erectile function and incontinence. Each entry was checked against the original paper: study type, size, finding and institution.">
+<link rel="canonical" href="https://pemf-research.com/research.html">
+<link rel="icon" href="favicon.ico">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PEMF research database — published studies, checked and linked | PainFree">
+<meta property="og:description" content="Published PEMF studies on pain, osteoarthritis, back pain, fractures, erectile function and incontinence. Each entry was checked against the original paper: study type, size, finding and institution.">
+<meta property="og:image" content="https://pemf-research.com/assets/og-image.jpg">
+<meta property="og:url" content="https://pemf-research.com/research.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/research.css">
+
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="strip">
+  <div class="wrap">
+    <span><b>Opening a clinic in the US?</b> Three pre-launch openings in South Carolina: <a href="https://painfreeusa.health/">painfreeusa.health</a></span>
+    <span>PainFree · 70+ clinics · 25 years</span>
+  </div>
+</div>
+
+<header class="header">
+  <div class="wrap">
+    <a class="brand" href=""><img src="assets/logo-painfree.png" alt="PainFree — Better Life" width="546" height="207"></a>
+    <nav class="nav" aria-label="Main">
+      <a href="research.html" aria-current="page">Research</a>
+      <a href="doctors/">Physicians</a>
+      <a href="safety.html">Safety</a>
+      <a href="#network">About PainFree</a>
+      <a class="btn" href="https://painfreeusa.health/">Open a clinic</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="page-head">
+  <div class="wrap">
+    <p class="label">Research database</p>
+    <h1>Published PEMF studies, each checked against the original paper.</h1>
+    <p class="lede">For every study we list what kind of study it is, how many people took part, what it found and where it was done. Every entry links to PubMed or the publisher, so you can read it yourself.</p>
+  </div>
+</div>
+
+<section style="padding:clamp(28px,4vw,48px) 0 clamp(72px,8vw,110px)">
+  <div class="wrap">
+    <div class="db-tools">
+      <div class="filters" id="filters" role="group" aria-label="Filter by study type"></div>
+      <span class="db-count" id="count" aria-live="polite"></span>
+    </div>
+    <ul class="studies" id="list"></ul>
+    <div class="db-actions">
+      <button class="btn ghost" id="csv" type="button">Download as CSV</button>
+    </div>
+    <p style="margin-top:36px;font-size:14px;color:var(--muted);max-width:760px">Summaries describe the published studies of PEMF and related electromagnetic-field treatments in general, not a specific device. Lab studies are labelled as such. Last checked against the source papers in October 2026.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div>
+      <span class="mark"><img src="assets/logo-painfree.png" alt="PainFree — Better Life" width="546" height="207"></span>
+      <p>PainFree has run pain-relief clinics in Israel for 25 years and today has more than 70. This site collects the published research and the physicians' opinions behind the treatment.</p>
+    </div>
+    <div>
+      <h4>Evidence</h4>
+      <ul>
+        <li><a href="research.html">Research database</a></li>
+        <li><a href="doctors/">Physicians and letters</a></li>
+        <li><a href="safety.html">Safety and regulation</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>PainFree</h4>
+      <ul>
+        <li><a href="https://painfreeusa.health/">PainFree USA</a></li>
+        <li><a href="https://painfree.org.il/">PainFree Israel (Hebrew)</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <p class="legal">© <span id="yr">2026</span> PainFree. Research summaries describe published studies of PEMF in general, not of a specific device. Nothing on this site is medical advice or a substitute for a diagnosis. The units PainFree supplies do not hold US FDA clearance. Physicians' texts are English translations of their Hebrew originals on painfree.org.il.</p>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+<script src="studies.js"></script>
+<script src="assets/db.js"></script>
+</body>
+</html>
