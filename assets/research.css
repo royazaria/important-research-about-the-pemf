@@ -63,26 +63,6 @@
 .prose a{word-break:break-word}
 .translation-note{font-size:14px;color:var(--muted);border-top:1px solid var(--rule);margin-top:3em;padding-top:1.2em;max-width:720px}
 
-/* patient videos */
-.videos{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.videos figure{margin:0}
-.videos video{width:100%;aspect-ratio:9/16;object-fit:contain;background:#111}
-.videos figcaption{font-style:normal;font-family:var(--sans);font-size:15px;color:var(--ink);margin-top:12px}
-.videos figcaption span{display:block;color:var(--muted);font-size:14px}
-.videos+.videos{margin-top:40px}
-.videos.wide video{aspect-ratio:16/9}
-.videos.five{grid-template-columns:repeat(5,1fr);gap:20px}
-.vid-head{font-size:1.15rem;margin:0 0 18px;padding-top:14px;border-top:1px solid var(--ink)}
-.videos+.vid-head{margin-top:56px}
-.vid-note{font-size:14px;color:var(--muted);margin-top:14px}
-video::cue{font-family:var(--sans);font-size:clamp(14px,2.2vw,18px);line-height:1.35;background:rgba(0,0,0,.72)}
-
-/* contact */
-.two-paths{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink)}
-.two-paths>div{padding:30px 32px 0 0}
-.two-paths>div+div{padding-left:32px;border-left:1px solid var(--rule)}
-.two-paths h3{margin-bottom:10px}
-
 @media (max-width:900px){
   .findings li{grid-template-columns:1fr}
   .findings .src{text-align:left}
@@ -91,15 +71,11 @@ video::cue{font-family:var(--sans);font-size:clamp(14px,2.2vw,18px);line-height:
   .letter{grid-template-columns:1fr}
   .letter aside{position:static}
   .letter aside img{max-width:140px}
-  .videos,.videos.five{grid-template-columns:1fr 1fr}
-  .two-paths{grid-template-columns:1fr}
-  .two-paths>div+div{padding-left:0;border-left:0;border-top:1px solid var(--rule);margin-top:30px}
 }
 @media (max-width:560px){
   .people li{grid-template-columns:64px 1fr;gap:16px}
   .people .ph,.people .ini{width:64px;height:80px;font-size:1.4rem}
   .people a.more{grid-column:2}
-  .videos.wide{grid-template-columns:1fr}
 }
 
 .field select{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:0;padding:12px 14px;min-height:48px}
