@@ -199,6 +199,10 @@ def build_study_pages():
     slugs = [s.get("slug") for s in studies]
     dupes = {x for x in slugs if x and slugs.count(x) > 1}
     assert not dupes, "duplicate study slugs: %s" % dupes
+    for old in (ROOT / "studies").glob("*.html"):  # a study removed from studies.js loses its page
+        if old.stem not in slugs:
+            old.unlink()
+            print("removed", old.name)
     for s in studies:
         if not (s.get("slug") and s.get("summary") and s.get("importance")):
             continue
