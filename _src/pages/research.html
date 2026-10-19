@@ -3,13 +3,16 @@
   <div class="wrap">
     <p class="label">Research database</p>
     <h1>Published PEMF studies, each checked against the original paper.</h1>
-    <p class="lede">For every study we list what kind of study it is, how many people took part, what it found and where it was done. Every entry links to PubMed or the publisher, so you can read it yourself.</p>
+    <p class="lede">For every study we list what kind of study it is, how many people took part, what it found and where it was done. Filter by condition or by study type. Every entry links to PubMed or the publisher, so you can read it yourself.</p>
     <p style="margin-top:14px"><a class="more" href="guides/">Evidence guides, condition by condition</a></p>
   </div>
 </div>
 
 <section style="padding:clamp(28px,4vw,48px) 0 clamp(72px,8vw,110px)">
   <div class="wrap">
+    <div class="db-tools cond-tools">
+      <div class="filters" id="cfilters" role="group" aria-label="Filter by condition"></div>
+    </div>
     <div class="db-tools">
       <div class="filters" id="filters" role="group" aria-label="Filter by study type"></div>
       <span class="db-count" id="count" aria-live="polite"></span>

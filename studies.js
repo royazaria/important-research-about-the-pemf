@@ -1,4 +1,5 @@
-/* Verified 2026-10-05 against PubMed/publisher pages. Each entry: design, year, n, plain-English finding, author institution. */
+/* Verified 2026-10-05 against PubMed/publisher pages. Each entry: design, year, n, plain-English finding, author institution.
+   condition (added 2026-10-19): oa, spine, msk, fibro, bone, mens, incontinence, headache, wounds, circulation, general. */
 window.STUDIES = [
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/24338431/",
@@ -11,7 +12,8 @@ window.STUDIES = [
   "journal": "Cochrane Database Syst Rev",
   "author": "Li S",
   "highlight": true,
-  "headline": "Cochrane review: more pain relief than placebo in osteoarthritis"
+  "headline": "Cochrane review: more pain relief than placebo in osteoarthritis",
+  "condition": "oa"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/38610722/",
@@ -24,7 +26,8 @@ window.STUDIES = [
   "journal": "J Clin Med",
   "author": "Cianni L",
   "highlight": true,
-  "headline": "17 trials, 1,197 patients: osteoarthritis pain down 60%"
+  "headline": "17 trials, 1,197 patients: osteoarthritis pain down 60%",
+  "condition": "oa"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/39928254/",
@@ -37,7 +40,8 @@ window.STUDIES = [
   "journal": "Pain Ther",
   "author": "Hackel JG",
   "highlight": true,
-  "headline": "2025 trial: pain down 36% vs 10% with standard care"
+  "headline": "2025 trial: pain down 36% vs 10% with standard care",
+  "condition": "msk"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/41047356/",
@@ -48,7 +52,8 @@ window.STUDIES = [
   "location": "Tongji Hospital, Huazhong University of Science and Technology, Wuhan, China",
   "category": "asia",
   "journal": "World J Mens Health",
-  "author": "Li H"
+  "author": "Li H",
+  "condition": "mens"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/40401438/",
@@ -59,7 +64,8 @@ window.STUDIES = [
   "location": "Tianyou Hospital, Wuhan University of Science and Technology, Wuhan, China",
   "category": "asia",
   "journal": "Neurourol Urodyn",
-  "author": "Yang Z"
+  "author": "Yang Z",
+  "condition": "incontinence"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/40388433/",
@@ -70,7 +76,8 @@ window.STUDIES = [
   "location": "Kaohsiung Medical University, Kaohsiung, Taiwan",
   "category": "asia",
   "journal": "PLoS One",
-  "author": "Wang HY"
+  "author": "Wang HY",
+  "condition": "msk"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/35077249/",
@@ -81,7 +88,8 @@ window.STUDIES = [
   "location": "West China Hospital, Sichuan University, Chengdu, China",
   "category": "asia",
   "journal": "Clinical Rehabilitation",
-  "author": "Sun X"
+  "author": "Sun X",
+  "condition": "spine"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/32495506/",
@@ -92,7 +100,8 @@ window.STUDIES = [
   "location": "West China Hospital, Sichuan University, Chengdu, China",
   "category": "asia",
   "journal": "Bioelectromagnetics",
-  "author": "Peng L"
+  "author": "Peng L",
+  "condition": "bone"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/32251502/",
@@ -103,7 +112,8 @@ window.STUDIES = [
   "location": "West China Hospital, Sichuan University, Chengdu, China; University of Oxford, UK",
   "category": "asia",
   "journal": "Physical Therapy",
-  "author": "Yang X"
+  "author": "Yang X",
+  "condition": "oa"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/37999784/",
@@ -114,7 +124,8 @@ window.STUDIES = [
   "location": "Medical University of Vienna, Austria",
   "category": "europe",
   "journal": "Wien Med Wochenschr",
-  "author": "Kull P"
+  "author": "Kull P",
+  "condition": "spine"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/35362792/",
@@ -125,7 +136,8 @@ window.STUDIES = [
   "location": "Medical University of Vienna, Austria",
   "category": "europe",
   "journal": "Wien Klin Wochenschr",
-  "author": "Markovic L"
+  "author": "Markovic L",
+  "condition": "oa"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/32606905/",
@@ -136,7 +148,8 @@ window.STUDIES = [
   "location": "G. D'Annunzio University of Chieti-Pescara, Italy",
   "category": "europe",
   "journal": "J Pain Res",
-  "author": "Paolucci T"
+  "author": "Paolucci T",
+  "condition": "msk"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/22504115/",
@@ -147,7 +160,8 @@ window.STUDIES = [
   "location": "Medifarm Hospital, Suncheon, South Korea",
   "category": "asia",
   "journal": "Rheumatology (Oxford)",
-  "author": "Ryang We S"
+  "author": "Ryang We S",
+  "condition": "oa"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/39478814/",
@@ -158,7 +172,8 @@ window.STUDIES = [
   "location": "Chinese University of Hong Kong, Prince of Wales Hospital, Hong Kong, China",
   "category": "asia",
   "journal": "Frontiers in Medicine",
-  "author": "Wang QW"
+  "author": "Wang QW",
+  "condition": "oa"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/39597053/",
@@ -169,7 +184,8 @@ window.STUDIES = [
   "location": "Cairo University, Giza, Egypt",
   "category": "other",
   "journal": "Medicina (Kaunas)",
-  "author": "Abed Elrashid NA"
+  "author": "Abed Elrashid NA",
+  "condition": "headache"
  },
  {
   "link": "https://doi.org/10.18203/2320-6012.ijrms20232851",
@@ -180,7 +196,8 @@ window.STUDIES = [
   "location": "Istanbul Aydin University, Istanbul, Turkey",
   "category": "other",
   "journal": "International Journal of Research in Medical Sciences",
-  "author": "Yavas AD"
+  "author": "Yavas AD",
+  "condition": "spine"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/36922781/",
@@ -191,7 +208,8 @@ window.STUDIES = [
   "location": "University of Haifa, Haifa, Israel",
   "category": "other",
   "journal": "BMC Geriatrics",
-  "author": "Elboim-Gabyzon M"
+  "author": "Elboim-Gabyzon M",
+  "condition": "oa"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/36465321/",
@@ -202,7 +220,8 @@ window.STUDIES = [
   "location": "ASL3 Genovese, Genoa, and IRCCS Humanitas Research Hospital, Milan, Italy",
   "category": "europe",
   "journal": "Rheumatology and Immunology Research",
-  "author": "Giovale M"
+  "author": "Giovale M",
+  "condition": "fibro"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/32401418/",
@@ -213,7 +232,8 @@ window.STUDIES = [
   "location": "Mayo Clinic, Rochester (MN) & Phoenix (AZ), USA",
   "category": "usa",
   "journal": "J Clin Hypertens (Greenwich)",
-  "author": "Stewart GM"
+  "author": "Stewart GM",
+  "condition": "circulation"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/31394939/",
@@ -224,7 +244,8 @@ window.STUDIES = [
   "location": "Mayo Clinic, Rochester (MN) & Phoenix (AZ), USA",
   "category": "usa",
   "journal": "Blood Press",
-  "author": "Kim CH"
+  "author": "Kim CH",
+  "condition": "circulation"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/31385489/",
@@ -235,7 +256,8 @@ window.STUDIES = [
   "location": "Dicle University, Diyarbakir, Turkey",
   "category": "other",
   "journal": "Turkish Journal of Medical Sciences",
-  "author": "Hattapoglu E"
+  "author": "Hattapoglu E",
+  "condition": "spine"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/29950893/",
@@ -246,7 +268,8 @@ window.STUDIES = [
   "location": "Alabama Orthopedic Center, Birmingham, Alabama, USA (with Regenesis Biomedical, Scottsdale, Arizona)",
   "category": "usa",
   "journal": "Journal of Pain Research",
-  "author": "Sorrell RG"
+  "author": "Sorrell RG",
+  "condition": "spine"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/26705327/",
@@ -257,7 +280,8 @@ window.STUDIES = [
   "location": "University of Messina, Italy",
   "category": "europe",
   "journal": "Rheumatology (Oxford)",
-  "author": "Bagnato GL"
+  "author": "Bagnato GL",
+  "condition": "oa"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/23331333/",
@@ -268,7 +292,8 @@ window.STUDIES = [
   "location": "Nanjing Drum Tower Hospital, Nanjing University Medical School, Nanjing, China",
   "category": "asia",
   "journal": "BMC Musculoskeletal Disorders",
-  "author": "Shi HF"
+  "author": "Shi HF",
+  "condition": "bone"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/19920724/",
@@ -279,7 +304,8 @@ window.STUDIES = [
   "location": "Ankara Physical Medicine and Rehabilitation Education and Research Hospital, Ankara, Turkey",
   "category": "other",
   "journal": "Clinical Journal of Pain",
-  "author": "Sutbeyaz ST"
+  "author": "Sutbeyaz ST",
+  "condition": "fibro"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/18080043/",
@@ -290,7 +316,8 @@ window.STUDIES = [
   "location": "Lawson Health Research Institute, University of Western Ontario, London, Ontario, Canada",
   "category": "canada-australia",
   "journal": "Pain Research & Management",
-  "author": "Thomas AW"
+  "author": "Thomas AW",
+  "condition": "fibro"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/15986086/",
@@ -301,7 +328,8 @@ window.STUDIES = [
   "location": "Ankara Physical Medicine and Rehabilitation Education and Research Hospital, Ankara, Turkey",
   "category": "other",
   "journal": "Rheumatology International",
-  "author": "Sutbeyaz ST"
+  "author": "Sutbeyaz ST",
+  "condition": "oa"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/11279973/",
@@ -312,7 +340,8 @@ window.STUDIES = [
   "location": "Madigan Army Medical Center, Tacoma, Washington, USA",
   "category": "usa",
   "journal": "Headache",
-  "author": "Sherman RA"
+  "author": "Sherman RA",
+  "condition": "headache"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/7837158/",
@@ -323,7 +352,8 @@ window.STUDIES = [
   "location": "Danbury Hospital, Danbury, Connecticut, USA",
   "category": "usa",
   "journal": "J Rheumatol",
-  "author": "Trock DH"
+  "author": "Trock DH",
+  "condition": "oa"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/8478852/",
@@ -334,7 +364,8 @@ window.STUDIES = [
   "location": "Danbury Hospital, Danbury, Connecticut, USA",
   "category": "usa",
   "journal": "J Rheumatol",
-  "author": "Trock DH"
+  "author": "Trock DH",
+  "condition": "oa"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/36934330/",
@@ -345,7 +376,8 @@ window.STUDIES = [
   "location": "National University of Singapore and QuantumTx, Singapore",
   "category": "asia",
   "journal": "Aging (Albany NY)",
-  "author": "Venugobal S"
+  "author": "Venugobal S",
+  "condition": "general"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/7054564/",
@@ -356,7 +388,8 @@ window.STUDIES = [
   "location": "Columbia-Presbyterian Medical Center (Columbia University), New York, USA",
   "category": "usa",
   "journal": "JAMA",
-  "author": "Bassett CA"
+  "author": "Bassett CA",
+  "condition": "bone"
  },
  {
   "link": "https://doi.org/10.33235/wpr.32.2.58-65",
@@ -367,7 +400,8 @@ window.STUDIES = [
   "location": "Medical University of South Carolina, Charleston, South Carolina, USA",
   "category": "usa",
   "journal": "Wound Practice and Research",
-  "author": "Helmy J"
+  "author": "Helmy J",
+  "condition": "wounds"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/26042793/",
@@ -378,7 +412,8 @@ window.STUDIES = [
   "location": "Wake Forest Institute for Regenerative Medicine, Winston-Salem, North Carolina, USA",
   "category": "usa",
   "journal": "Stem Cell Res",
-  "author": "Ross CL"
+  "author": "Ross CL",
+  "condition": "bone"
  },
  {
   "link": "https://doi.org/10.13005/bpj/448",
@@ -389,7 +424,8 @@ window.STUDIES = [
   "location": "Ahvaz Jundishapur University of Medical Sciences, Ahvaz, Iran",
   "category": "other",
   "journal": "Biomedical and Pharmacology Journal",
-  "author": "Yadollahpour A"
+  "author": "Yadollahpour A",
+  "condition": "bone"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/19371845/",
@@ -400,7 +436,8 @@ window.STUDIES = [
   "location": "Albert Einstein College of Medicine / Montefiore, Bronx, New York, USA",
   "category": "usa",
   "journal": "Aesthet Surg J",
-  "author": "Strauch B"
+  "author": "Strauch B",
+  "condition": "wounds"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/17886012/",
@@ -411,7 +448,8 @@ window.STUDIES = [
   "location": "Research International, Williamsville, New York, USA",
   "category": "usa",
   "journal": "Electromagn Biol Med",
-  "author": "Markov MS"
+  "author": "Markov MS",
+  "condition": "general"
  },
  {
   "link": "https://pubmed.ncbi.nlm.nih.gov/26780754/",
@@ -422,6 +460,8 @@ window.STUDIES = [
   "location": "University of California, San Francisco (with Orthofix Inc.), USA",
   "category": "usa",
   "journal": "Spine J",
-  "author": "Miller SL"
+  "author": "Miller SL",
+  "condition": "spine"
  }
 ];
+window.CONDITIONS = [["oa", "Osteoarthritis and joints"], ["spine", "Back and neck pain"], ["msk", "Muscle, tendon and soft-tissue pain"], ["fibro", "Fibromyalgia"], ["bone", "Fractures and bone healing"], ["mens", "Erectile function"], ["incontinence", "Urinary incontinence"], ["headache", "Headache and migraine"], ["wounds", "Wounds and recovery after surgery"], ["circulation", "Circulation and blood pressure"], ["general", "General use and older adults"]];

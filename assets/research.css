@@ -85,3 +85,60 @@
 .plain-list li{padding:14px 0;border-bottom:1px solid var(--rule)}
 .people .srcs{font-size:13.5px;color:var(--muted);margin-top:8px}
 .people .srcs a{color:var(--muted)}
+
+/* home: the US site's research components (painfreeusa.health #research), shared look */
+.rs-figures{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:40px 0 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule)}
+.rs-figures div{padding:22px 18px 20px 0}
+.rs-figures b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(2.2rem,4vw,3.2rem);line-height:1;color:var(--ink);letter-spacing:-.02em}
+.rs-figures span{display:block;margin-top:8px;font-size:.92rem;color:var(--ink-2)}
+.rs-journals{margin:26px 0 0;font-family:var(--serif);font-size:1.12rem;line-height:1.7;color:var(--ink)}
+.rs-journals span{display:block;font-family:var(--sans);font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.rs-places{display:grid;grid-template-columns:3fr 2fr;gap:40px;margin-top:48px}
+.rs-places h3{font-size:1.25rem;margin:0 0 12px}
+ul.inst{list-style:none;padding:0;margin:0;border-top:1px solid var(--rule)}
+ul.inst li a{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:12px 0;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink-2)}
+ul.inst li b{color:var(--ink);font-weight:600}
+ul.inst li .where{grid-column:1;font-size:.86rem;color:var(--muted)}
+ul.inst li .what{grid-column:2;grid-row:1 / span 2;align-self:center;font-size:.86rem;text-align:right;color:var(--indigo)}
+ul.inst li a:hover b{text-decoration:underline}
+.rs-note{margin-top:22px;font-size:.86rem;color:var(--muted);max-width:760px}
+@media (max-width:1000px){.rs-places{grid-template-columns:1fr}}
+@media (max-width:620px){.rs-figures{grid-template-columns:repeat(2,1fr)}ul.inst li a{grid-template-columns:1fr}ul.inst li .what{grid-column:1;grid-row:auto;text-align:left}}
+.rs-figures{margin-top:0}
+.rs-journals{margin-bottom:0;padding-bottom:clamp(8px,2vw,24px)}
+
+/* condition cards */
+.conds{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink)}
+.conds li{padding:26px 26px 26px 0;border-bottom:1px solid var(--rule);display:flex;flex-direction:column}
+.conds li:not(:nth-child(3n+1)){padding-left:26px;border-left:1px solid var(--rule)}
+.conds h3{font-size:1.3rem;margin-bottom:6px}
+.conds .cn{font-size:13.5px;color:var(--muted);margin-bottom:12px}
+.conds p{font-size:.98rem}
+.conds .cl{margin-top:auto;padding-top:14px;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14.5px}
+
+/* history */
+.timeline{list-style:none;border-top:1px solid var(--ink)}
+.timeline li{display:grid;grid-template-columns:140px 1fr;gap:8px 28px;padding:22px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.timeline b{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,3vw,2.4rem);line-height:1;color:var(--indigo);letter-spacing:-.02em}
+.timeline h3{font-size:1.2rem;margin-bottom:4px}
+.timeline p{font-size:1rem;max-width:760px}
+
+/* NASA (dark section) */
+#nasa .nasa-lede{color:#E6EBF5}
+#nasa a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+#nasa .facts dd{font-size:1.12rem}
+
+/* database */
+.cond-tools{border-bottom:0;padding-bottom:4px}
+.studies .meta .cond{display:block;margin-top:6px;color:var(--indigo);font-size:13px}
+
+@media (max-width:1000px){
+  .conds{grid-template-columns:1fr 1fr}
+  .conds li:not(:nth-child(3n+1)){padding-left:0;border-left:0}
+  .conds li:nth-child(2n){padding-left:22px;border-left:1px solid var(--rule)}
+}
+@media (max-width:620px){
+  .conds{grid-template-columns:1fr}
+  .conds li:nth-child(2n){padding-left:0;border-left:0}
+  .timeline li{grid-template-columns:1fr}
+}
