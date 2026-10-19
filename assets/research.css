@@ -142,3 +142,31 @@ ul.inst li a:hover b{text-decoration:underline}
   .conds li:nth-child(2n){padding-left:0;border-left:0}
   .timeline li{grid-template-columns:1fr}
 }
+
+/* database: technology row, summaries, study links */
+.filters.tech button{font-size:16px}
+.studies details{margin-top:10px;font-size:15px}
+.studies details summary{cursor:pointer;color:var(--indigo);font-weight:500;font-size:14.5px}
+.studies details p{margin-top:8px;max-width:760px}
+.studies .lnk{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+
+/* study pages */
+.page-head .orig{margin-top:20px;max-width:860px;font-family:var(--serif);font-style:italic;font-size:1.08rem;color:var(--ink-2)}
+.page-head .orig span{display:block;font-family:var(--sans);font-style:normal;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.study-facts{border-top:1px solid var(--ink)}
+.study-facts div{padding:10px 0;border-bottom:1px solid var(--rule)}
+.study-facts dt{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.study-facts dd{color:var(--ink);font-size:15px;margin-top:2px}
+.letter.study .prose h2:first-child{margin-top:0}
+@media (max-width:900px){.studies .lnk{flex-direction:row;justify-content:flex-start;align-items:baseline;gap:18px}}
+
+/* shockwave and combined sections */
+#shockwave .facts dd{font-family:var(--sans);font-size:1rem;line-height:1.55}
+#shockwave .facts div{grid-template-columns:190px 1fr}
+#combined p{color:#E6EBF5}
+#combined .plain-list{border-top-color:rgba(255,255,255,.35)}
+#combined .plain-list li{border-bottom-color:rgba(255,255,255,.16);color:#E6EBF5}
+#combined .plain-list b{color:#fff}
+#combined .btn{background:#fff;color:var(--indigo-2);border-color:#fff}
+#combined .btn:hover{background:var(--paper)}
+@media (max-width:620px){#shockwave .facts div{grid-template-columns:1fr}}

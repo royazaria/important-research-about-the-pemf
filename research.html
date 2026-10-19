@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PEMF research database — published studies, checked and linked | PainFree</title>
-<meta name="description" content="Published PEMF studies on pain, osteoarthritis, back pain, fractures, erectile function and incontinence. Each entry was checked against the original paper: study type, size, finding and institution.">
+<title>PEMF and shockwave research database — published studies, checked and linked | PainFree</title>
+<meta name="description" content="Published PEMF and shockwave studies on pain, osteoarthritis, back pain, tendons, fractures, erectile function and incontinence. Each entry was checked against the original paper: study type, size, finding and institution.">
 <link rel="canonical" href="https://pemf-research.com/research.html">
 <link rel="icon" href="favicon.ico">
 <meta property="og:type" content="website">
-<meta property="og:title" content="PEMF research database — published studies, checked and linked | PainFree">
-<meta property="og:description" content="Published PEMF studies on pain, osteoarthritis, back pain, fractures, erectile function and incontinence. Each entry was checked against the original paper: study type, size, finding and institution.">
+<meta property="og:title" content="PEMF and shockwave research database — published studies, checked and linked | PainFree">
+<meta property="og:description" content="Published PEMF and shockwave studies on pain, osteoarthritis, back pain, tendons, fractures, erectile function and incontinence. Each entry was checked against the original paper: study type, size, finding and institution.">
 <meta property="og:image" content="https://pemf-research.com/assets/og-image.jpg">
 <meta property="og:url" content="https://pemf-research.com/research.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -46,14 +46,17 @@
 <div class="page-head">
   <div class="wrap">
     <p class="label">Research database</p>
-    <h1>Published PEMF studies, each checked against the original paper.</h1>
-    <p class="lede">For every study we list what kind of study it is, how many people took part, what it found and where it was done. Filter by condition or by study type. Every entry links to PubMed or the publisher, so you can read it yourself.</p>
+    <h1>Published PEMF and shockwave studies, each checked against the original paper.</h1>
+    <p class="lede">For every study we list what kind of study it is, how many people took part, what it found and where it was done. Filter by technology, condition or study type, open the plain-English summary of any study, or go to its own page. Every entry links to PubMed or the publisher, so you can read it yourself.</p>
     <p style="margin-top:14px"><a class="more" href="guides/">Evidence guides, condition by condition</a></p>
   </div>
 </div>
 
 <section style="padding:clamp(28px,4vw,48px) 0 clamp(72px,8vw,110px)">
   <div class="wrap">
+    <div class="db-tools cond-tools">
+      <div class="filters tech" id="tfilters" role="group" aria-label="Filter by technology"></div>
+    </div>
     <div class="db-tools cond-tools">
       <div class="filters" id="cfilters" role="group" aria-label="Filter by condition"></div>
     </div>
@@ -65,7 +68,7 @@
     <div class="db-actions">
       <button class="btn ghost" id="csv" type="button">Download as CSV</button>
     </div>
-    <p style="margin-top:36px;font-size:14px;color:var(--muted);max-width:760px">Summaries describe the published studies of PEMF and related electromagnetic-field treatments in general, not a specific device. Lab studies are labelled as such. Last checked against the source papers in October 2026.</p>
+    <p style="margin-top:36px;font-size:14px;color:var(--muted);max-width:760px">Summaries describe the published studies of PEMF, related electromagnetic-field treatments and shockwave therapy in general, not a specific device. Each plain-English summary was written from the published abstract, and its numbers were checked against it. Lab studies are labelled as such. Last checked against the source papers in October 2026.</p>
   </div>
 </section>
 
@@ -75,7 +78,7 @@
   <div class="wrap">
     <div>
       <span class="mark"><img src="assets/logo-painfree.png" alt="PainFree — Better Life" width="546" height="207"></span>
-      <p>The published studies on PEMF therapy, each checked against the original paper and linked to it. Compiled by PainFree, which has run pain-relief clinics in Israel for 25 years.</p>
+      <p>The published studies on PEMF and shockwave therapy, each checked against the original paper and linked to it. Compiled by PainFree, which has run pain-relief clinics in Israel for 25 years.</p>
     </div>
     <div>
       <h4>Evidence</h4>
@@ -92,7 +95,7 @@
         <li><a href="https://painfree.org.il/">PainFree Israel (Hebrew)</a></li>
       </ul>
     </div>
-    <p class="legal">© <span id="yr">2026</span> PainFree. Research summaries describe published studies of PEMF in general, not of a specific device. Nothing on this site is medical advice or a substitute for a diagnosis. The units PainFree supplies do not hold US FDA clearance.</p>
+    <p class="legal">© <span id="yr">2026</span> PainFree. Research summaries describe published studies of PEMF and shockwave therapy in general, not of a specific device. Nothing on this site is medical advice or a substitute for a diagnosis. The units PainFree supplies do not hold US FDA clearance.</p>
   </div>
 </footer>
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>

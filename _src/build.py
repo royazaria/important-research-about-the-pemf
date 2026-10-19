@@ -81,17 +81,19 @@ def load_studies():
 
 # One line per condition, written from the studies filed under it (numbers must match studies.js).
 SUMMARIES = {
-    "oa": "A Cochrane review of 9 trials found more pain relief than placebo. A 2024 review of 17 trials (1,197 patients) reported pain down 60%.",
-    "spine": "A meta-analysis of 14 trials (618 people) found more pain relief than placebo in low back pain, particularly chronic low back pain.",
-    "msk": "A 2025 US multi-center trial: pain down 36%, against 10% with standard care. A 2025 meta-analysis covers shoulder impingement.",
-    "fibro": "Three sham-controlled trials. The largest, in 56 women, improved pain, function and fatigue.",
-    "bone": "A meta-analysis of 22 trials (1,468 patients): healing rose to 79.7%, against 64.3% with sham. The first FDA-approved PEMF use, in 1979.",
-    "mens": "A meta-analysis of 32 trials (1,986 men): micro-energy treatments, including electromagnetic fields, improved erectile function.",
-    "incontinence": "A systematic review of 24 trials: magnetic stimulation of the pelvic floor improved symptoms and quality of life.",
-    "headache": "A double-blind trial in 42 migraine sufferers at Madigan Army Medical Center, and a 2024 trial in chronic sinusitis.",
-    "wounds": "Reviews of PEMF for pain and swelling after plastic surgery and for slow-healing wounds.",
+    "oa": "PEMF: a Cochrane review and a meta-analysis of 16 placebo-controlled trials found less pain; gains in function were less clear. Shockwave: a meta-analysis of 14 knee trials found less pain and better function.",
+    "spine": "A meta-analysis of 14 PEMF trials found more pain relief than placebo in low back pain. A 2026 network meta-analysis of 50 trials compares magnetic stimulation, shockwave and PEMF.",
+    "msk": "Shockwave beat placebo in a JAMA trial of calcific shoulder tendinitis and a 250-patient heel-pain trial, but other trials in tennis elbow and heel pain found no difference. PEMF trials here are smaller and mixed.",
+    "fibro": "Four studies of PEMF and magnetic stimulation. A 2025 meta-analysis of 6 sham-controlled trials found pain relief in the short term.",
+    "bone": "A meta-analysis of 22 trials found higher fracture healing rates with PEMF, while reviews found no effect on fresh fractures or spinal fusion rates. Shockwave matched surgery in one nonunion trial.",
+    "mens": "Mostly shockwave: five sham-controlled trials in erectile dysfunction (one negative), several meta-analyses, and a 2025 Cochrane review that rates the benefit as small and the evidence as low certainty. In Peyronie's disease, shockwave eased pain but not curvature.",
+    "pelvic": "In men with chronic pelvic pain, a Cochrane review rates the short-term benefit of shockwave as high-quality evidence; evidence for magnetic chairs is uncertain. One trial combined the two.",
+    "incontinence": "A review of 24 trials found magnetic stimulation improved urinary incontinence. Of two sham-controlled trials in women, the larger (120 women) was positive and the other was not.",
+    "headache": "A double-blind trial in 42 migraine sufferers at Madigan Army Medical Center, Tacoma.",
+    "wounds": "Shockwave closed more diabetic foot ulcers than sham in two phase III trials. PEMF eased pain after cesarean section and breast reconstruction; Cochrane found no clear benefit for pressure or venous ulcers.",
+    "neuro": "Shockwave and magnetic stimulation both reduced spasticity after stroke in meta-analyses. A large PEMF trial in diabetic nerve pain was negative.",
     "circulation": "Two Mayo Clinic trials, in high blood pressure and in metabolic syndrome.",
-    "general": "A community study in 101 adults and a review of the medical uses of PEMF.",
+    "general": "The 1980 Lancet report that began medical shockwave use, PEMF trials in chronic sinusitis and older adults, and a review of PEMF's medical uses.",
 }
 BRIEFS = {
     "oa": ("Knee osteoarthritis brief", "https://painfreeusa.health/insights/pemf-knee-osteoarthritis-evidence-brief.html"),
@@ -106,23 +108,23 @@ KIND = {  # study design -> (singular, plural), in the order the condition cards
     "Review": ("narrative review", "narrative reviews"),
     "Lab study": ("lab study", "lab studies"),
 }
-JOURNALS = ["JAMA", "Cochrane Database of Systematic Reviews", "Rheumatology (Oxford)", "Physical Therapy", "The Spine Journal",
-            "Journal of Rheumatology", "Clinical Rehabilitation", "Journal of Pain Research", "Pain and Therapy", "Bioelectromagnetics",
-            "Clinical Journal of Pain", "World Journal of Men's Health", "Neurourology and Urodynamics", "BMC Geriatrics",
-            "Frontiers in Medicine", "PLoS One", "Headache"]
+JOURNALS = ["JAMA", "The Lancet", "BMJ", "Annals of Internal Medicine", "Cochrane Database of Systematic Reviews",
+            "Journal of Bone and Joint Surgery", "American Journal of Sports Medicine", "European Urology", "Journal of Urology",
+            "Journal of Sexual Medicine", "Stroke", "Plastic and Reconstructive Surgery", "Osteoarthritis and Cartilage",
+            "Rheumatology (Oxford)", "Physical Therapy", "Archives of Physical Medicine and Rehabilitation", "The Spine Journal",
+            "Clinical Rehabilitation", "Bioelectromagnetics"]
 
 
 def research_fills():
     studies, conditions = load_studies()
     reviews = sum(1 for s in studies if re.search("meta|systematic", s["design"], re.I))
     rcts = [s for s in studies if s["design"] == "RCT"]
-    years = [int(s["year"]) for s in studies if s.get("year")]  # two entries store the year as a string
     figures = """<div class="rs-figures">
   <div><b class="hl">%d</b><span>published studies, each linked to the original</span></div>
   <div><b>%d</b><span>systematic reviews and meta-analyses</span></div>
   <div><b>%d</b><span>randomized trials</span></div>
-  <div><b>%d</b><span>first study in the database, in JAMA</span></div>
-</div>""" % (len(studies), reviews, len(rcts), min(years))
+  <div><b>%d</b><span>on shockwave, or shockwave combined with PEMF</span></div>
+</div>""" % (len(studies), reviews, len(rcts), sum(1 for s in studies if s.get("technology") in ("shockwave", "combined")))
     journals = '<p class="rs-journals"><span>Published in</span> %s</p>' % " &middot; ".join(html.escape(j) for j in JOURNALS)
     cards = []
     for key, label in conditions:
@@ -146,7 +148,9 @@ def research_fills():
     small = sum(1 for s in rcts if s.get("n") and s["n"] < 50)
     return {"{{figures}}": figures, "{{journals}}": journals,
             "{{conditions}}": '    <ul class="conds">' + "".join("\n      " + c for c in cards) + "\n    </ul>",
-            "{{small_trials}}": str(small), "{{rct_count}}": str(len(rcts))}
+            "{{small_trials}}": str(small), "{{rct_count}}": str(len(rcts)), "{{study_count}}": str(len(studies)),
+            "{{shockwave_count}}": str(sum(1 for s in studies if s.get("technology") == "shockwave")),
+            "{{combined_count}}": str(sum(1 for s in studies if s.get("technology") == "combined"))}
 
 
 def build_pages():
@@ -166,6 +170,112 @@ def build_pages():
         write(rel, render(body, meta, scripts))
 
 
+TECH = {"pemf": "PEMF", "shockwave": "Shockwave", "combined": "PEMF and shockwave"}
+DESIGN_RANK = {"Meta-analysis": 0, "Systematic review": 0, "RCT": 1, "Clinical study": 2, "Review": 3, "Lab study": 4}
+SITE = "https://pemf-research.com/"
+
+
+SMALL = {"of", "and", "the", "in", "for", "on", "to", "a", "an", "at", "by", "with", "&"}
+
+
+def journal_name(s):
+    """PubMed stores some full journal names in lowercase; title-case them for display."""
+    name = s.get("journal_full") or s.get("journal", "")
+    name = re.sub(r"\s*\([^)]*\)\s*$", "", re.sub(r"\s+:\s.*$", "", name))  # drop ": Official journal of..." and "(Oxford, England)"
+    words = name.split()
+    if not any(w[:1].islower() and w.lower() not in SMALL for w in words[1:]) and words[:1] != [words[0].lower()]:
+        return name
+    return " ".join(w if (i and w.lower() in SMALL) else (w[:1].upper() + w[1:]) for i, w in enumerate(words))
+
+
+def study_url(s):
+    return "studies/%s.html" % s["slug"]
+
+
+def build_study_pages():
+    """One page per study: plain-English summary, why it matters, the citation and related studies."""
+    studies, conditions = load_studies()
+    label = dict(conditions)
+    slugs = [s.get("slug") for s in studies]
+    dupes = {x for x in slugs if x and slugs.count(x) > 1}
+    assert not dupes, "duplicate study slugs: %s" % dupes
+    for s in studies:
+        if not (s.get("slug") and s.get("summary") and s.get("importance")):
+            continue
+        rel = study_url(s)
+        same = [o for o in studies if o is not s and o.get("condition") == s.get("condition") and o.get("slug")]
+        same.sort(key=lambda o: (DESIGN_RANK.get(o["design"], 9), -int(o["year"])))
+        related = "".join('<li><a href="%s.html"><div><h3>%s</h3><p>%s &middot; %s</p></div><span class="go">&rarr;</span></a></li>'
+                          % (o["slug"], html.escape(o["headline"]), html.escape(o["design"]), o["year"]) for o in same[:6])
+        facts = [("Study type", s["design"]), ("Year", str(s["year"])),
+                 ("Participants", "{:,}".format(s["n"]) if isinstance(s.get("n"), int) else "Not stated in the abstract"),
+                 ("Condition", label.get(s.get("condition"), "")), ("Technology", TECH.get(s.get("technology"), "PEMF")),
+                 ("Journal", journal_name(s)), ("Institution", s.get("location", "")),
+                 ("First author", s.get("author", ""))]
+        dl = "".join("<div><dt>%s</dt><dd>%s</dd></div>" % (k, html.escape(v)) for k, v in facts if v)
+        src_name = "PubMed" if "pubmed" in s["link"] else "the publisher"
+        title_line = ('<p class="orig"><span>Original title</span>%s</p>' % html.escape(s["title"])) if s.get("title") else ""
+        content = """
+<div class="page-head">
+  <div class="wrap">
+    <p class="crumbs"><a href="../">PEMF Research</a> / <a href="../research.html">Research database</a> / %(design)s, %(year)s</p>
+    <p class="label">%(tech)s &middot; %(cond)s</p>
+    <h1>%(headline)s</h1>
+    %(orig)s
+  </div>
+</div>
+<div class="wrap letter study">
+  <aside>
+    <dl class="study-facts">%(dl)s</dl>
+    <p style="margin-top:22px"><a class="btn" href="%(link)s" target="_blank" rel="noopener">Read it on %(src)s</a></p>
+  </aside>
+  <article class="prose">
+    <h2>In short</h2>
+    <p>%(summary)s</p>
+    <h2>Why it matters</h2>
+    <p>%(importance)s</p>
+    <p class="translation-note">A plain-English summary written from the published abstract by the editors of this site. It describes this study, not any particular device or clinic, and it is not medical advice. Read the original on %(src)s for the full methods and results.</p>
+  </article>
+</div>
+<section class="sec alt">
+  <div class="wrap">
+    <div class="head"><p class="label">Related studies</p><h2>More on %(cond_lc)s.</h2></div>
+    <ul class="index">%(related)s</ul>
+    <p style="margin-top:28px"><a class="more" href="../research.html?c=%(ckey)s">All studies on %(cond_lc)s</a></p>
+  </div>
+</section>""" % {
+            "design": html.escape(s["design"]), "year": s["year"], "tech": TECH.get(s.get("technology"), "PEMF"),
+            "cond": html.escape(label.get(s.get("condition"), "")), "cond_lc": html.escape(label.get(s.get("condition"), "").lower()),
+            "ckey": s.get("condition", ""), "headline": html.escape(s["headline"]), "orig": title_line, "dl": dl,
+            "link": html.escape(s["link"], quote=True), "src": src_name, "summary": html.escape(s["summary"]),
+            "importance": html.escape(s["importance"]), "related": related}
+        about = {"@type": "ScholarlyArticle", "name": s.get("title") or s["headline"], "url": s["link"],
+                 "datePublished": str(s["year"]), "author": s.get("author", "")}
+        if s.get("journal_full") or s.get("journal"):
+            about["isPartOf"] = {"@type": "Periodical", "name": journal_name(s)}
+        ld = {"@context": "https://schema.org", "@type": "WebPage", "name": s["headline"], "url": SITE + rel,
+              "description": s["summary"], "about": about}
+        head = '<script type="application/ld+json">%s</script>' % json.dumps(ld, ensure_ascii=False).replace("</", "<\\/")
+        desc = s["summary"] if len(s["summary"]) <= 158 else s["summary"][:155].rsplit(" ", 1)[0] + "..."
+        meta = {"title": "%s (%s, %s) | PEMF Research" % (s["headline"], s.get("journal", ""), s["year"]),
+                "description": desc, "path": rel, "nav": "research"}
+        write(rel, render(content, meta, head=head))
+
+
+def build_sitemap():
+    """Static pages, every guide on disk (Jack adds guides) and every study page."""
+    old = (ROOT / "sitemap.xml").read_text(encoding="utf-8") if (ROOT / "sitemap.xml").exists() else ""
+    lastmod = dict(re.findall(r"<loc>(.*?)</loc><lastmod>(.*?)</lastmod>", old))
+    urls = [SITE, SITE + "research.html", SITE + "safety.html", SITE + "guides/"]
+    urls += [SITE + "guides/" + p.name for p in sorted((ROOT / "guides").glob("*.html")) if p.name != "index.html"]
+    studies, _ = load_studies()
+    urls += [SITE + study_url(s) for s in studies if s.get("slug") and s.get("summary")]
+    rows = "".join("  <url><loc>%s</loc>%s</url>\n" % (u, "<lastmod>%s</lastmod>" % lastmod[u] if u in lastmod else "") for u in urls)
+    write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n%s</urlset>\n' % rows)
+
+
 if __name__ == "__main__":
     build_pages()
     build_doctor_redirects()
+    build_study_pages()
+    build_sitemap()
